@@ -1,0 +1,42 @@
+{# src/Nurun/RhBundle/Resources/view/Client/view.html.twig #}
+
+{% extends "NurunRhBundle::layout.html.twig" %}
+
+{% block title %}
+  Détails du client {{ client.acronyme }} - {{ parent() }}
+{% endblock %}
+
+{% block rh_body %}
+
+<h2>{{ client.identifiant|capitalize }}</h2>
+{% if is_granted('ROLE_GESTION') %}
+   <a href="{{ path('nurun_client_edit', {'id': client.id}) }}">
+      
+      Modifier le client <i class="glyphicon glyphicon-pencil"></i>
+    </a>
+      {% endif %}
+<hr>
+<ul>
+    {% for mandat in mandats %} 
+        <li><a href="{{ path('nurun_mandat_view', {'id': mandat.id}) }}">{{ client.acronyme }}-{{ mandat.identifiant }}</a> - {{ mandat.titre }}</li>
+      {% else %}
+      <li>Pas (encore !) de mandat chez ce client</li>
+    {% endfor %}
+</ul>
+<hr>
+  
+  <p>
+    <a href="{{ path('nurun_client_home') }}" class="btn btn-default">
+      <i class="glyphicon glyphicon-chevron-left"></i>
+      Retour à la liste
+    </a>
+         
+        {% if is_granted('ROLE_GESTION') %}
+    <a href="{{ path('nurun_client_delete', {'id': client.id}) }}" class="btn btn-danger">
+      <i class="glyphicon glyphicon-trash"></i>
+      Supprimer le client
+    </a>
+      {% endif %}
+  </p>
+
+{% endblock %}

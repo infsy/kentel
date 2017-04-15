@@ -1,0 +1,14 @@
+{# src/Nurun/RhBundle/Resources/views/Conseiller/menu.html.twig #}
+
+{# Ce template n'hérite de personne,
+   tout comme le template inclus avec {{ include() }}. #}
+
+<ul class="nav nav-pills nav-stacked">
+  {% for conseiller in listConseillers %}
+    <li>
+      <a href="{{ path('nurun_rh_view', {'id': conseiller.id}) }}">
+        {{ conseiller.prenom }} {{ conseiller.nom }} - {{ conseiller.vicePresidence.acronyme }}
+      </a>
+    </li>
+  {% endfor %}
+</ul>

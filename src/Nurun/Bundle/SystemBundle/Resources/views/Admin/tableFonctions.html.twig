@@ -1,0 +1,92 @@
+{# src/Nurun/SystemBundle/Resources/view/Admin/tableFonctions.html.twig #}
+
+<table id="listFonctions" class="display nowrap" cellspacing="0" width="100%">
+  <thead>
+    <tr>
+	    <th>Nom</th>
+	    <th>Description</th>
+	    <th></th>
+    </tr>
+  </thead>
+
+  {% if fonctionList|length > 0 %}
+    <tbody>
+      {% for fonction in fonctionList %}
+      	{% set found = 0 %}
+      	{% if fonction.userFonctions|length > 0 %}
+      		{% for userFonction in fonction.userFonctions %}
+        		{% if userFonction.user is not null %}
+        			{% if userFonction.user == user %}
+          			{% set found = 1 %}
+        			{% endif %}
+        		{% endif %}
+      		{% endfor %}
+      	{% endif %}
+
+      	<tr>
+        	<td>{{ fonction.name }}</td>
+        	<td>{{ fonction.description }}</td>
+        	<td>
+            {% if found == 0 %}
+            	<a data-toggle="tooltip" title="Ajouter la fonction" class="bt-table" style="color:green" urlOption="{{ fonction.id }}"><span class="glyphicon glyphicon-plus"></span></a>
+            {% else %}
+            	<a data-toggle="tooltip" title="Retirer la fonction" class="bt-table" style="color:red" urlOption="{{ fonction.id }}"><span class="glyphicon glyphicon-minus"></span></a>
+            {% endif %}
+        	</td>
+      	</tr>
+      {% endfor %}
+   	</tbody>
+  {% endif %}
+</table>
+
+<script>
+  	$(".glyphicon").parent().click(function ()
+  	{
+    	if($(this).find('span').attr('class') == "glyphicon glyphicon-plus"){
+      		var fonctionId = $(this).attr("urlOption");
+      		var url = "{{ path('nurun_admin_user_add_fonction', {'userId': user.id, 'fonctionId': 'fonctionId' }) }}";
+      		url = url.replace("fonctionId", fonctionId);
+
+      		$.ajax({
+            	url: url,
+            	type: "POST",
+            	success: function() { 
+            	},
+
+            	error: function(XMLHttpRequest, textStatus, errorThrown)
+            	{
+              		alert('Error: ' +  errorThrown);
+            	}
+        	});
+	      	$(this).find('span').removeClass('glyphicon-plus');
+	      	$(this).find('span').addClass('glyphicon-minus');
+	      	$(this).css('color', 'red');
+
+          $("#message").html("Fonction ajoutée");
+          $("#message").css('color', 'green');
+    	}
+    	else if($(this).find('span').attr('class') == "glyphicon glyphicon-minus"){
+      		var fonctionId = $(this).attr("urlOption");
+      		var url = "{{ path('nurun_admin_user_remove_fonction', {'userId': user.id, 'fonctionId': 'fonctionId' }) }}";
+      		url = url.replace("fonctionId", fonctionId);
+
+      		$.ajax({
+            	url: url,
+            	type: "POST",
+            	success: function() { 
+            	},
+
+            	error: function(XMLHttpRequest, textStatus, errorThrown)
+            	{
+              		alert('Error: ' +  errorThrown);
+            	}
+        	});
+	      	$(this).find('span').removeClass('glyphicon-minus');
+	      	$(this).find('span').addClass('glyphicon-plus');
+	      	$(this).css('color', 'green');
+          
+          $("#message").html("Fonction retirée");
+          $("#message").css('color', 'red');
+    	}
+  	});
+</script>

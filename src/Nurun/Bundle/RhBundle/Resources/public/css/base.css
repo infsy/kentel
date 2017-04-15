@@ -1,0 +1,186 @@
+/* ===== Kentel - Base Styles ===== */
+
+html {
+    line-height: 1.4;
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-family: "Open Sans", sans-serif;
+    color: #1b1b1b;
+    font-size: 16px;
+    height: 100%;
+}
+
+*,
+*:after,
+*:before {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+::-moz-selection {
+    background: #28A5C3;
+    text-shadow: none;
+}
+
+::selection {
+    background: #28A5C3;
+    text-shadow: none;
+}
+
+body {
+    margin: 0px;
+    background-color: #ffffff;
+    height: 100%;
+}
+
+hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin: 1em 0;
+    padding: 0;
+}
+
+ol,
+ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+li {
+    display: block;
+}
+
+ol {
+    list-style-type: none;
+}
+
+    ol li {
+        margin: 4px 0;
+        display: list-item;
+        counter-increment: step-counter;
+    }
+
+    ol ul li {
+        counter-increment: none;
+    }
+
+        ol li::before {
+            content: counter(step-counter)'.';
+            margin-right: 5px;
+            font-weight: bold;
+        }
+
+a {
+    text-decoration: none;
+    -webkit-transition: .3s;
+    -moz-transition: .3s;
+    transition: .3s;
+    color: #1c5bc4;
+    text-decoration: underline;
+}
+
+a:hover {
+    color: #C6DBE0;
+}
+
+    a:visited {
+    }
+
+img {
+    max-width: 100%;
+    height: auto;
+    border: 0;
+}
+
+video {
+    width: 100%;
+    height: auto;
+}
+
+h1 {
+    font-size: 2em;
+}
+
+h2 {
+    font-size: 1.71em;
+}
+
+h3 {
+    font-size: 1.29em;
+}
+
+h4 {
+    font-size: 1em;
+}
+
+select,
+input[type="text"],
+input[type="password"],
+input[type="date"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="month"],
+input[type="week"],
+input[type="email"],
+input[type="number"],
+input[type="search"],
+input[type="tel"],
+input[type="time"],
+input[type="url"],
+input[type="color"],
+textarea {
+    -webkit-border-radius: 0px;
+    display: block;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    transition: box-shadow 0.45s, border-color 0.45s ease-in-out;
+    border: none;
+    min-height: 32px;
+    font-size: 1.07em;
+    font-weight: 600;
+    color: #1b1b1b;
+    margin: 0;
+    padding: 0 0 0 10px;
+    width: 100%;
+    max-width: 400px;
+}
+
+    input[type="text"]:focus,
+    input[type="password"]:focus,
+    input[type="date"]:focus,
+    input[type="datetime"]:focus,
+    input[type="datetime-local"]:focus,
+    input[type="month"]:focus,
+    input[type="week"]:focus,
+    input[type="email"]:focus,
+    input[type="number"]:focus,
+    input[type="search"]:focus,
+    input[type="tel"]:focus,
+    input[type="time"]:focus,
+    input[type="url"]:focus,
+    input[type="color"]:focus,
+    textarea:focus {
+        box-shadow: 0 0 12px #b3d4fc;
+    }
+
+select {
+    padding-left: 6px;
+}
+
+label {
+    margin-top: 20px;
+    font-size: 0.93em;
+    font-weight: 700;
+    display: block;
+    margin-bottom: 5px;
+}
+
+button {
+    width: 200px;
+}

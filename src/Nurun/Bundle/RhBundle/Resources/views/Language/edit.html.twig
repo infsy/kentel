@@ -1,0 +1,16 @@
+{# src/Nurun/RhBundle/Resources/views/Mandat/edit.html.twig #}
+
+{% extends "NurunRhBundle::layout.html.twig" %}
+
+{% block title %}
+  Modifier un niveau de pratique de langue - {{ parent() }}
+{% endblock %}
+
+{% block rh_body %}
+
+  <h2>Modifier un niveau de pratique de langue</h2>
+
+  {{ include("NurunRhBundle:Mandat:form.html.twig") }}
+
+
+{% endblock %}

@@ -1,0 +1,38 @@
+{# src/Nurun/SystemBundle/Resources/view/Admin/editUserRole.html.twig #}
+
+{% extends "NurunRhBundle::layout.html.twig" %}
+
+{% block title %}
+    {{ parent () }} - Édition du role
+{% endblock %}
+
+{% block rh_body %}
+    <div class="row">
+        <div>
+            <h2 class="titre-page">Édition du rôle de l'usager<br>{{ user.username }}</h2>
+        </div>
+    </div>
+
+    {{ form_start(form, {'attr': {'class': ''}}) }}
+        {{ form_errors(form) }}
+
+        <div style="font-size: 25px;">
+            {{ form_label(form.roles, 'Rôles'|trans, {'label_attr': {'class': ''}}) }}
+        </div>
+        <div style="margin-left: 20px;">
+            {{ form_widget(form.roles, {'label_attr': {'class': 'txt-info'}}) }}
+        </div>
+            {{ form_widget(form.save,  {'attr': {'class': 'btn btn-primary'}}) }}
+
+
+    {{ form_end(form) }}
+
+
+{% endblock %}
+
+{% block javascriptsPage %}
+    {% include "::webjs/jquery.dataTables.html.twig" %}
+    <script src="{{ asset('js/data-tables/dataTables.responsive.min.js') }}"></script>
+    <script src="{{ asset('js/data-tables/dataTables.bootstrap.min.js') }}"></script>
+    <script src="{{ asset('js/table.js') }}"></script>
+{% endblock %}

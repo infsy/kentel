@@ -1,0 +1,14 @@
+{% block choice_widget_expanded %}
+    {% spaceless %}
+        {% if expanded %}
+            {% for child in form %}
+                {{ form_widget(child) }}
+                {{ form_label(child) }}
+                <br />
+            {% endfor %}
+        {% else %}
+            {# just let the choice widget render the select tag #}
+            {{ block('choice_widget') }}
+        {% endif %}
+    {% endspaceless %}
+{% endblock choice_widget_expanded %}

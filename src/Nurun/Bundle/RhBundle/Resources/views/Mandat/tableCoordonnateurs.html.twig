@@ -1,0 +1,101 @@
+{# src/Nurun/RhBundle/Resources/view/Mandat/tableAdresses.html.twig #}
+
+<table id="listCoordonnateurs" class="display nowrap" cellspacing="0" width="100%">
+    <thead>
+      	<tr>
+	        <th>Nom</th>
+	        <th>Mandat</th>
+			<th>Secteur</th>
+			<th>Action</th>
+      	</tr>
+    </thead>
+
+    {% if coordonnateurs|length > 0 %}
+      	<tbody>
+      	{% for coordonnateur in coordonnateurs %}
+          {#{% if is_granted(action.role) or app.user != user %}#}
+          	{% set found = 0 %}
+          	{% if coordonnateur.mandatsCoordination|length > 0 %}
+          		{% for mandatInspect in coordonnateur.mandatsCoordination %}
+            		{% if mandatInspect is not null %}
+            			{% if mandatInspect.id == mandat.id %}
+              			{% set found = 1 %}
+            			{% endif %}
+            		{% endif %}
+          		{% endfor %}
+          	{% endif %}
+
+          	<tr>
+            		<td>{{ coordonnateur.prenom }} {{ coordonnateur.nom }}</td>
+            		<td>
+						{% for mandatC in coordonnateur.mandats %}
+							{% if mandatC is not null and mandatC.DeletedAt is null %}
+								{{ mandatC.mandat.identifiant }}-{{ mandatC.mandat.client.acronyme }}
+							{% endif %}
+						{% endfor %}
+					</td>
+					<td>{% if coordonnateur.vicePresidence is not null %}
+						{{ coordonnateur.vicePresidence.acronyme }}
+						{% else %}
+							Inconnu
+						{% endif %}
+					</td>
+            		<td>
+                		{% if found == 0 %}
+                  		<a data-toggle="tooltip" title="Ajouter sur ce mandat" class="bt-table" style="color:green" urlOption="{{ coordonnateur.id }}"><span class="glyphicon glyphicon-plus"></span></a>
+                		{% else %}
+                  		<a data-toggle="tooltip" title="Retirer de ce mandat" class="bt-table" style="color:red" urlOption="{{ coordonnateur.id }}"><span class="glyphicon glyphicon-minus"></span></a>
+                		{% endif %}
+            		</td>
+          	</tr>
+        {% endfor %}
+     	</tbody>
+    {% endif %}
+</table>
+<script>
+	$(".glyphicon").parent().click(function () 
+	{
+		if($(this).find('span').attr('class') == "glyphicon glyphicon-plus"){
+
+			var coordonnateurId = $(this).attr("urlOption");
+			var url = "{{ path('nurun_mandat_coordonnateur_add', {'mandatId': mandat.id, 'coordonnateurId': 'coordonnateurId' }) }}";
+			url = url.replace("coordonnateurId", coordonnateurId);
+			$.ajax({ 
+				url: url,
+				type: "POST",
+				success: function() { 
+				},  
+				error: function(XMLHttpRequest, textStatus, errorThrown)
+				{
+					alert('Error: ' +  errorThrown);
+				} 
+			}); 
+			$(this).find('span').removeClass('glyphicon-plus'); 
+			$(this).find('span').addClass('glyphicon-minus'); 
+			$(this).css('color', 'red');  
+			$("#message").html("Coordonnateur ajouté"); 
+			$("#message").css('color', 'green'); 
+		} 
+		else if($(this).find('span').attr('class') == "glyphicon glyphicon-minus"){ 
+			var coordonnateurId = $(this).attr("urlOption"); 
+			var url = "{{ path('nurun_mandat_coordonnateur_delete', {'mandatId': mandat.id, 'coordonnateurId': 'coordonnateurId' }) }}"; 
+			url = url.replace("coordonnateurId", coordonnateurId);  
+			$.ajax({ 
+				url: url, 
+				type: "POST", 
+				success: function()
+				{ 
+				},  
+				error: function(XMLHttpRequest, textStatus, errorThrown) 
+				{ 
+					alert('Error: ' +  errorThrown); 
+				} 
+			}); 
+			$(this).find('span').removeClass('glyphicon-minus'); 
+			$(this).find('span').addClass('glyphicon-plus'); 
+			$(this).css('color', 'green');  
+			$("#message").html("Coordonnateur retiré"); 
+			$("#message").css('color', 'red'); 
+		} });
+</script>
+

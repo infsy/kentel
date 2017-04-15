@@ -1,0 +1,111 @@
+/* ===== Kentel - Modules ===== */
+
+.btn {
+    color: #ffffff;
+    font-family: 'DIN Next LT Pro Regular';
+    text-transform: uppercase;
+    
+}
+
+.btn:hover, .btn:focus {
+    color: #ffffff;
+}
+
+/* LOGIN SPLASH / BOX */
+
+.login-splash {
+    background-color: #1C788F;
+    background-image: url(../images/nurun-services-conseils-splash-screen.jpg);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+}
+
+.login-row {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    margin: 0;
+}
+
+.login-box {
+    width: 100%;
+    height: 390px;
+    background: rgba(255, 255, 255, 0.75);
+    margin-top: 97px;
+    max-width: 430px;
+    margin: 0 auto;
+}
+
+@media only screen and (min-width:62em) {
+    .login-box {
+        width: 350px;
+        margin:0;
+    }
+}
+
+.login-box label {
+    font-family: 'DIN Next LT Pro Regular';
+    font-size: 1em;
+    margin-bottom: 0;
+}
+
+.login-box .login-connect {
+    margin-top: 0;
+    font-family: 'Plantin Std';
+    font-weight: 400;
+}
+.login-box .login-head img { width:170px !important; margin-top:-3px !important; }
+
+.login-box > .login-head {
+    background: #ffffff;
+    height: 60px;
+    border-bottom: 2px solid #28A5C5;
+    background-image: url(../images/logo-nurun-services-conseils.png);
+    background-repeat: no-repeat;
+    background-size: 125px 59px;
+    background-position: 95%;
+}
+
+.login-box > .login-body {
+    padding: 20px 105px 35px 20px;
+    position: relative;
+}
+
+.login-box .login-separator {
+    display: block;
+    width: 140px;
+    border-top: 5px solid #28A5C5;
+    margin: 0 0 0 20px;
+}
+
+.login-box input[type="text"],
+.login-box input[type="password"] {
+    height: 32px;
+    border-top: 1px solid #AAAAAC
+}
+
+.login-box .remember-me-label {
+    display: inline-block;
+    margin-top: 10px;
+}
+
+.login-box .remember-me-checkbox {
+    position: relative;
+    top: 2px;
+}
+
+.login-box .btn-login {
+    width: 175px;
+    height: 50px;
+    margin-top: 10px;
+    display: block;
+}
+
+.login-box .icone-chevron:after {
+    position: absolute;
+    bottom: 52px;
+    left: 155px;
+    
+}
+    

@@ -1,0 +1,34 @@
+{# src/Nurun/RhBundle/Resources/view/Mandat/email.html.twig #}
+
+<h1> {{ action }} de mandat<br>
+<h3>{{ mandat.client.identifiant|capitalize }} {{ mandat.identifiant }}</h3>
+<hr>
+<ul>
+    <li>Identifiant du mandat : <a href="{{ url('nurun_mandat_view', {'id': mandat.id}) }}" title="Allez au mandat">{{ mandat.identifiant }}</a>
+    <li>Description du mandat : {{ mandat.titre }}</li>
+    <li>Nombre d'heures travaillées : {{ mandat.nbreHeures }}</li>
+    <li>Client : {{ mandat.client.identifiant }} ({{ mandat.client.acronyme }})</li>
+    <li>
+        Mandataire :
+        {% if mandat.mandataire is not null %}
+            {{ mandat.mandataire.prenom }} {{ mandat.mandataire.nom }}
+        {% else %}
+            Pas de mandataire encore défini.
+        {% endif %}
+    </li>
+    <li>
+        Chargé de Projet :
+        {% if mandat.chargeprojet is not null %}
+            {{ mandat.chargeprojet.prenom }} {{ mandat.chargeprojet.nom }}
+        {% else %}
+            Pas de chargé de projet encore défini.
+        {% endif %}
+    </li>
+    <li>Date de fin : {{ mandat.dateFin|date('Y-m-d') }}</li>
+</ul>
+<hr>
+{% if user is defined %}
+    Auteur : <a href="mailto:{{ user.email }}">{{ user.username }}</a>
+{% else %}
+    Archivé automatiquement.
+{% endif %}

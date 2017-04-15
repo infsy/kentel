@@ -1,0 +1,29 @@
+{# src/Nurun/RhBundle/Resources/views/Mandat/delete.html.twig #}
+
+{% extends "NurunRhBundle::layout.html.twig" %}
+
+{% block title %}
+  Supprimer un mandat - {{ parent() }}
+{% endblock %}
+
+{% block body %}
+
+  <h2>Supprimer un mandat</h2>
+
+  <p>
+    Etes-vous certain de vouloir supprimer le mandat "{{ mandat.client.acronyme }}-{{ mandat.identifiant }}" ?
+  </p>
+
+  {# On met l'id de l'annonce dans la route de l'action du formulaire #}
+  <form action="{{ path('nurun_mandat_delete', {'id': mandat.id}) }}" method="post">
+    <a href="{{ path('nurun_mandat_view', {'id': mandat.id}) }}" class="btn btn-default">
+      <i class="glyphicon glyphicon-chevron-left"></i>
+      Retour au mandat
+    </a>
+    {# Ici j'ai écrit le bouton de soumission à la main #}
+    <input type="submit" value="Supprimer" class="btn btn-danger" />
+    {# Ceci va générer le champ CSRF #}
+    {{ form_rest(form) }}
+  </form>
+
+{% endblock %}

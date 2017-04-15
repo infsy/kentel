@@ -1,0 +1,74 @@
+{# src/Nurun/RhBundle/Resources/views/Conseiller/competences.html.twig #}
+
+{% extends "NurunRhBundle::layout.html.twig" %}
+
+{% block title %}
+    Liste des conseillers et leurs compétences - {{ parent() }}
+{% endblock %}
+
+{% block rh_body %}
+
+    <h2>Liste des compétences</h2>
+    {#<a href="{{ path('nurun_conseiller_add') }}" class="btn btn-primary">#}
+    {#<i class="glyphicon glyphicon-plus"></i>#}
+    {#Ajouter conseiller#}
+    {#</a>#}
+    {#{% if is_granted('ROLE_ADMIN') %}#}
+    {#<a href="{{ path('nurun_conseiller_export') }}" class="btn btn-primary">#}
+    {#<i class="glyphicon glyphicon-floppy-save"></i>#}
+    {#Exporter en XLS#}
+    {#</a>#}
+    {#{% endif %}#}
+    <table id="listCompetences" class="display nowrap" cellspacing="0" width="100%">
+        <thead>
+        <tr>
+            <th>Nom</th>
+            <th>Profil</th>
+            <th>Poste</th>
+            <th>Expertises</th>
+            <th>Certifications</th>
+            <th>Langues</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+
+        <!--début de la boucle-->
+        {% for conseiller in conseillers %}
+            <tr>
+                <td>{{ conseiller.nom }}</td>
+                {% if conseiller.profil is not null %}
+                    <td>{{ conseiller.profil }}</td>
+                {% else %}
+                    <td>Pas de profil attribué</td>
+                {% endif %}
+                {% if conseiller.poste is not null %}
+                    <td>{{ conseiller.poste }}</td>
+                {% else %}
+                    <td>Pas de poste attribué</td>
+                {% endif %}
+                {% if conseiller.expertises is not null %}
+                    <td>{{ conseiller.expertises | raw }}</td>
+                {% else %}
+                    <td>Pas d'expertises</td>
+                {% endif %}
+                {% if conseiller.certifications is not null %}
+                    <td>{{ conseiller.certifications }}</td>
+                {% else %}
+                    <td>Pas de certifications</td>
+                {% endif %}
+            {% if conseiller.languages is not null %}
+                <td>{{ conseiller.languages | raw }}</td>
+            {% else %}
+                <td>Aucune</td>
+            {% endif %}
+                <td>
+                    <a href="{{ path('nurun_conseiller_view', {'id': conseiller.id}) }}" class="bt-table"
+                       title="Plus de détails" data-hover="tooltip"><span class="glyphicon glyphicon-search"></span></a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

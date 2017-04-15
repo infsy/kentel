@@ -1,0 +1,29 @@
+{# src/Nurun/RhBundle/Resources/views/Conseiller/rapportExecutf.html.twig #}
+
+{% extends "NurunRhBundle::layout.html.twig" %}
+
+{% block title %}
+    Rapport executif - {{ parent() }}
+{% endblock %}
+
+{% block body %}
+
+    <h2>Rapport exécutif</h2>
+    <center>
+        <img src="data:image/jpg;base64,{{ graph1 }}" class="largeur-tier"/>
+        <br>
+        <br>
+        <br>
+        <img src="data:image/jpg;base64,{{ graph2 }}" class="largeur-tier"/>
+        <img src="data:image/jpg;base64,{{ graph3 }}" class="largeur-tier"/>
+        <br>
+        <br>
+        <img src="data:image/jpg;base64,{{ graph4 }}" class="largeur-tier"/>
+        <img src="data:image/jpg;base64,{{ graph5 }}" class="largeur-tier"/>
+        <br>
+        <br>
+        <img src="data:image/jpg;base64,{{ graph6 }}" class="largeur-tier"/>
+        <img src="data:image/jpg;base64,{{ graph7 }}" class="largeur-tier"/>
+
+    </center>
+{% endblock %}

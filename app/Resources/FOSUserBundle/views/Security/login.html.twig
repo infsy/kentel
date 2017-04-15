@@ -1,0 +1,71 @@
+{# empty Twig template #}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>{% block title %}Gestion des conseillers Nurun{% endblock %}</title>
+
+    {% block stylesheets %}
+      {# On charge le CSS de bootstrap depuis le site directement #}
+      <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+      <link rel="stylesheet" href="{{ asset('bundles/nurunrh/css/base.css') }}">
+      <link rel="stylesheet" href="{{ asset('bundles/nurunrh/css/main.css') }}">
+      <link rel="stylesheet" href="{{ asset('bundles/nurunrh/css/modules.css') }}">
+      <link rel="stylesheet" href="{{ asset('bundles/nurunrh/css/themes.css') }}">    
+    {% endblock %}
+  </head>
+  <body class="login-splash">
+    <!--     <div class="container">-->
+         <!--
+        <div id="header" class="jumbotron">
+          <h1>Gestion des conseillers</h1>
+          <p>
+            Ce projet est interne au bureau Nurun Services Conseils 
+          </p>
+
+        </div>
+    -->
+    <div class="row login-row">
+      <div class="col-sm-6"></div>
+      <div class="col-xs-12 col-sm-6">
+        <div class="login-box">
+          <div class="login-head">
+            <img src="{{ asset('images/Kentel-petit-H-RGB.svg') }}" alt="kentel">
+          </div>
+          <span class="login-separator"></span>    
+          <div class="login-body">
+            <h1 class="login-connect">Connexion</h1>
+            <form action="{{ path("fos_user_security_check") }}" method="post">
+              <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+              <label for="username">{{ 'Utilisateur'|trans }}</label>
+              <input type="text" id="username" name="_username" value="{{ last_username }}" required="required" />
+
+              <label for="password">{{ 'Mot de passe'|trans }}</label>
+              <input type="password" id="password" name="_password" required="required" />
+
+              <input type="checkbox" class="remember-me-checkbox" id="remember_me" name="_remember_me" value="on" />
+              <label for="remember_me" class="remember-me-label">{{ 'Se souvenir'|trans }}</label>
+
+              {% if error %}
+                <div style="color: red;border: solid;border-width: 2px;vertical-align: middle; height: 35px;"><p style="margin-left: 3px;margin-top: 5px;">Utilisateur ou mot de passe invalide</p></div>
+              {% endif %}
+              <input type="submit" id="_submit" name="_submit" class="btn btn-login nurun-blue" value="{{ 'Soumettre'|trans }}" />
+              <div class="icone-chevron"></div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer>
+    </footer>
+    <!--     </div>-->
+
+    {% block javascripts %}
+      {# Ajoutez ces lignes JavaScript si vous comptez vous servir des fonctionnalités du bootstrap Twitter #}
+      <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+      <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    {% endblock %}
+  </body>
+</html>

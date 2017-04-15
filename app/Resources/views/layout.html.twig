@@ -1,0 +1,252 @@
+{# app/Resources/views/layout.html.twig #}
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>{% block title %}Gestion des conseillers Nurun{% endblock %}</title>
+
+  {% block stylesheets %}
+    {# On charge le CSS de bootstrap depuis le site directement #}
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link href="{{ asset('css/jquery-ui.css') }}" rel="stylesheet" />
+    <link href="{{ asset('css/jquery-ui.theme.css') }}" rel="stylesheet" />
+    <link rel="stylesheet" href="{{ asset('css/main.css') }}" />
+    <link rel="stylesheet" href="{{ asset('css/data-tables/jquery.dataTables.css') }}" />
+    <link rel="stylesheet" href="{{ asset('css/data-tables/responsive.dataTables.css') }}" />
+    <link rel="stylesheet" href="{{ asset('css/data-tables/responsive.bootstrap.css') }}" />
+    <link rel="stylesheet" href="{{ asset('css/data-tables/dataTables.bootstrap.css') }}" />
+    <link rel="stylesheet" href="{{ asset('css/selectric.css') }}" />
+      <link rel="stylesheet" href="{{ asset('css/metisMenu.min.css') }}" />
+      <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.0/css/bootstrap-toggle.min.css" rel="stylesheet">
+
+      <!--[if lt IE 9]>
+              <script src="https://cdnjs.cloudflare.com/ajax/libs/flot/0.8.3/excanvas.min.js"></script>
+          <![endif]-->
+        
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+            <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+    <style type="text/css">
+
+    </style>    
+  {% endblock %}
+
+  <script src="{{ asset('js/jquery-1.11.2.min.js') }}"></script>
+</head>
+<body>
+    <div id="wrapper">
+      <nav class="header" role="navigation">
+          <div class="espace-carre">
+            <div class="carre carre1"></div>
+          </div>
+          <div class="wrapper-nav">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="logo-nav" href="{{ path('nurun_accueil') }}">
+                <img class="logo" src="{{ asset('images/images-interface/logo-kentel.png') }}" width="268" height="363" alt="Logo Kentel">
+              </a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li><a class="menu-premier-level bt6 btnNav" href="javascript:;"><span>CONSEILLERS</span></a>
+                      <ul class="menu-second-level vert">
+                          {% if is_granted('ROLE_GESTION') %}
+                            <li><a href="{{ path('nurun_conseiller_add') }}">Ajouter un conseiller</a></li>
+                          {% endif %}
+                          {% if is_granted('ROLE_RDP') %}
+                            <li><a href="{{ path('nurun_conseiller_index') }}">Voir les conseillers</a></li>
+                          {% endif %}
+                          {% if is_granted('ROLE_RDP') %}
+                            <li><a href="{{ path('nurun_conseiller_mesressources') }}">Voir mes ressources</a></li>
+                          {% endif %}
+                          {% if is_granted('ROLE_RDP') %}
+                              <li><a href="{{ path('nurun_conseiller_competences') }}">Voir les compétences</a></li>
+                          {% endif %}
+                          {% if is_granted('ROLE_USER') %}
+                              <li><a href="{{ path('nurun_conseiller_localisation') }}">Carte des conseillers<i></i></a></li>
+                          {% endif %}
+                          {% if is_granted('ROLE_USER') %}
+                              <li><a href="{{ path('nurun_conseiller_annuaire') }}">Annuaire Téléphonique <i></i></a></li>
+                          {% endif %}
+                      </ul>
+                    </li>
+                    <li><a class="menu-premier-level bt1 btnNav" href="javascript:;"><span>AFFECTATIONS</span></a>
+                      <ul class="menu-second-level bleu">
+                          {% if is_granted('ROLE_GESTION') %}
+                            <li><a href="{{ path('nurun_affectation_add') }}">Ajouter une affectation</a></li>
+                          {% endif %}
+                          {% if is_granted('ROLE_GESTION') %}
+                              <li><a href="{{ path('nurun_affectation_besoin_new') }}">Ajouter un besoin de personnel</a></li>
+                          {% endif %}
+                          {% if is_granted('ROLE_ADMIN') %}
+                              <li><a href="{{ path('nurun_affectation_besoin_index') }}">Voir tous les besoins <i></i></a></li>
+                          {% endif %}
+                          {% if is_granted('ROLE_ADMIN') %}
+                            <li><a href="{{ path('nurun_affectation_home') }}">Voir toutes les affectations</a></li>          
+                          {% endif %}
+                          {% if is_granted('ROLE_ADMIN') %}
+                              <li><a href="{{ path('nurun_commun_choosevp', { 'target':'nurun_affectation_listvp' }) }}">Voir les affectations par secteur</a></li>
+                          {% endif %}
+                          {% if is_granted('ROLE_ADMIN') %}
+                            <li><a href="{{ path('nurun_affectation_choosevpdates', { 'target':'nurun_affectation_executivevp' }) }}">Voir la gestion du banc</a></li>
+                          {% endif %}
+                          {# {% if is_granted('ROLE_GESTION') %}
+                            <li><a href="{{ path('nurun_affectation_details') }}">Voir les affectations en détail</a></li>
+                          {% endif %} #}
+                      </ul>
+                    </li>
+                    <li><a class="menu-premier-level bt2 btnNav" href="javascript:;"><span>CLIENTS</span></a>
+                      <ul class="menu-second-level vert">
+                          {% if is_granted('ROLE_GESTION') %}
+                            <li><a href="{{ path('nurun_client_add') }}">Ajouter un client</a></li>
+                          {% endif %}
+                          {% if is_granted('ROLE_ADMIN') %}
+                            <li><a href="{{ path('nurun_client_home') }}">Voir les clients</a></li>
+                          {% endif %}
+                      </ul>
+                    </li>
+                    <li><a class="menu-premier-level bt3 btnNav" href="javascript:;"><span>MANDATS</span></a>
+                      <ul class="menu-second-level gris">
+                          {% if is_granted('ROLE_GESTION') %}
+                            <li><a href="{{ path('nurun_mandat_add') }}">Ajouter un mandat</a></li>
+                          {% endif %}
+                          {% if is_granted('ROLE_RDP') %}
+                            <li><a href="{{ path('nurun_mandat_home') }}">Voir les mandats</a></li>
+                          {% endif %}
+                      </ul>
+                    </li>
+                    <li><a class="menu-premier-level bt4 btnNav" href="javascript:;"><span>RAPPORTS</span></a>
+                      <ul class="menu-second-level gris">
+                          {% if is_granted('ROLE_ADMIN') %}
+                              <li><a href="{{ path('nurun_commun_choosevpdates', { 'target':'nurun_list_fetes' }) }}">Rapport anniversaire</a></li>
+                          {% endif %}
+                          {% if is_granted('ROLE_GESTION') %}
+                              <li><a href="{{ path('nurun_list_affectations') }}">Rapport sur les affectations</a></li>
+                          {% endif %}
+                          {% if is_granted('ROLE_ADMIN') %}
+                              <li><a href="{{ path('nurun_commun_choosevpdates', { 'target':'nurun_list_vacances' }) }}">Rapport sur les vacances <i></i></a></li>
+                              <li><a href="{{ path('nurun_affectation_choosevpdates', { 'target':'nurun_affectation_executive_export' }) }}">Rapport sur le banc<i></i></a></li>
+                          {% endif %}
+                          {% if is_granted('ROLE_GESTION') %}
+                              <li><a href="{{ path('nurun_commun_choosevp', { 'target':'nurun_list_executive' }) }}">Statistiques sur le bassin<i></i></a></li>
+                              <li><a href="{{ path('nurun_commun_chooseprofil', { 'target':'nurun_list_executive_profil' }) }}">Statistiques sur un profil<i></i></a></li>
+                          {% endif %}
+                      </ul>
+                    </li>
+                    <li><a class="menu-premier-level bt5 btnNav" href="javascript:;"><span>DIPLÔMES</span></a>
+                      <ul class="menu-second-level bleu">
+                          {% if is_granted('ROLE_GESTION') %}
+                            <li><a href="{{ path('nurun_diplome_add') }}">Ajouter un diplôme</a></li>
+                          {% endif %}
+                          {% if is_granted('ROLE_ADMIN') %}
+                            <li><a href="{{ path('nurun_diplome_home') }}">Voir les diplômes</a></li>
+                          {% endif %}
+                      </ul>
+                    </li>
+                    
+                    {#<li><a class="menu-premier-level bt7 btnNav" href="javascript:;"><span>PRÉFÉRENCES</span></a>#}
+                        {#<ul class="menu-second-level bleu">#}
+                            {#{% if is_granted('ROLE_GESTION') %}#}
+                                {#<li><a href="{{ path('nurun_diplome_add') }}">Ajouter un diplôme</a></li>#}
+                            {#{% endif %}#}
+                        {#</ul>#}
+                    {#</li>#}
+                </ul>
+                
+                <ul class="nav navbar-nav navbar-right">
+                    
+                    
+
+                    
+                  <li><a class="menu-premier-level preferences btnNav" href="javascript:;"><span><img class="icon-preferences-layout" src="{{ asset('images/prefs_deco.svg') }}" alt="logout" width="40" height="40">Préférences</span></a>
+                    <ul class="menu-second-level gris">
+                      {% if is_granted('ROLE_ROOT') %}
+                        <li><a href="{{ path('nurun_admin_users') }}">Gestion des users</a></li>
+                        <li><a href="{{ path('nurun_niveau_home') }}">Gestion des niveaux</a></li>
+                        <li><a href="{{ path('nurun_typeBesoin_home') }}">Gestion des types de besoin</a></li>
+                        <li><a href="{{ path('nurun_prioriteBesoin_home') }}">Gestion des priorités de besoin</a></li>
+                        <li><a href="{{ path('nurun_sourceAffectation_home') }}">Gestion des sources d'affectation</a></li>
+                        <li><a href="{{ path('nurun_admin_fonctions') }}">Gestion des fonctions</a></li>
+                        <li><a href="{{ path('nurun_admin_competences') }}">Gestion des compétences</a></li>
+                          <li><a href="{{ path('nurun_admin_adresses') }}">Gestion des adresses</a></li>
+                          <li><a href="{{ path('nurun_admin_statutAffectations') }}">Gestion des statuts d'affectation</a></li>
+                        <li><a href="{{ path('nurun_admin_languages') }}">Gestion des langues</a></li>
+                        <li><a href="{{ path('nurun_admin_actions') }}">Gestion des actions</a></li>
+                      {% endif %}
+                      {% if is_granted('ROLE_RDP') %}
+                        <li><a href="{{ path('nurun_admin_user_notifications', { 'userId': app.user.id }) }}">Gestion de ses notifications</a></li>
+                      {% endif %}
+                    </ul>
+                  </li>
+                    
+                    <li>
+                        <a class="menu-premier-level deconnexion btnNav" href="{{ path('logout') }}"><span><img src="{{ asset('images/deconnexion.svg') }}" alt="logout" class="icon-deconnexion" width="40" height="40">Déconnexion</span></a>
+                    </li>
+                    
+                </ul>
+            </div><!--/.navbar-collapse -->
+          </div><!--wrapper-nav-->
+          <div class="espace-carre"></div>
+        </nav>
+        <section id="wrapper-content">
+          <div class="content-site">
+              {% block body %}
+              {% endblock %}
+          </div>
+        </section>
+        <footer>
+            <div class="espace-carre">
+              <div class="carre carre3"></div>
+            </div>
+          <div id="wrapper-footer">
+              <div class="carre4"></div>
+              <img class="logo-footer pull-right" src="{{ asset('images/images-interface/logo-nurun-services-conseils.png') }}" width="125" height="59" alt="Logo Nurun Services Conseils">
+                <!--<small class="copyright">Nurun Services Conseils © 2015</small>-->
+            </div>
+            <div class="espace-carre">
+              <div class="carre carre2"></div>
+            </div>
+        </footer>
+    </div><!--wrapper-->
+
+  {% block javascripts %}
+    {# Ajoutez ces lignes JavaScript si vous comptez vous servir des fonctionnalités du bootstrap Twitter #}
+    <script src="{{ asset('js/jquery-1.11.2.min.js') }}"></script>
+    <script src="{{ asset('js/jquery-ui.min.js') }}"></script>
+    <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+
+    <script src="{{ asset('js/main.js') }}"></script>
+
+    <script src="{{ asset('js/data-tables/jquery.dataTables.js') }}"></script>
+    <script src="{{ asset('js/data-tables/dataTables.responsive.min.js') }}"></script>
+    <script src="{{ asset('js/data-tables/dataTables.bootstrap.js') }}"></script>
+
+    <script src="{{ asset('js/table.js') }}"></script>
+    <script src="{{ asset('js/jquery.selectric.min.js') }}"></script>
+
+    <!--[if lt IE 9]>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/flot/0.8.3/excanvas.min.js"></script>
+    <![endif]-->
+    
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  {% endblock %}
+  {% block javascriptsPages %}
+  {% endblock %}
+</body>
+</html>

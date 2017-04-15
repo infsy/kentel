@@ -1,0 +1,15 @@
+{# src/Nurun/RhBundle/Resources/views/Niveau/add.html.twig #}
+
+{% extends "NurunRhBundle::layout.html.twig" %}
+
+{% block title %}
+  Ajouter un niveau - {{ parent() }}
+{% endblock %}
+
+{% block body %}
+
+  <h2>Ajouter un niveau</h2>
+
+  {{ include("NurunRhBundle:Niveau:form.html.twig") }}
+
+{% endblock %}

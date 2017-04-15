@@ -1,0 +1,32 @@
+{# src/Nurun/RhBundle/Resources/views/Conseiller/choice.html.twig #}
+
+{% extends "NurunRhBundle::layout.html.twig" %}
+
+{% block title %}
+  Choix du profil - {{ parent() }}
+{% endblock %}
+
+{% block rh_body %}
+
+  <h2>Choix du profil</h2>
+
+        <div class="well">
+          {{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
+              {{ form_errors(form) }}
+
+             <div class="form-group">
+              {{ form_label(form.Profil, "Profil", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+              {{ form_errors(form.Profil) }}
+                <div class="col-sm-4">
+                  {{ form_widget(form.Profil, {'attr': {'class': 'form-control'}}) }}
+                </div>
+              </div>
+                {{ form_widget(form.Soumettre, {'attr': {'class': 'btn btn-primary'}}) }}
+                  {{ form_rest(form) }}
+
+          {{ form_end(form) }}
+
+{#              {{ form(form) }}#}
+        </div>
+
+{% endblock %}

@@ -1,0 +1,40 @@
+{# src/Nurun/RhBundle/Resources/views/SourceAffectation/index.html.twig #}
+
+{% extends "NurunRhBundle::layout.html.twig" %}
+
+{% block title %}
+  Liste des sources d'affectation - {{ parent() }}
+{% endblock %}
+
+{% block rh_body %}
+
+  <h2>Liste des sources d'affectation</h2>
+    <a href="{{ path('nurun_sourceAffectation_add') }}" class="btn btn-primary">
+        <i class="glyphicon glyphicon-plus"></i>
+        Ajouter une source d'affectation
+    </a>
+  <table id="listSourcesAffectations" class="display nowrap" cellspacing="0" width="100%">
+    <thead>
+      <tr>
+        <th>Source</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+
+      <!--début de la boucle-->
+  {% for source in sources %}
+    <tr>
+        <td>{{ source.source }}</td>
+        <td>
+          <a href="{{ path('nurun_sourceAffectation_edit', {'id': source.id}) }}" class="bt-table" title="Éditer" data-hover="tooltip"><span class="glyphicon glyphicon-edit"></span></a>
+            <a href="{{ path('nurun_sourceAffectation_delete', {'id': source.id}) }}" class="bt-table red-btn" title="Supprimer" data-hover="tooltip"><span class="glyphicon glyphicon-remove"></span></a>
+        </td>
+      </tr>
+      <!--fin de la boucle-->
+  {% endfor %}
+
+    </tbody>
+  </table>
+
+{% endblock %}

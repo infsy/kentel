@@ -1,0 +1,44 @@
+{# src/Nurun/RhBundle/Resources/views/Client/index.html.twig #}
+
+{% extends "NurunRhBundle::layout.html.twig" %}
+
+{% block title %}
+  Liste des clients - {{ parent() }}
+{% endblock %}
+
+{% block rh_body %}
+
+	<h2>Liste des clients</h2>
+
+<a href="{{ path('nurun_client_add') }}" class="btn btn-primary">
+    <i class="glyphicon glyphicon-plus"></i>
+    Ajouter client
+  </a>
+
+	<table id="listClients" class="display nowrap" cellspacing="0" width="100%">
+	  <thead>
+	    <tr>
+	      <th>Client</th>
+	      <th>Acronyme</th>
+	      <th>Actions</th>
+	    </tr>
+	  </thead>
+	  <tbody>
+
+	    <!--début de la boucle-->
+	{% for client in clients %}
+		<tr>
+	      <td>{{ client.identifiant }}</td>
+	      <td>{{ client.acronyme }}</td>
+	      <td>
+	        <a href="{{ path('nurun_client_view', {'id': client.id}) }}" class="bt-table" title="Plus de détails" data-hover="tooltip"><span class="glyphicon glyphicon-search"></span></a>
+	      </td>
+	    </tr>
+	    <!--fin de la boucle-->
+	{% endfor %}
+
+	  </tbody>
+	</table>
+  {# {{ grid(grid) }} #}
+    
+{% endblock %}

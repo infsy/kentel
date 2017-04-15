@@ -1,0 +1,22 @@
+{# src/Nurun/SystemBundle/Resources/view/Admin/statutAffectationForm.html.twig #}
+
+{{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
+    {{ form_errors(form) }}
+
+    <div class="form-group">
+        {{ form_label(form.description, 'Description'|trans, {'label_attr': {'class': ''}}) }}
+
+        {{ form_widget(form.description, {'attr': {'class': 'form-control'}}) }}
+    </div>
+
+    <div class="form-group">
+        {{ form_label(form.acronyme, 'Acronyme'|trans, {'label_attr': {'class': ''}}) }}
+
+        {{ form_widget(form.acronyme, {'attr': {'class': 'form-control'}}) }}
+    </div>
+
+    <div class="form-group" style="margin-top:36px;">
+        {{ form_widget(form.save,  {'attr': {'class': 'btn btn-primary'}}) }}
+    </div>
+
+{{ form_end(form) }}

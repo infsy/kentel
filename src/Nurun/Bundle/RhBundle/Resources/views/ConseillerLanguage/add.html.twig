@@ -1,0 +1,15 @@
+{# src/Nurun/RhBundle/Resources/views/ConseillerLanguage/add.html.twig #}
+
+{% extends "NurunRhBundle::layout.html.twig" %}
+
+{% block title %}
+  Ajouter une langue - {{ parent() }}
+{% endblock %}
+
+{% block body %}
+
+  <h2>Ajouter une langue étrangère</h2>
+
+  {{ include("NurunRhBundle:ConseillerLanguage:form.html.twig") }}
+
+{% endblock %}

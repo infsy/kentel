@@ -1,0 +1,41 @@
+{# src/Nurun/RhBundle/Resources/view/Client/view.html.twig #}
+
+{% extends "NurunRhBundle::layout.html.twig" %}
+
+{% block title %}
+  Détails du diplome {{ diplome.description }} - {{ parent() }}
+{% endblock %}
+
+{% block rh_body %}
+
+<h2>{{ diplome.description|capitalize }}</h2>
+{% if is_granted('ROLE_GESTION') %}      
+    <a href="{{ path('nurun_diplome_edit', {'id': diplome.id}) }}">
+      Modifier le diplôme <i class="glyphicon glyphicon-pencil"></i>
+      </a>
+      {% endif %}
+<hr>
+<h3> Niveau reconnu de ce diplôme : {{ diplome.niveau }} </h3>
+<ul>
+    {% for conseiller in conseillers %} 
+        <li><a href="{{ path('nurun_conseiller_view', {'id': conseiller.conseiller.id}) }}">{{ conseiller.conseiller.prenom }} {{ conseiller.conseiller.nom }}</a></li>
+      {% else %}
+      <li>Pas (encore !) de conseiller avec ce diplôme</li>
+    {% endfor %}
+</ul>
+<hr>
+  
+  <p>
+    <a href="{{ path('nurun_diplome_home') }}" class="btn btn-default">
+      <i class="glyphicon glyphicon-chevron-left"></i>
+      Retour à la liste
+    </a>
+        {% if is_granted('ROLE_GESTION') %}      
+    <a href="{{ path('nurun_diplome_delete', {'id': diplome.id}) }}" class="btn btn-danger">
+      <i class="glyphicon glyphicon-trash"></i>
+      Supprimer le diplôme
+    </a>
+      {% endif %}
+  </p>
+
+{% endblock %}

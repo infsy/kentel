@@ -1,0 +1,52 @@
+{# src/Nurun/RhBundle/Resources/views/TypeBesoin/form.html.twig #}
+
+{# Cette vue n'hérite de personne, elle sera incluse par d'autres vues #}
+{# On laisse vide la vue pour l'instant, on la comblera plus tard
+   lorsqu'on saura afficher un formulaire. #}
+<div class="well">
+ {# {{ form(form) }}#}
+  {{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
+
+    {# Les erreurs générales du formulaire. #}
+    {{ form_errors(form) }}
+
+    <div class="form-group">
+      {# Génération du label. #}
+      {{ form_label(form.priorite, "Priorité", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+
+      {# Affichage des erreurs pour ce champ précis. #}
+      {{ form_errors(form.priorite) }}
+
+      <div class="col-sm-4">
+        {# Génération de l'input. #}
+        {{ form_widget(form.priorite, {'attr': {'class': 'form-control'}}) }}
+      </div>
+    </div>
+
+
+    <div class="form-group">
+        {# Génération du label. #}
+        {{ form_label(form.description, "Description de cette priorité", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+
+        {# Affichage des erreurs pour ce champ précis. #}
+        {{ form_errors(form.description) }}
+
+        <div class="col-sm-4">
+            {# Génération de l'input. #}
+            {{ form_widget(form.description, {'attr': {'class': 'form-control'}}) }}
+        </div>
+    </div>
+
+
+    {# Pour le bouton, pas de label ni d'erreur, on affiche juste le widget #}
+  {{ form_widget(form.save, {'label': 'Sauvegarder', 'attr': {'class': 'btn btn-primary'}}) }}
+
+  {# Génération automatique des champs pas encore écrits.
+     Dans cet exemple, ce serait le champ CSRF (géré automatiquement par Symfony !)
+     et tous les champs cachés (type « hidden »). #}
+  {{ form_rest(form) }}
+  
+  {# Fermeture de la balise <form> du formulaire HTML #}
+  {{ form_end(form) }}
+
+</div>

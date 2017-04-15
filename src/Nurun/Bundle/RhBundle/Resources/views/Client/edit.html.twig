@@ -1,0 +1,26 @@
+{# src/Nurun/RhBundle/Resources/views/Client/edit.html.twig #}
+
+{% extends "NurunRhBundle::layout.html.twig" %}
+
+{% block title %}
+  Modifier un client - {{ parent() }}
+{% endblock %}
+
+{% block rh_body %}
+
+  <h2>Modifier un client</h2>
+
+  {{ include("NurunRhBundle:Client:form.html.twig") }}
+
+  <p>
+    Vous éditez un client déjà existant, merci de changer pour la même organisation.
+  </p>
+
+  <p>
+    <a href="{{ path('nurun_client_view', {'id': client.id}) }}" class="btn btn-default">
+      <i class="glyphicon glyphicon-chevron-left"></i>
+      Retour au client
+    </a>
+  </p>
+
+{% endblock %}

@@ -1,0 +1,70 @@
+{# src/Nurun/RhBundle/Resources/views/ConseillerMandat/index.html.twig #}
+
+{% extends "NurunRhBundle::layout.html.twig" %}
+
+{% block title %}
+  Rapport exécutif - {{ parent() }}
+{% endblock %}
+
+{% block rh_body %}
+  {% if app.request.get('affichage') == "notFullyAffected" %}
+    <h2>Gestion du banc - <span class="sous-titre">Format disponibilités partielles</span></h2>
+  {% else %}
+    <h2>Gestion du banc - <span class="sous-titre">Format disponibilités complètes</span></h2>
+    <a href="{{ path('nurun_affectation_executive_export', {'vp': vp, 'dateDeb': dateDeb, 'dateFin': dateFin}) }}" class="btn btn-primary">
+      <i class="glyphicon glyphicon-save"></i>
+      Exporter le banc
+    </a>
+  {% endif %}
+  <ul>
+    {% set nombreMois = 1 %}
+    {% for mois, listConseillers in listConseillersPeriod %}
+      <li>
+        {% if app.request.get('affichage') == "notFullyAffected" %}
+          <h1>Conseillers qui ne sont pas affecté à 100% durant le mois de {{ mois }} </h1>
+        {% else %}
+          <h1>Conseillers sur le banc au mois de {{ mois }} </h1>
+        {% endif %}
+        
+        <table id="listConseillerMois{{ nombreMois }}" class="display wrap" cellspacing="0" width="100%">
+          <thead>
+            <tr>
+              <th>Prénom</th>
+              <th>Nom</th>
+              {% if app.request.get('affichage') == "notFullyAffected" %}
+                <th>Pourcentage d'affectation</th>
+              {% else %}
+                <th>Date disponibilité</th>
+                <th>Propositions/Affectations futures</th>
+              {% endif %}
+              <th>Profil</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!--début de la boucle-->
+            {% for conseiller in listConseillers %}
+            <tr>
+              <td>{{ conseiller.prenom }}</td>
+              <td>{{ conseiller.nom }}</td>
+              {% if app.request.get('affichage') == "notFullyAffected" %}
+                <td>{{ conseiller.pourcentage }}</td>
+              {% else %}
+                <td>{{ conseiller.finaffectations }}</td>
+                <td>{{ conseiller.propositions | raw }}</td>
+              {% endif %}
+              <td>{{ conseiller.profil }}</td>
+              <td>
+                <a href="{{ path('nurun_conseiller_view', {'id': conseiller.id}) }}" class="bt-table" title="Plus de détails" data-hover="tooltip"><span class="glyphicon glyphicon-search"></span></a>
+              </td>
+            </tr>
+            {% endfor %}
+            <!--fin de la boucle-->
+          </tbody>
+        </table>
+      </li>
+      <hr>
+      {% set nombreMois = nombreMois + 1 %}
+    {% endfor %}
+  </ul>
+{% endblock %}

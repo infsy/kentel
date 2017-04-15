@@ -1,0 +1,146 @@
+{# src/Nurun/RhBundle/Resources/view/BesoinAffectation/view.html.twig #}
+
+{% extends "NurunRhBundle::layout.html.twig" %}
+
+{% block title %}
+    {% if besoin.createdBy is null %}
+        Détails du besoin pour un
+    {% else %}
+            Détails du besoin de {{ besoin.createdBy.name }} pour un
+    {% endif %}
+    {{ besoin.profil.profil }} - {{ parent() }}
+{% endblock %}
+
+{% block rh_body %}
+
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+
+
+  <h2>
+    {{ besoin.id }} - {{ besoin.client.identifiant }} - {{ besoin.mandat.identifiant }} -
+    {{ besoin.profil.profil }} - {{ besoin.prioriteBesoin.priorite }}
+  </h2>
+       {% if is_granted('ROLE_GESTION') %}      
+    <a href="{{ path('nurun_affectation_besoin_edit', {'id': besoin.id}) }}">
+        Modifier le besoin <i class="glyphicon glyphicon-pencil"></i></a>
+      {% endif %}
+<br/>
+<br/>
+  {% if is_granted('ROLE_ADMIN') %}
+    <a href="{{ path('nurun_affectation_besoin_export', {'besoinId': besoin.id}) }}" class="btn btn-primary">
+      <i class="glyphicon glyphicon-floppy-save"></i>
+      Exporter en XLS
+    </a>
+  {% endif %}
+
+  <div class="well">
+      <h4 style="font-weight: bold;">Statut de la demande</h4>
+      
+      
+         <li class="statut">{{ besoin.statutAffectation.description }} </li>
+
+          <select class="custom-select">
+          <option selected>{{ besoin.statutAffectation.description }}</option>
+          <option value="1">Affecté</option>
+          <option value="2">Proposé</option>
+          <option value="3">Proposé Stratégique</option>
+          <option value="4">Proposé appel d'offre</option>
+          <option value="5">Proposé stratégique appel d'offres</option>
+          </select>  
+            
+      <hr>
+      
+      <div class="row">
+      <div class="col-md-6">
+      <h4 style="font-weight: bold;"><i class="glyphicon glyphicon-user"></i> Mandat</h4>
+      <li>Client : <a href="{{ path('nurun_client_view', {'id': besoin.client.id}) }}">{{ besoin.client.acronyme }}</a></li>
+      <li>Mandat : <a href="{{ path('nurun_mandat_view', {'id': besoin.mandat.id}) }}">{{ besoin.mandat.identifiant }}</a></li>
+      <li>Date de début : {{ besoin.dateDebut | date('d/m/Y') }}</li>
+      <li>Date de fin : {{ besoin.dateFin | date('d/m/Y') }}</li>
+      <li>Date requise : {{ besoin.dateRequise | date('d/m/Y') }}</li>
+      <li>Priorité du besoin : {{ besoin.prioriteBesoin.priorite }} ({{ besoin.prioriteBesoin.description }})</li>
+      {% if besoin.contexte is not null %}
+        <li>Contexte : {{ besoin.contexte }}</li>
+      {% else %}
+        <li>Contexte : non précisé.</li>
+      {% endif %}
+      </div>
+
+          <div class="col-md-6">
+      <h4 style="font-weight: bold;"><i class="material-icons">school</i> Profil</h4>
+      <li>Profil demandé : {{ besoin.profil.profil }}</li>
+      <li>Niveau de compétence : {{ besoin.niveauCompetence.niveau }}</li>
+      <li>Niveau de mobilité : {{ besoin.niveauMobilite.niveau }}</li>
+      <li>Niveau de langue : {{ besoin.niveauLangue.niveau }}</li>
+      {% if besoin.propositionAffectation is not null %}
+        <li>Conseiller proposé : <a href="{{ path('nurun_conseiller_view', {'id': besoin.propositionAffectation.id}) }}">{{ besoin.propositionAffectation }}</a></li>
+      {% else %}
+        <li>Pas de conseiller proposé.</li>
+      {% endif %}
+      {% if besoin.sourceAffectation is not null %}
+        <li>Source de l'affectation : {{ besoin.sourceAffectation }}</li>
+      {% else %}
+        <li>Source non précisée.</li>
+      {% endif %}
+          </div>
+        </div>
+          
+
+        <br/>
+
+          
+    <div class="row">
+        <div class="col-md-6">
+      <h4 style="font-weight: bold;"><i class="material-icons">attach_money</i>Paramètres financiers</h4>
+      {% if besoin.budget is not null %}
+      <li>Budget du besoin : {{ besoin.budget }}</li>
+      {% endif %}
+      {% if besoin.penalite is not null %}
+        <li>
+          Pénalité ?
+          {% if besoin.penalite %}
+            Oui
+          {% else %}
+            Non
+          {% endif %}
+        </li>
+      {% endif %}
+     </div>
+        
+
+      <div class="col-md-6">
+      <h4 style="font-weight: bold;"><i class="material-icons">comment</i> Commentaires</h4>
+      {% if besoin.commentaire is not null %}
+        <li>{{ besoin.commentaire }}</li>
+      {% else %}
+        <li>non précisé.</li>
+      {% endif %}
+        </div>
+      </div>
+      <hr>
+    {% if besoin.createdBy is null %}
+          <li>Auteur de la demande : inconnu.</li>
+    {% else %}
+      <li>Auteur de la demande : <a href="mailto:{{ besoin.createdBy.email }}">{{ besoin.createdBy.email }}</a> le {{ besoin.createdAt | date('d/m/Y') }}</li>
+    {% endif %}
+    </ul>
+      
+  </div>
+  <p>
+    <a href="{{ referer }}" class="btn btn-default">
+      <i class="glyphicon glyphicon-chevron-left"></i>
+      Retour
+    </a>
+ 
+      {% if is_granted('ROLE_GESTION') %}      
+    <a href="{{ path('nurun_affectation_besoin_delete', {'id': besoin.id}) }}" class="btn btn-danger">
+      <i class="glyphicon glyphicon-trash"></i>
+      Supprimer le besoin
+    </a>
+      {% endif %} 
+
+  </p>
+
+{% endblock %}
+

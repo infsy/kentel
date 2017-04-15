@@ -1,0 +1,22 @@
+{# src/Nurun/RhBundle/Resources/views/Client/index.html.twig #}
+
+{% extends "NurunRhBundle::layout.html.twig" %}
+
+{% block title %}
+  Chargement de fichier clients - {{ parent() }}
+{% endblock %}
+
+{% block rh_body %}
+
+	<h2>Chargement des clients</h2>
+	{{ form_errors(form) }}
+
+	<div class="well">
+		<form action="#" method="post" {{ form_enctype(form) }}>
+		{{ form_widget(form) }}
+
+		<input class="btn btn-primary" type="submit" value="Chargement fichier" />
+		</form>
+	</div>
+
+{% endblock %}

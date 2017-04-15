@@ -1,0 +1,20 @@
+{# src/Nurun/RhBundle/Resources/views/ConseillerDiplome/edit.html.twig #}
+
+{% extends "NurunRhBundle::layout.html.twig" %}
+
+{% block title %}
+  Éditer un Diplôme - {{ parent() }}
+{% endblock %}
+
+{% block rh_body %}
+
+  <h2>Édition d'un Diplôme</h2>
+
+  {{ include("NurunRhBundle:ConseillerDiplome:form.html.twig") }}
+
+  {#<a href="{{ referer }}" class="btn btn-default">#}
+    {#<i class="glyphicon glyphicon-menu-left"></i>#}
+    {#Annuler#}
+  {#</a>#}
+
+{% endblock %}

@@ -1,0 +1,19 @@
+{# src/Nurun/RhBundle/Resources/views/Diplome/add.html.twig #}
+
+{% extends "NurunRhBundle::layout.html.twig" %}
+
+{% block title %}
+  Ajouter un diplôme - {{ parent() }}
+{% endblock %}
+
+{% block body %}
+
+  <h2>Ajouter un diplôme</h2>
+
+  {{ include("NurunRhBundle:Diplome:form.html.twig") }}
+
+  <p>
+    Attention : ce diplôme sera ajouté après validation du formulaire.
+  </p>
+
+{% endblock %}

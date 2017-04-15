@@ -1,0 +1,61 @@
+{# src/Nurun/RhBundle/Resources/views/Conseiller/rapportExecutf.html.twig #}
+
+{% extends "NurunRhBundle::layout.html.twig" %}
+
+{% block title %}
+    Rapport executif - {{ parent() }}
+{% endblock %}
+
+{% block body %}
+
+    <h2>Rapport exécutif par profil</h2>
+    {{ nbConseillers }} conseillers concernés par la sélection
+    <br>
+    <center>
+        <img src="data:image/jpg;base64,{{ graph1 }}" class="largeur-tier"/>
+        <br>
+        <br>
+        {% if graph2 %}
+            <img src="data:image/jpg;base64,{{ graph2 }}" class="largeur-tier"/>
+        {% else %}
+            Pas d'expertises renseignées pour ce profil <br><br>
+
+        {% endif %}
+        {% if graph3 %}
+            <img src="data:image/jpg;base64,{{ graph3 }}" class="largeur-tier"/>
+        {% else %}
+            <br>
+            Pas de langues renseignées pour ce profil
+        {% endif %}
+    </center>
+    <table id="listConseillersExperience" class="display nowrap" cellspacing="0" width="100%">
+        <thead>
+        <tr>
+            <th>Prénom</th>
+            <th>Nom</th>
+            <th>Années à l'embauche</th>
+            <th>Date entrée</th>
+            <th>Experience</th>
+        </tr>
+        </thead>
+        <tbody>
+
+        <!--début de la boucle-->
+        {% for conseiller in tableau %}
+            <tr>
+                <td>{{ conseiller.prenom }}</td>
+                <td>{{ conseiller.nom }}</td>
+                {% if conseiller.experienceAnnees is not null %}
+                    <td>{{ conseiller.experienceAnnees }}</td>
+                {% else %}
+                    <td>null</td>
+                {% endif %}
+
+                <td>{{ conseiller.dateArrivee | date("Y/m/d") }}</td>
+                <td>{{ conseiller.experience }}</td>
+
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

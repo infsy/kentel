@@ -1,0 +1,14 @@
+{# src/Nurun/RhBundle/Resources/views/layout.html.twig #}
+
+{% extends "::layout.html.twig" %}
+
+{% block title %}
+  {{ parent() }}
+{% endblock %}
+
+{% block body %}
+  {# On définit un nouveau bloc, que les vues du bundle pourront remplir #}
+  {% block rh_body %}
+  {% endblock %}
+
+{% endblock %}

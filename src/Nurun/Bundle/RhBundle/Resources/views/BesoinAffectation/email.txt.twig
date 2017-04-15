@@ -1,0 +1,15 @@
+{# src/Nurun/RhBundle/Resources/view/ConseillerMandat/emailBesoin.txt.twig #}
+
+{% block rh_body %}
+    <h1> {{ action }} d'affectation<br>
+    <h3> Besoin {{ besoin.prioriteBesoin.priorite }} d'un profil {{ besoin.profil.profil }}
+    </h3>
+    <hr>
+    <ul>
+        <li>Type du besoin : {{ besoin.typeBesoin.type }}</li>
+        <li>Client visé : {{ besoin.client.acronyme }}%</li>
+        <li>Contexte du besoin : {{ besoin.contexte }}</li>
+    </ul>
+    <hr>
+    Auteur de la mise à jour : <a href="mailto:{{ auteur }}@nurun.com">{{ auteur }}</a>
+{% endblock %}

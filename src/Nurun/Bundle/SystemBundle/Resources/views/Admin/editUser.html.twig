@@ -1,0 +1,21 @@
+{# src/Nurun/NurunSystemBundle/Resources/views/Admin/editUser.html.twig #}
+
+{% extends "NurunRhBundle::layout.html.twig" %}
+
+{% block title %}
+    {{ parent () }} - Modifier un utilisateur
+{% endblock %}
+
+
+{% block rh_body %}
+
+    <div class="col-sm-12">
+        <a href="{{ path('nurun_admin_users') }}" title="">Utilisateurs</a> > {{ user.username }}
+    </div>
+    <div class="col-smf-6">
+        <h2 class="titre-page">Modifier un utilisateur</h2>
+    </div>
+    <div class="zone-contenu">
+        {% include 'NurunSystemBundle:Admin:editUserForm.html.twig' %}
+    </div>
+{% endblock rh_body%}

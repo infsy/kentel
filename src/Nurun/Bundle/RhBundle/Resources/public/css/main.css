@@ -1,0 +1,181 @@
+/* ===== Kentel - Main Styles ===== */
+/* Custom Fonts */
+
+@font-face {
+    font-family: 'DIN Next LT Pro Medium';
+    src: url('../fonts/DINNextLTPro-Medium.otf') format('opentype');
+}
+
+@font-face {
+    font-family: 'DIN Next LT Pro Regular';
+    src: url('../fonts/DINNextLTPro-Regular.otf') format('opentype');
+}
+
+@font-face {
+    font-family: 'Plantin Std';
+    src: url('../fonts/PlantinStd.otf') format('opentype');
+}
+
+
+/**Pour les erreurs dans les formulaires*!/*/
+.ajoutLogiciel ul, .fos_user_change_password ul, .fos_user_profile_edit ul {
+    padding:0;
+}
+
+.ajoutLogiciel ul li, .fos_user_change_password ul li, .fos_user_profile_edit ul li {
+    list-style-type:none;
+    padding:0;
+    font-size:12px;
+    color:#A83737;
+}
+
+
+.blue-btn, .blue-btn:focus {
+    display:inline-block;
+    font-size:16px;
+    font-weight:500;
+    color:#86cff1;
+    background-color:transparent;
+    padding:8px 25px;
+    border:2px solid #86cff1;
+    text-decoration:none;
+}
+
+.blue-btn:hover {
+    color:#fff;
+    border:2px solid #fff;
+    text-decoration:none;
+}
+
+.blue-btn:active {
+    color:#000;
+    background-color:#54d0f3;
+    border:2px solid #54d0f3;
+    border-top:2px solid #42a7c1;
+    text-decoration:none;
+}
+
+
+/*----------------------------------------Design modales--------------------------------*/
+
+
+.modal {
+    padding-left:0px !important;
+}
+
+#add_scan {
+    overflow-y:scroll;
+}
+
+.modal-content {
+    border:none !important;
+    border-bottom:1px solid #111 !important;
+    background:url(../images/interface/interface-princ-texture-bg.jpg) repeat-x, url(../images/interface/interface-princ-texture-bg-petit.png);
+    box-shadow:0px 5px 15px rgba(0,0,0,0.9);
+    -webkit-box-shadow:0px 5px 15px rgba(0,0,0,0.9);
+}
+
+.txt-info {
+    box-sizing:border-box;
+    padding:15px;
+    background-color:rgba(0,0,0,0.2);
+    border-radius:6px;
+    border-bottom:2px solid #323232;
+    border-top:2px solid rgba(0,0,0,0.3);
+    border-left:2px solid rgba(0,0,0,0.07);
+    border-right:2px solid rgba(0,0,0,0.07);
+    transition: all 0.4s 0s;
+}
+
+.txt-gris {
+    color:#777;
+}
+
+.modal-backdrop.in {
+    opacity:0.8 !important;
+}
+
+.close {
+    font-family:Verdana, Geneva, sans-serif;
+    font-size:28px;
+    color:#000 !important;
+    font-weight:200 !important;
+    opacity:1 !important;
+    text-shadow:none;
+}
+
+.modal-header {
+    position:relative;
+    background-color:#54d0f3;
+    color:#000;
+    border-bottom:none !important;
+    border-top:1px solid #b5e1f6 !important;
+    padding:17px 17px 17px 30px !important;
+}
+
+/*.icon-modal {
+	box-sizing:border-box;
+	position:absolute;
+	top:0;
+	left:0;
+	width:64px;
+	height:64px;
+	background-color:#cbeaf9;
+	color:#54d0f3;
+	text-align:center;
+	}
+
+.iconverticalalign {
+	font-size:60px;
+	line-height:0;
+	cursor:default;
+	display:block;
+	margin-top:24px;
+	}*/
+
+.modal-title {
+    font-size:24px;
+    padding-top:-20px;
+    margin-top:-2px !important;
+}
+
+.modal-subtitle {
+    margin-top:0;
+    margin-bottom:20px;
+}
+
+
+/*Pour designer les input file dans la page client ajouter logiciel*/
+
+.fileUpload {
+    box-sizing:border-box;
+    position: relative;
+    padding:6px 8px 2px 8px !important;
+    overflow:hidden;
+    font-size:12px;
+}
+
+#uploadFile {
+    display:block !important;
+    width:70%;
+    cursor:default !important;
+    float:left;
+    margin-right:10px;
+}
+
+.fileUpload input.upload {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 0;
+    padding: 5px;
+    cursor: pointer;
+    opacity: 0;
+    filter: alpha(opacity=0);
+}
+
+.alerteSoftwareExtension {
+    display:none;
+    font-size:14px;
+    color:#ff4c5a;
+}

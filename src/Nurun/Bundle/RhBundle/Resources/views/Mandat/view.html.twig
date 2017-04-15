@@ -1,0 +1,314 @@
+{# src/Nurun/RhBundle/Resources/view/Mandat/view.html.twig #}
+
+{% extends "NurunRhBundle::layout.html.twig" %}
+
+{% block title %}
+    Détails du mandat {{ mandat.client.acronyme }} {{ mandat.identifiant }} - {{ parent() }}
+{% endblock %}
+
+{% block rh_body %}
+<style type="text/css">
+        .important { color: #99040d; }
+    </style>
+    <h2>{{ mandat.titre|capitalize }}</h2>
+
+
+{% if is_granted('ROLE_GESTION') %}
+<a href="{{ path('nurun_mandat_edit', {'id': mandat.id}) }}">
+                Modifier le mandat <i class="glyphicon glyphicon-pencil"></i>
+            </a>
+{% endif %}
+
+
+
+    {% for flashMessage in app.session.flashbag.get('notice') %}
+        <div class="flash notice">
+            {{ flashMessage }}
+        </div>
+    {% endfor %}
+    <i id="dateArchive" style="color: red; font-weight: bold;" {% if mandat.isDeleted == false %}hidden{% endif %}>Archivé
+        le {{ mandat.deletedAt|date('d/m/Y') }}</i>
+    <hr>
+    <ul>
+    <li>Numéro de mandat : {{ mandat.identifiant }}</li>
+    <li>Nombre d'heures travaillées : {{ mandat.nbreHeures }}</li>
+    <li>Client : {{ mandat.client.identifiant }} ({{ mandat.client.acronyme }})</li>
+    <li>Adresses du mandat :
+        {% if mandat.adresses is empty %}
+            <div class="important">Pas d'adresses connues.
+        {% if is_granted('ROLE_GESTION') %}
+<a href="{{ path('nurun_mandat_adresses_index', {'id': mandat.id}) }}" class="modifier">
+                    Modifier<i class="glyphicon glyphicon-pencil"></i>
+                    </a>
+{% endif %}
+        </div>
+        
+        {% else %}
+            {% for adresse in mandat.adresses %}
+                <li>- {{ adresse.numeroAdresse }}
+                {% if adresse.numeroAdresse is not null %}
+                    ,
+                {% endif %}
+                {% if adresse.ligne1Adresse is not null %}
+                    {{ adresse.ligne1Adresse }}
+                {% endif %}
+                {% if adresse.ligne2Adresse is not null %}
+                    {{ adresse.ligne2Adresse }}
+                {% endif %}
+                {% if adresse.ligne3Adresse is not null %}
+                    {{ adresse.ligne3Adresse }}
+                {% endif %}
+                {% if adresse.codePostal is not null or adresse.ville is not null %}
+                    {{ adresse.codePostal }} {{ adresse.ville }}
+                {% endif %}
+                    {% if is_granted('ROLE_GESTION') %}
+<a href="{{ path('nurun_mandat_adresses_index', {'id': mandat.id}) }}" class="modifier">
+                    Modifier<i class="glyphicon glyphicon-pencil"></i>
+                    </a>
+{% endif %}
+                </li>
+            {% endfor %}
+        {% endif %}
+    </li>        
+
+
+
+
+    <li>Coordonnateurs pour ce mandat :
+        {% if mandat.coordonnateurs is empty %}
+            <div class="important">Pas de coordonnateurs désignés.
+         {% if is_granted('ROLE_GESTION') %}
+            <a href="{{ path('nurun_mandat_coordonnateurs_index', {'id': mandat.id}) }}" class="modifier">
+            Modifier<i class="glyphicon glyphicon-pencil"></i>
+            </a>
+        {% endif %}
+        </div>
+        {% else %}
+            {% for coordonnateur in mandat.coordonnateurs %}
+                <li>- {{ coordonnateur.prenom }} {{ coordonnateur.nom }} </li>
+            {% endfor %}
+        {% endif %}
+        <li>Mandataire :
+            {% if mandat.mandataire is not null %}
+                {{ mandat.mandataire.prenom }} {{ mandat.mandataire.nom }}
+            {% else %}
+                Pas de mandataire encore défini.
+            {% endif %}
+        </li>
+        <li>Chargé de Projet :
+            {% if mandat.chargeprojet is not null %}
+                {{ mandat.chargeprojet.prenom }} {{ mandat.chargeprojet.nom }}
+            {% else %}
+                Pas de chargé de projet encore défini.
+            {% endif %}
+        </li>
+        <li>Date de fin : {{ mandat.dateFin|date('Y-m-d') }}</li>
+
+<hr>
+
+
+
+<div class="panel-group" id="accordion">
+    <div class="panel panel-default" id="conseillers">
+        <div class="panel-heading">
+            <h4 class="panel-title">
+                <a data-toggle="collapse" data-parent="#accordion" href="#conseiller_collapse" class="collapse-titre collapsed">
+                    {% if mandat.isDeleted %}
+                    Historique des conseillers affectés sur le mandat
+                    {% else %}
+                    Conseillers affectés sur le mandat
+                    {% endif %}
+                </a>
+            </h4>
+        </div>
+        <div id="conseiller_collapse" class="panel-collapse collapse">
+            <div class="panel-body">
+            {% set count = 0 %}
+            {% for affectation in mandat.conseillers if mandat.isDeleted or (affectation.isDeleted == false and mandat.isDeleted == false) %}
+                {% set count = count + 1 %}
+                <p>-
+                                                {% if is_granted('ROLE_RDP') %}
+                    <a href="{{ path('nurun_conseiller_view', {'id': affectation.conseiller.id}) }}">
+                                                {% endif %}
+
+                        &nbsp;&nbsp;{{ affectation.conseiller.prenom }} {{ affectation.conseiller.nom }}
+                                                     {% if is_granted('ROLE_RDP') %}
+                                                    </a>
+                                                    {% endif %}
+                         - depuis le
+                                               {% if is_granted('ROLE_RDP') %}
+                           <a href="{{ path('nurun_affectation_view', {'id': affectation.id}) }}">
+                                               {% endif %}
+                        {{ affectation.dateDebut|date('d/m/Y') }}
+                        {% if affectation.dateFin is not null %}
+                            jusqu'au {{ affectation.dateFin|date('d/m/Y') }}
+                        {% else %}
+                            , sans date de fin connue
+                        {% endif %}
+                              {% if is_granted('ROLE_RDP') %}
+                    </a>
+                           {% endif %}
+                </p>
+            {% endfor %}
+            {% if count == 0 %}
+                <p>Aucun</p>
+            {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+    
+
+    <li>
+            <br>
+            Commentaire :
+            {% if mandat.commentaire is not null %}
+                {{ mandat.commentaire }}
+            {% else %}
+                Pas de commentaire.
+            {% endif %}
+        </li>
+    </ul>
+    <hr>
+
+    <p>
+    <a href="{{ app.request.headers.get('referer') }}" class="btn btn-default">
+          <i class="glyphicon glyphicon-chevron-left"></i>
+          Retour
+        </a>
+        {#<a href="{{ path('nurun_mandat_home') }}" class="btn btn-default">#}
+            {#<i class="glyphicon glyphicon-chevron-left"></i>#}
+            {#Retour à la liste#}
+        {#</a>#}
+        {% if is_granted('ROLE_GESTION') %}
+        {% if mandat.isDeleted %}
+            <a id="actionBtn{{ mandat.id }}" href="#" role="button" data-toggle="modal" data-toggle="tooltip"
+               class="btn btn-danger" data-target="#restaurer_mandat{{ mandat.id }}"
+               style="background-color: #99cc33; border-color: #99cc33;">
+                <span class="glyphicon glyphicon-repeat"></span>
+                Restaurer le mandat
+            </a>
+        {% else %}
+
+            <a id="actionBtn{{ mandat.id }}" href="#" role="button" data-toggle="modal" data-toggle="tooltip"
+               class="btn btn-danger" data-target="#supprimer_mandat{{ mandat.id }}">
+                <span class="glyphicon glyphicon-trash"></span>
+                Supprimer le mandat
+            </a>
+
+        {% endif %}
+
+    <div class="modal fade" id="supprimer_mandat{{ mandat.id }}" tabindex="-1" role="dialog"
+         aria-labelledby="Supprimer le mandat">
+        <div class="modal-dialog modal-md" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Supprimer le mandat?</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row" style="padding:10px 15px;">
+                        <div class="col-xs-12">
+                            <a type="button" class="btn btn-primary" urlOption="{{ mandat.id }}" action="suppression">
+                                Oui
+                            </a>
+                            <button type="button" class="btn btn-primary-red" data-dismiss="modal" aria-label="Close">
+                                Non
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="restaurer_mandat{{ mandat.id }}" tabindex="-1" role="dialog"
+         aria-labelledby="Restaurer le mandat">
+        <div class="modal-dialog modal-md" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Restaurer le mandat?</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row" style="padding:10px 15px;">
+                        <div class="col-xs-12">
+                            <a type="button" class="btn btn-primary" urlOption="{{ mandat.id }}" action="restauration">
+                                Oui
+                            </a>
+                            <button type="button" class="btn btn-primary-red" data-dismiss="modal" aria-label="Close">
+                                Non
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+    </p>
+
+    <script>
+        $(document).ready(function () {
+            $(".btn-primary").click(function () {
+                var mandatId = $(this).attr("urlOption");
+                var action = $(this).attr("action");
+
+                if (action == 'suppression') {
+                    var url = "{{ path('nurun_mandat_delete', {'id': 'mandatId'}) }}";
+                    url = url.replace("mandatId", mandatId);
+
+                    $.ajax({
+                        url: url,
+                        type: "POST",
+                        success: function () {
+                        },
+
+                        error: function (XMLHttpRequest, textStatus, errorThrown) {
+                            alert('Error: ' + errorThrown);
+                        }
+                    });
+                    $("#actionBtn" + mandatId).find('span').removeClass('glyphicon-trash');
+                    $("#actionBtn" + mandatId).find('span').addClass('glyphicon-repeat');
+                    $("#actionBtn" + mandatId).attr('data-target', '#restaurer_mandat' + mandatId);
+                    $("#actionBtn" + mandatId).attr('style', "background-color: #99cc33; border-color: #99cc33;");
+                    $("#actionBtn" + mandatId).html("<span class=\"glyphicon glyphicon-repeat\"></span> Restaurer le mandat");
+
+                    $("#message").html("Conseiller retiré");
+                    $("#message").css('color', 'red');
+
+                    $('#supprimer_mandat' + mandatId).modal('hide');
+                    $('#conseillers').hide();
+                }
+                else if (action == 'restauration') {
+                    var url = "{{ path('nurun_mandat_restore', {'id': 'mandatId'}) }}";
+                    url = url.replace("mandatId", mandatId);
+
+                    $.ajax({
+                        url: url,
+                        type: "POST",
+                        success: function () {
+                        },
+
+                        error: function (XMLHttpRequest, textStatus, errorThrown) {
+                            alert('Error: ' + errorThrown);
+                        }
+                    });
+                    $("#actionBtn" + mandatId).find('span').removeClass('glyphicon-repeat');
+                    $("#actionBtn" + mandatId).find('span').addClass('glyphicon-trash');
+                    $("#actionBtn" + mandatId).attr('data-target', '#supprimer_mandat' + mandatId);
+                    $("#actionBtn" + mandatId).attr('style', "");
+                    $("#actionBtn" + mandatId).html("<span class=\"glyphicon glyphicon-trash\"></span> Supprimer le mandat");
+
+                    $("#message").html("Conseiller restauré");
+                    $("#message").css('color', '#27a5c3');
+
+                    $('#restaurer_mandat' + mandatId).modal('hide');
+                    $('#dateArchive').hide();
+                }
+            });
+        });
+    </script>
+
+{% endblock %}

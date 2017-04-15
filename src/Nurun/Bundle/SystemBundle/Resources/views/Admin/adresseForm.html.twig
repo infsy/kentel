@@ -1,0 +1,46 @@
+{# src/Nurun/SystemBundle/Resources/view/Admin/adresseForm.html.twig    #}
+
+{{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
+    {{ form_errors(form) }}
+
+    <div class="form-group">
+        {{ form_label(form.numeroAdresse, 'Numéro'|trans, {'label_attr': {'class': ''}}) }}
+
+        {{ form_widget(form.numeroAdresse, {'attr': {'class': 'form-control'}}) }}
+    </div>
+
+    <div class="form-group">
+        {{ form_label(form.ligne1Adresse, 'Ligne 1 adresse'|trans, {'label_attr': {'class': ''}}) }}
+
+        {{ form_widget(form.ligne1Adresse, {'attr': {'class': 'form-control', 'rows': '4'}}) }}
+    </div>
+
+    <div class="form-group">
+        {{ form_label(form.ligne2Adresse, 'Ligne 2 adresse'|trans, {'label_attr': {'class': ''}}) }}
+
+        {{ form_widget(form.ligne2Adresse, {'attr': {'class': 'form-control'}}) }}
+    </div>
+
+    <div class="form-group">
+        {{ form_label(form.ligne3Adresse, 'Ligne 3 adresse'|trans, {'label_attr': {'class': ''}}) }}
+
+        {{ form_widget(form.ligne3Adresse, {'attr': {'class': 'form-control'}}) }}
+    </div>
+
+    <div class="form-group">
+        {{ form_label(form.codepostal, 'Code postal'|trans, {'label_attr': {'class': ''}}) }}
+
+        {{ form_widget(form.codepostal, {'attr': {'class': 'form-control'}}) }}
+    </div>
+
+    <div class="form-group">
+        {{ form_label(form.ville, 'Ville'|trans, {'label_attr': {'class': ''}}) }}
+
+        {{ form_widget(form.ville, {'attr': {'class': 'form-control'}}) }}
+    </div>
+
+    <div class="form-group" style="margin-top:36px;">
+        {{ form_widget(form.save,  {'attr': {'class': 'btn btn-primary'}}) }}
+    </div>
+
+{{ form_end(form) }}

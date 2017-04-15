@@ -1,0 +1,21 @@
+{# src/Nurun/NurunSystemBundle/Resources/views/Admin/editPermissions.html.twig #}
+
+{% extends "NurunRhBundle::layout.html.twig" %}
+
+{% block title %}
+    {{ parent () }} - Modifier les permissions
+{% endblock %}
+
+
+{% block rh_body %}
+
+    <div class="col-sm-12">
+        <a href="{{ path('nurun_admin_users') }}" title="">Utilisateurs</a> > {{ user.username }}
+    </div>
+    <div class="col-sm-6">
+        <h2 class="titre-page">Modifier les permissions</h2>
+    </div>
+    <div class="zone-contenu">
+        {% include 'NurunSystemBundle:Admin:editPermissionsForm.html.twig' %}
+    </div>
+{% endblock rh_body%}

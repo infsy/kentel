@@ -1,0 +1,94 @@
+{# src/Nurun/RhBundle/Resources/view/Conseiller/tableNotifications.html.twig #}
+
+<table id="listNotifications" class="display nowrap" cellspacing="0" width="100%">
+    <thead>
+      	<tr>
+	        <th>Nom</th>
+	        <th>Description</th>
+	        <th></th>
+      	</tr>
+    </thead>
+
+    {% if actionList|length > 0 %}
+      	<tbody>
+      	{% for action in actionList %}
+          {% if is_granted(action.role) %}
+          	{% set found = 0 %}
+          	{% if action.userNotifications|length > 0 %}
+          		{% for userNotification in action.userNotifications %}
+            		{% if userNotification.user is not null %}
+            			{% if userNotification.user == app.user %}
+              			{% set found = 1 %}
+            			{% endif %}
+            		{% endif %}
+          		{% endfor %}
+          	{% endif %}
+
+          	<tr>
+            		<td>{{ action.name }}</td>
+            		<td>{{ action.description }}</td>
+            		<td>
+                		{% if found == 0 %}
+                  		<a data-toggle="tooltip" title="Ajouter la notification" class="bt-table" style="color:green" urlOption="{{ action.id }}"><span class="glyphicon glyphicon-plus"></span></a>
+                		{% else %}
+                  		<a data-toggle="tooltip" title="Retirer la notification" class="bt-table" style="color:red" urlOption="{{ action.id }}"><span class="glyphicon glyphicon-minus"></span></a>
+                		{% endif %}
+            		</td>
+          	</tr>
+          {% endif %}
+      	{% endfor %}
+     	</tbody>
+    {% endif %}
+</table>
+
+<script>
+  	$(".glyphicon").parent().click(function ()
+  	{
+    	if($(this).find('span').attr('class') == "glyphicon glyphicon-plus"){
+      		var actionId = $(this).attr("urlOption");
+      		var url = "{{ path('nurun_conseiller_notification_add', {'actionId': 'actionId' }) }}";
+      		url = url.replace("actionId", actionId);
+
+      		$.ajax({
+            	url: url,
+            	type: "POST",
+            	success: function() { 
+            	},
+
+            	error: function(XMLHttpRequest, textStatus, errorThrown)
+            	{
+              		alert('Error: ' +  errorThrown);
+            	}
+        	});
+	      	$(this).find('span').removeClass('glyphicon-plus');
+	      	$(this).find('span').addClass('glyphicon-minus');
+	      	$(this).css('color', 'red');
+
+          $("#message").html("Notification ajoutée");
+          $("#message").css('color', 'green');
+    	}
+    	else if($(this).find('span').attr('class') == "glyphicon glyphicon-minus"){
+      		var actionId = $(this).attr("urlOption");
+      		var url = "{{ path('nurun_conseiller_notification_remove', {'actionId': 'actionId' }) }}";
+      		url = url.replace("actionId", actionId);
+
+      		$.ajax({
+            	url: url,
+            	type: "POST",
+            	success: function() { 
+            	},
+
+            	error: function(XMLHttpRequest, textStatus, errorThrown)
+            	{
+              		alert('Error: ' +  errorThrown);
+            	}
+        	});
+	      	$(this).find('span').removeClass('glyphicon-minus');
+	      	$(this).find('span').addClass('glyphicon-plus');
+	      	$(this).css('color', 'green');
+          
+          $("#message").html("Notification retirée");
+          $("#message").css('color', 'red');
+    	}
+  	});
+</script>

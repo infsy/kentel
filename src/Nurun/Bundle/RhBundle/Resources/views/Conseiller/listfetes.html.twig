@@ -1,0 +1,22 @@
+{# src/Nurun/RhBundle/Resources/views/Conseiller/edit.html.twig #}
+
+{% extends "NurunRhBundle::layout.html.twig" %}
+
+{% block title %}
+  Générer rapport des fêtes - {{ parent() }}
+{% endblock %}
+
+{% block rh_body %}
+
+  <h2>Liste des fêtes à venir</h2>
+
+  <form action="#" method="post" {{ form_enctype(form) }}>
+    {{ form_widget(form) }}
+
+    <input type="submit" />
+</form>
+  <p>
+    
+  </p>
+
+{% endblock %}

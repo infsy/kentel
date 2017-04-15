@@ -1,0 +1,30 @@
+{% block rh_body %}
+    <h1> Fête ton collègue !<br>
+
+    <h3>Aujourd'hui, ton collègue {{ conseiller.prenom }} {{ conseiller.nom }} fête son anniversaire :-)
+    </h3>
+    <hr>
+    Si tu désires lui écrire pour le féliciter ou lui passer un coup de téléphone, n'hésite pas, il sera certainement
+    sensible à cette attention...
+    <hr>
+    <br/>
+    Lui écrire :
+    {% if conseiller.courriel is not null %}
+    <a href="mailto:{{ conseiller.courriel }}">{{ conseiller.courriel }}</a>
+    {% else %}
+        Courriel inconnu
+    {% endif %}
+    <br/>
+    Lui téléphoner :
+    {% if conseiller.telephoneNurun is not null %}
+        {{ conseiller.telephoneNurun }}
+    {% else %}
+        Téléphone chez Nurun inconnu
+    {% endif %}
+     |
+    {% if conseiller.telephoneMandat is not null %}
+    {{ conseiller.telephoneMandat }}
+    {% else %}
+        Téléphone chez le client inconnu
+    {% endif %}
+{% endblock %}

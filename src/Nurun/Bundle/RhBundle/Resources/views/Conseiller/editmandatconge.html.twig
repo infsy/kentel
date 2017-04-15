@@ -1,0 +1,16 @@
+{# src/Nurun/RhBundle/Resources/views/Conseiller/editmandat.html.twig #}
+
+{% extends "NurunRhBundle::layout.html.twig" %}
+
+{% block title %}
+  Ajouter une période de congé - {{ parent() }}
+{% endblock %}
+
+{% block rh_body %}
+
+  <h2>Ajouter un congé</h2>
+
+  {{ include("NurunRhBundle:ConseillerMandat:formconge.html.twig") }}
+
+
+{% endblock %}

@@ -1,0 +1,325 @@
+{# app/Resources/views/layout.html.twig #}
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>{% block title %}Gestion des conseillers Nurun{% endblock %}</title>
+
+  {% block stylesheets %}
+    {# On charge le CSS de bootstrap depuis le site directement #}
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/main.css') }}"> 
+     
+  {% endblock %}
+    
+    
+    
+</head>
+<body>
+  
+  <div id="squaresContainer">
+    <div class="header">
+      <div class="logoSquare">
+        <div class="image">
+          <img src="{{ asset('images/logo_kentel.png') }}" alt="">
+        </div>
+      </div>
+      <div class="wi3">
+     
+<div id="preferences_home">
+           <div id="navbar"> 
+          <ul class="nav navbar-nav">
+                  <li><a class="menu-premier-level preferences btnNav menu-home" href="javascript:;"><span><img class="icon-preferences" src="{{ asset('images/prefs_deco.svg') }}" alt="logout">Préférences</span></a>
+                    <ul class="menu-second-level gris">
+                      {% if is_granted('ROLE_ROOT') %}
+                        <li><a href="{{ path('nurun_admin_users') }}">Gestion des users</a></li>
+                        <li><a href="{{ path('nurun_niveau_home') }}">Gestion des niveaux</a></li>
+                        <li><a href="{{ path('nurun_typeBesoin_home') }}">Gestion des types de besoin</a></li>
+                        <li><a href="{{ path('nurun_prioriteBesoin_home') }}">Gestion des priorités de besoin</a></li>
+                        <li><a href="{{ path('nurun_sourceAffectation_home') }}">Gestion des sources d'affectation</a></li>
+                        <li><a href="{{ path('nurun_admin_fonctions') }}">Gestion des fonctions</a></li>
+                        <li><a href="{{ path('nurun_admin_competences') }}">Gestion des compétences</a></li>
+                          <li><a href="{{ path('nurun_admin_adresses') }}">Gestion des adresses</a></li>
+                          <li><a href="{{ path('nurun_admin_statutAffectations') }}">Gestion des statuts d'affectation</a></li>
+                        <li><a href="{{ path('nurun_admin_languages') }}">Gestion des langues</a></li>
+                        <li><a href="{{ path('nurun_admin_actions') }}">Gestion des actions</a></li>
+                      {% endif %}
+                      {% if is_granted('ROLE_RDP') %}
+                        <li><a href="{{ path('nurun_admin_user_notifications', { 'userId': app.user.id }) }}">Gestion de ses notifications</a></li>
+                      {% endif %}
+                    </ul>
+                  </li>
+                </ul> 
+          </div>
+</div>
+           <h1>Gestion des conseillers</h1>
+          
+ <a href="{{ path('logout') }}" class="logout logout-home"><div class="contenu"><img class="icon-deconnexion" src="{{ asset('images/deconnexion.svg') }}" alt="logout" height="50" width="50">Déconnexion</div></a> 
+      </div> 
+      
+    </div>
+
+    <div id="squares">
+  
+
+      <div class="square wi3 he3" id="blocAffectations">
+        <div class="content">
+          <div class="blocInfos">
+            <div class="blocInfos_content">
+              <div class="titre">Affectations</div>
+            </div>    
+          </div>
+        </div>
+        <div class="back">
+          <div class="liste">
+            <ul>
+              {% if is_granted('ROLE_GESTION') %}
+                <li><a href="{{ path('nurun_affectation_add') }}">Ajouter une affectation <i></i></a></li>
+              {% endif %}
+              {% if is_granted('ROLE_GESTION') %}
+                <li><a href="{{ path('nurun_affectation_besoin_new') }}">Ajouter un besoin de personnel <i></i></a></li>
+              {% endif %}
+              {% if is_granted('ROLE_ADMIN') %}
+                <li><a href="{{ path('nurun_affectation_besoin_index') }}">Voir tous les besoins <i></i></a></li>
+              {% endif %}
+                {% if is_granted('ROLE_ADMIN') %}
+              <li><a href="{{ path('nurun_affectation_home') }}">Voir toutes les affectations <i></i></a></li>          
+                {% endif %}
+              {% if is_granted('ROLE_ADMIN') %}
+                <li><a href="{{ path('nurun_commun_choosevp', { 'target':'nurun_affectation_listvp' }) }}">Voir les affectations par secteur<i></i></a></li>
+              {% endif %}
+                {% if is_granted('ROLE_ADMIN') %}
+              <li><a href="{{ path('nurun_affectation_choosevpdates', { 'target':'nurun_affectation_executivevp' }) }}">Voir la gestion du banc <i></i></a></li>
+                {% endif %}
+                {# {% if is_granted('ROLE_GESTION') %}
+              <li><a href="{{ path('nurun_affectation_details') }}">Voir les affectations en détail <i></i></a></li>
+                {% endif %} #}
+            </ul>
+          </div>
+          <span class="closeBtn"></span>
+        </div>
+      </div>
+
+      <div class="square wi2 he1" id="blocClients">
+        <div class="content">
+          <div class="blocInfos">
+            <div class="blocInfos_content">
+              <div class="titre">Clients</div>
+            </div>    
+          </div>
+        </div>
+        <div class="back">
+          <div class="liste">
+            <ul>
+                {% if is_granted('ROLE_GESTION') %}
+              <li><a href="{{ path('nurun_client_add') }}">Ajouter un client <i></i></a></li>
+                {% endif %}
+                {% if is_granted('ROLE_ADMIN') %}
+              <li><a href="{{ path('nurun_client_home') }}">Voir les clients <i></i></a></li>
+                {% endif %}
+            </ul>
+          </div>
+          <span class="closeBtn"></span>
+        </div>
+      </div>
+
+      <div class="square wi2 he2" id="blocRapports">
+        <div class="content">
+          <div class="blocInfos">
+            <div class="blocInfos_content">
+              <div class="titre">Rapports</div>
+            </div>    
+          </div>
+        </div>
+        <div class="back">
+          <div class="liste">
+            <ul>
+              {% if is_granted('ROLE_ADMIN') %}
+                <li><a href="{{ path('nurun_commun_choosevpdates', { 'target':'nurun_list_fetes' }) }}">Anniversaires<i></i></a></li>
+              {% endif %}
+              {% if is_granted('ROLE_GESTION') %}
+                <li><a href="{{ path('nurun_list_affectations') }}">Affectations<i></i></a></li>
+              {% endif %}
+              {% if is_granted('ROLE_ADMIN') %}
+                <li><a href="{{ path('nurun_affectation_choosevpdates', { 'target':'nurun_affectation_executive_export' }) }}">Banc<i></i></a></li>
+              {% endif %}
+              {% if is_granted('ROLE_ADMIN') %}
+                <li><a href="{{ path('nurun_commun_choosevpdates', { 'target':'nurun_list_vacances' }) }}">Vacances<i></i></a></li>
+              {% endif %}
+              {% if is_granted('ROLE_GESTION') %}
+                <li><a href="{{ path('nurun_commun_choosevp', { 'target':'nurun_list_executive' }) }}">Statistiques<i></i></a></li>
+              {% endif %}
+              {% if is_granted('ROLE_GESTION') %}
+                <li><a href="{{ path('nurun_commun_chooseprofil', { 'target':'nurun_list_executive_profil' }) }}">Statistiques / profil<i></i></a></li>
+              {% endif %}
+            </ul>
+          </div>
+          <span class="closeBtn inverse"></span>
+        </div>
+      </div>
+
+      <div class="square wi3 he3" id="blocConseillers">
+        <div class="content">
+          <div class="blocInfos">
+            <div class="blocInfos_content">
+              <div class="titre">Conseillers</div>
+            </div>    
+          </div>
+        </div>
+        <div class="back">
+          <div class="liste">
+            <ul>
+                {% if is_granted('ROLE_GESTION') %}
+              <li><a href="{{ path('nurun_conseiller_add') }}">Ajouter un conseiller <i></i></a></li>
+                {% endif %}
+                {% if is_granted('ROLE_RDP') %}
+              <li><a href="{{ path('nurun_conseiller_index') }}">Voir les conseillers <i></i></a></li>
+                {% endif %}
+                {% if is_granted('ROLE_RDP') %}
+              <li><a href="{{ path('nurun_conseiller_mesressources') }}">Voir mes ressources <i></i></a></li>
+                {% endif %}
+              {% if is_granted('ROLE_RDP') %}
+                <li><a href="{{ path('nurun_conseiller_competences') }}">Voir les compétences <i></i></a></li>
+              {% endif %}
+              {% if is_granted('ROLE_USER') %}
+                <li><a href="{{ path('nurun_conseiller_localisation') }}">Carte des conseillers<i></i></a></li>
+              {% endif %}
+              {% if is_granted('ROLE_USER') %}
+                <li><a href="{{ path('nurun_conseiller_annuaire') }}">Annuaire Téléphonique <i></i></a></li>
+              {% endif %}
+            </ul>
+          </div>
+          <span class="closeBtn"></span>
+        </div>
+      </div>
+
+      <div class="square wi2 he2" id="blocMandats">
+        <div class="content">
+          <div class="blocInfos">
+            <div class="blocInfos_content">
+              <div class="titre">Mandats</div>
+            </div>    
+          </div>
+        </div>
+        <div class="back">
+          <div class="liste">
+            <ul>
+                {% if is_granted('ROLE_GESTION') %}
+              <li><a href="{{ path('nurun_mandat_add') }}">Ajouter un mandat <i></i></a></li>
+                {% endif %}
+                {% if is_granted('ROLE_RDP') %}
+              <li><a href="{{ path('nurun_mandat_home') }}">Voir les mandats <i></i></a></li>
+                {% endif %}
+            </ul>
+          </div>
+          <span class="closeBtn inverse"></span>
+        </div>
+      </div>
+
+      <div class="square wi2 he1" id="blocDiplomes">
+        <div class="content">
+          <div class="blocInfos">
+            <div class="blocInfos_content">
+              <div class="titre">Diplômes</div>
+            </div>    
+          </div>
+        </div>
+        <div class="back">
+          <div class="liste">
+            <ul>
+                {% if is_granted('ROLE_GESTION') %}
+              <li><a href="{{ path('nurun_diplome_add') }}">Ajouter un diplôme <i></i></a></li>
+                {% endif %}
+                {% if is_granted('ROLE_ADMIN') %}
+              <li><a href="{{ path('nurun_diplome_home') }}">Voir les diplômes <i></i></a></li>
+                {% endif %}
+            </ul>
+          </div>
+          <span class="closeBtn"></span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  {% block javascripts %}
+    {# Ajoutez ces lignes JavaScript si vous comptez vous servir des fonctionnalités du bootstrap Twitter #}
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/packery/1.4.1/packery.pkgd.min.js"></script>
+    
+    <script src="{{ asset('js/main.js') }}"></script>
+    <script>
+      jQuery(document).ready(function(){
+        
+        var setSquaresSize = function(){
+          $('#squares .square').each(function(){
+            var square = $(this);
+
+            square.find('.content, .back').css({
+              height: square.outerHeight() - 5,
+              width: square.width() - 5
+            });
+          });
+        };
+        setSquaresSize();
+        $(window).on('resize', setSquaresSize);
+
+        $('#squares').packery({
+          // set itemSelector so .grid-sizer is not used in layout
+          itemSelector: '.square'
+        });
+
+        $('#squares .square').on({
+          'mouseenter': function(){
+            var square = $(this);
+
+            square.find('.blocInfos').css({
+              top: '0%',
+              left: '0%',
+              width: '100%',
+              'padding-bottom': square.children('.content').height()
+            });
+            square.find('.titre').css('font-size','24px');
+          },
+          'mouseleave': function(){
+            var square = $(this);
+
+            square.find('.blocInfos').removeAttr('style');
+            square.find('.titre').removeAttr('style');
+          }
+        });
+
+        $('#squares .square .blocInfos').on('click', function(e){
+          e.preventDefault();
+
+          var blocInfos = $(this);
+          var square = blocInfos.parent().parent();
+
+          if(!square.hasClass('flipped')){
+            square.addClass('flipped');
+          }
+        });
+
+        $('#squares .square .closeBtn').on('click', function(e){
+          e.preventDefault();
+
+          var closeBtn = $(this);
+          var square = closeBtn.parent().parent();
+
+          if(square.hasClass('flipped')){
+            square.removeClass('flipped');
+          }
+        });
+
+
+      });
+    </script>
+  {% endblock %}
+
+</body>
+</html>

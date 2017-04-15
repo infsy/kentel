@@ -1,0 +1,16 @@
+{# src/Nurun/RhBundle/Resources/views/PrioroteBesoin/edit.html.twig #}
+
+{% extends "NurunRhBundle::layout.html.twig" %}
+
+{% block title %}
+  Modifier une priorité de besoin - {{ parent() }}
+{% endblock %}
+
+{% block rh_body %}
+
+  <h2>Modifier une prioité de besoin</h2>
+
+  {{ include("NurunRhBundle:PrioriteBesoin:form.html.twig") }}
+
+
+{% endblock %}

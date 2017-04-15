@@ -1,0 +1,15 @@
+{# src/Nurun/RhBundle/Resources/views/SourceAffectation/add.html.twig #}
+
+{% extends "NurunRhBundle::layout.html.twig" %}
+
+{% block title %}
+  Ajouter une source d'affectation - {{ parent() }}
+{% endblock %}
+
+{% block body %}
+
+  <h2>Ajouter une source d'affectation</h2>
+
+  {{ include("NurunRhBundle:SourceAffectation:form.html.twig") }}
+
+{% endblock %}

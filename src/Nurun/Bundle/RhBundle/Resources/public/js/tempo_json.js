@@ -1,0 +1,2594 @@
+window.temp_carteData = [{
+    "no": "6233",
+    "nom": "CPortneuf",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": null,
+    "lat": 46.80794,
+    "long": -71.21796,
+    "employes": {},
+    "mandats": [{
+        "no": 7398,
+        "etage": 24,
+        "employes": [
+            "Serge Anctil"
+        ]
+    }, {
+        "no": 7307,
+        "etage": 25,
+        "employes": [
+            "Marcel Chabot",
+            "Cathy D'Anjou",
+            "Michel Dessureault",
+            "Marie-Berthe Gosselin",
+            "Chantal Martineau",
+            "Bérénice Paré",
+            "Marc Trudel",
+            "Asmae Derouiche",
+            "*Jean-François Lavoie",
+            "*Line Abel",
+            "Justin Rirangira"
+        ]
+    }]
+}, {
+    "no": "7017",
+    "nom": "SAAQ",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": null,
+    "lat": 46.80851,
+    "long": -71.2153,
+    "employes": {},
+    "mandats": [{
+        "no": 7330,
+        "etage": "RC",
+        "employes": [
+            "Daniel Doyen",
+            "Ismaël Touré"
+        ]
+    }]
+}, {
+    "no": "7087",
+    "nom": "RRQ",
+    "numero_adresse": 2600,
+    "adresse": "Boul. Laurier",
+    "etage": null,
+    "code_postal": "G1V 4T3",
+    "ville": "Qu\u00e9bec",
+    "lat": 46.80696,
+    "long": -71.21969,
+    "employes": {}
+}, {
+    "no": "7130",
+    "nom": "SAAQ",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": null,
+    "employes": {}
+}, {
+    "no": "7133",
+    "nom": "CN",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": null,
+    "employes": {}
+}, {
+    "no": "7177",
+    "nom": "RRQ",
+    "numero_adresse": 2600,
+    "adresse": "Boul. Laurier",
+    "etage": null,
+    "code_postal": "G1V 4T3",
+    "ville": "Qu\u00e9bec",
+    "employes": {}
+}, {
+    "no": "7180",
+    "nom": "CARRA",
+    "numero_adresse": 150,
+    "adresse": "boul. Ren\u00e9-L\u00e9vesque E",
+    "etage": null,
+    "code_postal": "G1R 2A9",
+    "ville": "Qu\u00e9bec",
+    "employes": {}
+}, {
+    "no": "7183",
+    "nom": "RAMQ",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": null,
+    "employes": {}
+}, {
+    "no": "7200",
+    "nom": "CSPQ",
+    "numero_adresse": 1500,
+    "adresse": "rue Cyrille-Duquet Est",
+    "etage": null,
+    "code_postal": "G1N 4T6",
+    "ville": "Qu\u00e9bec",
+    "employes": {}
+}, {
+    "no": "7202",
+    "nom": "VdeQc",
+    "numero_adresse": 1130,
+    "adresse": "Route de l'\u00c9glise",
+    "etage": null,
+    "code_postal": "G1V 4X6",
+    "ville": "Qu\u00e9bec",
+    "employes": {}
+}, {
+    "no": "7206",
+    "nom": "SAAQ",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": null,
+    "employes": {}
+}, {
+    "no": "7209",
+    "nom": "CSST",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": null,
+    "employes": {}
+}, {
+    "no": "7220",
+    "nom": "CAA",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": null,
+    "employes": {}
+}, {
+    "no": "7224",
+    "nom": "MTQ",
+    "numero_adresse": 700,
+    "adresse": "boul. Ren\u00e9-L\u00e9vesque E",
+    "etage": "25",
+    "code_postal": "G1R 5H1",
+    "ville": "Qu\u00e9bec",
+    "employes": {}
+}, {
+    "no": "7225",
+    "nom": "JdQc",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": null,
+    "employes": {}
+}, {
+    "no": "7227",
+    "nom": "CSST",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": null,
+    "employes": {}
+}, {
+    "no": "7228",
+    "nom": "CSPQ",
+    "numero_adresse": 1500,
+    "adresse": "rue Cyrille-Duquet Est",
+    "etage": null,
+    "code_postal": "G1N 4T6",
+    "ville": "Qu\u00e9bec",
+    "employes": {}
+}, {
+    "no": "7242",
+    "nom": "CARRA",
+    "numero_adresse": 150,
+    "adresse": "boul. Ren\u00e9-L\u00e9vesque E",
+    "etage": null,
+    "code_postal": "G1R 2A9",
+    "ville": "Qu\u00e9bec",
+    "employes": {}
+}, {
+    "no": "7243",
+    "nom": "CSPQ",
+    "numero_adresse": 1500,
+    "adresse": "rue Cyrille-Duquet Est",
+    "etage": null,
+    "code_postal": "G1N 4T6",
+    "ville": "Qu\u00e9bec",
+    "employes": {}
+}, {
+    "no": "7244",
+    "nom": "ARQ",
+    "numero_adresse": 3800,
+    "adresse": "rue de Marly",
+    "etage": null,
+    "code_postal": "G1X 4A5",
+    "ville": "Qu\u00e9bec",
+    "employes": {}
+}, {
+    "no": "7250",
+    "nom": "CAA",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": null,
+    "employes": {}
+}, {
+    "no": "7251",
+    "nom": "CAA",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": null,
+    "employes": {}
+}, {
+    "no": "7261",
+    "nom": "MTQ",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": null,
+    "employes": {}
+}, {
+    "no": "7268",
+    "nom": "MSSS",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": null,
+    "employes": {}
+}, {
+    "no": "7271",
+    "nom": "CSST",
+    "numero_adresse": 530,
+    "adresse": "Boul. l'Atrium",
+    "etage": null,
+    "code_postal": "G1H 7H1",
+    "ville": "Qu\u00e9bec",
+    "employes": {}
+}, {
+    "no": "7273",
+    "nom": "CAA",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": null,
+    "employes": {}
+}, {
+    "no": "7275",
+    "nom": "CSPQ",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": null,
+    "employes": {}
+}, {
+    "no": "7276",
+    "nom": "CSPQ",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": null,
+    "employes": {}
+}, {
+    "no": "7277",
+    "nom": "CSST",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": null,
+    "employes": {}
+}, {
+    "no": "7278",
+    "nom": "CSST",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": null,
+    "employes": {}
+}, {
+    "no": "7282",
+    "nom": "ISQ",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": null,
+    "employes": {}
+}, {
+    "no": "7284",
+    "nom": "RAMQ",
+    "numero_adresse": 1122,
+    "adresse": "Grande All\u00e9e Ouest",
+    "etage": "3",
+    "code_postal": "G1S 4T4",
+    "ville": "Qu\u00e9bec",
+    "employes": {}
+}, {
+    "no": "7285",
+    "nom": "MAMOT",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": null,
+    "employes": {}
+}, {
+    "no": "7291",
+    "nom": "NurunSF",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": null,
+    "employes": {}
+}, {
+    "no": "7292",
+    "nom": "Assurant",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": null,
+    "employes": {}
+}, {
+    "no": "7294",
+    "nom": "CarMax",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": null,
+    "employes": {}
+}, {
+    "no": "SAVEL(interne)",
+    "nom": "NSC",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": null,
+    "employes": {}
+}, {
+    "no": "Autres",
+    "nom": "NSC",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": null,
+    "employes": {}
+}, {
+    "no": "Vacances",
+    "nom": "NSC",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": null,
+    "employes": {}
+}, {
+    "no": "Maternit\u00e9\/Paternit\u00e9",
+    "nom": "NSC",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": null,
+    "employes": {}
+}, {
+    "no": "_LaCapitale",
+    "nom": "NSC",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": null,
+    "employes": {}
+}, {
+    "no": "_SAAQ",
+    "nom": "NSC",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": null,
+    "employes": {}
+}, {
+    "no": "_CSST",
+    "nom": "NSC",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": null,
+    "employes": {}
+}, {
+    "no": "Projet interne",
+    "nom": "NSC",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": null,
+    "employes": {}
+}, {
+    "no": "_CARRA",
+    "nom": "NSC",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": null,
+    "employes": {}
+}, {
+    "no": "Maladie",
+    "nom": "NSC",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": null,
+    "employes": {}
+}, {
+    "no": "_MAMOT",
+    "nom": "NSC",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": null,
+    "employes": {}
+}, {
+    "no": "7199",
+    "nom": "ARQ",
+    "numero_adresse": 3800,
+    "adresse": "rue de Marly",
+    "etage": null,
+    "code_postal": "G1X 4A5",
+    "ville": "Qu\u00e9bec",
+    "employes": {}
+}, {
+    "no": "6945",
+    "nom": "RAMQ",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": null,
+    "employes": {}
+}, {
+    "no": "7181",
+    "nom": "CSST",
+    "numero_adresse": 530,
+    "adresse": "Boul. l'Atrium",
+    "etage": null,
+    "code_postal": "G1H 7H1",
+    "ville": "Qu\u00e9bec",
+    "employes": {}
+}, {
+    "no": "_CNT",
+    "nom": "NSC",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": null,
+    "employes": {}
+}, {
+    "no": "_GUS",
+    "nom": "NSC",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": null,
+    "employes": {}
+}, {
+    "no": "Administration",
+    "nom": "NSC",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": null,
+    "employes": {}
+}, {
+    "no": "P",
+    "nom": "RRQ",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": null,
+    "employes": {}
+}, {
+    "no": "PSC",
+    "nom": "NSC",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": null,
+    "employes": {}
+}, {
+    "no": "7283",
+    "nom": "MSSS",
+    "numero_adresse": 3000,
+    "adresse": "ave St-Jean-Baptiste",
+    "etage": null,
+    "code_postal": "G2E 6J5",
+    "ville": "Qu\u00e9bec",
+    "employes": {}
+}, {
+    "no": "_MERN",
+    "nom": "NSC",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": null,
+    "employes": {}
+}, {
+    "no": "7302",
+    "nom": "RRQ",
+    "numero_adresse": 2600,
+    "adresse": "Boul. Laurier",
+    "etage": null,
+    "code_postal": "G1V 4T3",
+    "ville": "Qu\u00e9bec",
+    "employes": {}
+}, {
+    "no": "Propo",
+    "nom": "SSQ",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": null,
+    "employes": {}
+}, {
+    "no": "6996",
+    "nom": "MELS",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": null,
+    "employes": {}
+}, {
+    "no": "7037",
+    "nom": "SAAQ",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": null,
+    "employes": {}
+}, {
+    "no": "7105",
+    "nom": "CSST",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": null,
+    "employes": {}
+}, {
+    "no": "7106",
+    "nom": "CSST",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": null,
+    "employes": {}
+}, {
+    "no": "7112",
+    "nom": "RAMQ",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": null,
+    "employes": {}
+}, {
+    "no": "7123",
+    "nom": "SAAQ",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": null,
+    "employes": {}
+}, {
+    "no": "7124",
+    "nom": "RAMQ",
+    "numero_adresse": 1122,
+    "adresse": "Grande All\u00e9e Ouest",
+    "etage": null,
+    "code_postal": "G1S 4T4",
+    "ville": "Qu\u00e9bec",
+    "employes": {}
+}, {
+    "no": "7125",
+    "nom": "SAAQ",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": null,
+    "employes": {}
+}, {
+    "no": "7129",
+    "nom": "CSPQ",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": null,
+    "employes": {}
+}, {
+    "no": "7138",
+    "nom": "CSST",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": null,
+    "employes": {}
+}, {
+    "no": "7144",
+    "nom": "SAAQ",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": null,
+    "employes": {}
+}, {
+    "no": "7163",
+    "nom": "SHQ",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": null,
+    "employes": {}
+}, {
+    "no": "7176",
+    "nom": "CSST",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": null,
+    "employes": {}
+}, {
+    "no": "7431",
+    "nom": "Lambda",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": null,
+    "employes": {}
+}, {
+    "no": "7210",
+    "nom": "CSST",
+    "numero_adresse": 524,
+    "adresse": "rue Bourdages",
+    "etage": null,
+    "code_postal": "\u00a0G1K 7E2",
+    "ville": "Qu\u00e9bec",
+    "employes": {}
+}, {
+    "no": "7211",
+    "nom": "CSST",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": null,
+    "employes": {}
+}, {
+    "no": "7213",
+    "nom": "SAAQ",
+    "numero_adresse": 333,
+    "adresse": "boul. Jean-Lesage",
+    "etage": null,
+    "code_postal": "G1K 8J6",
+    "ville": "Qu\u00e9bec",
+    "employes": {}
+}, {
+    "no": "7214",
+    "nom": "RTC",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": null,
+    "employes": {}
+}, {
+    "no": "7235",
+    "nom": "InvQue",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": null,
+    "employes": {}
+}, {
+    "no": "7260",
+    "nom": "RAMQ",
+    "numero_adresse": 525,
+    "adresse": "boul. Ren\u00e9-L\u00e9vesque E",
+    "etage": null,
+    "code_postal": "G1R 5R3",
+    "ville": "Qu\u00e9bec",
+    "employes": {}
+}, {
+    "no": "7267",
+    "nom": "CFP",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": null,
+    "employes": {}
+}, {
+    "no": "7296",
+    "nom": "AMF",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": "Quebec",
+    "employes": {}
+}, {
+    "no": "7297",
+    "nom": "Inalco",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": null,
+    "employes": {}
+}, {
+    "no": "7053",
+    "nom": "ARQ",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": null,
+    "employes": {}
+}, {
+    "no": "7258",
+    "nom": "ARQ",
+    "numero_adresse": 3800,
+    "adresse": "rue de Marly",
+    "etage": null,
+    "code_postal": "G1X 4A5",
+    "ville": "Qu\u00e9bec",
+    "employes": {}
+}, {
+    "no": "7205",
+    "nom": "SAAQ",
+    "numero_adresse": 333,
+    "adresse": "boul. Jean-Lesage",
+    "etage": null,
+    "code_postal": "G1K 8J6",
+    "ville": "Qu\u00e9bec",
+    "employes": {}
+}, {
+    "no": "7239",
+    "nom": "SAAQ",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": null,
+    "employes": {}
+}, {
+    "no": "_RAMQ",
+    "nom": "NSC",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": null,
+    "employes": {}
+}, {
+    "no": "_MDEIE",
+    "nom": "NSC",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": null,
+    "employes": {}
+}, {
+    "no": "_ CNT",
+    "nom": "NSC",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": null,
+    "employes": {}
+}, {
+    "no": "_VdeQc",
+    "nom": "NSC",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": null,
+    "employes": {}
+}, {
+    "no": "_CAA",
+    "nom": "NSC",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": null,
+    "employes": {}
+}, {
+    "no": "_CSPQ",
+    "nom": "NSC",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": null,
+    "employes": {}
+}, {
+    "no": "_MSSS",
+    "nom": "NSC",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": null,
+    "employes": {}
+}, {
+    "no": "_Bridgestone",
+    "nom": "NSC",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": null,
+    "employes": {}
+}, {
+    "no": "7313",
+    "nom": "CAA",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": null,
+    "employes": {}
+}, {
+    "no": "_MSP",
+    "nom": "NSC",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": null,
+    "employes": {}
+}, {
+    "no": "Formation",
+    "nom": "NSC",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": null,
+    "employes": {}
+}, {
+    "no": "_ARQ",
+    "nom": "NSC",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": null,
+    "employes": {}
+}, {
+    "no": "_SQI",
+    "nom": "NSC",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": null,
+    "employes": {}
+}, {
+    "no": "6858",
+    "nom": "CSPQ",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": null,
+    "employes": {}
+}, {
+    "no": "6862",
+    "nom": "MAMOT",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": null,
+    "employes": {}
+}, {
+    "no": "6943",
+    "nom": "CSPQ",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": null,
+    "employes": {}
+}, {
+    "no": "6948",
+    "nom": "MJQ",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": null,
+    "employes": {}
+}, {
+    "no": "7009",
+    "nom": "ARQ",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": null,
+    "employes": {}
+}, {
+    "no": "7023",
+    "nom": "MEES",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": null,
+    "employes": {}
+}, {
+    "no": "7031",
+    "nom": "ARQ",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": null,
+    "employes": {}
+}, {
+    "no": "7043",
+    "nom": "CSPQ",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": null,
+    "employes": {}
+}, {
+    "no": "7045",
+    "nom": "MTQ",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": null,
+    "employes": {}
+}, {
+    "no": "7058",
+    "nom": "ARQ",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": null,
+    "employes": {}
+}, {
+    "no": "7093",
+    "nom": "MSSS",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": null,
+    "employes": {}
+}, {
+    "no": "7103",
+    "nom": "SAAQ",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": null,
+    "employes": {}
+}, {
+    "no": "7110",
+    "nom": "MERN",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": null,
+    "employes": {}
+}, {
+    "no": "7111",
+    "nom": "CLP",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": null,
+    "employes": {}
+}, {
+    "no": "7121",
+    "nom": "LaCapitaleAAP",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": null,
+    "employes": {}
+}, {
+    "no": "7135",
+    "nom": "CAI",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": null,
+    "employes": {}
+}, {
+    "no": "7148",
+    "nom": "PrC",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": null,
+    "employes": {}
+}, {
+    "no": "7158",
+    "nom": "SCT",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": null,
+    "employes": {}
+}, {
+    "no": "7160",
+    "nom": "CSST",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": null,
+    "employes": {}
+}, {
+    "no": "7170",
+    "nom": "RDDC",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": null,
+    "employes": {}
+}, {
+    "no": "7179",
+    "nom": "SAAQ",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": null,
+    "employes": {}
+}, {
+    "no": "7182",
+    "nom": "CSPQ",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": null,
+    "employes": {}
+}, {
+    "no": "7188",
+    "nom": "CSST",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": null,
+    "employes": {}
+}, {
+    "no": "7190",
+    "nom": "CSPQ",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": null,
+    "employes": {}
+}, {
+    "no": "7197",
+    "nom": "FCPRRUL",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": null,
+    "employes": {}
+}, {
+    "no": "7204",
+    "nom": "SAAQ",
+    "numero_adresse": 333,
+    "adresse": "boul. Jean-Lesage",
+    "etage": null,
+    "code_postal": "G1K 8J6",
+    "ville": "Qu\u00e9bec",
+    "employes": {}
+}, {
+    "no": "7217",
+    "nom": "MFE",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": null,
+    "employes": {}
+}, {
+    "no": "7219",
+    "nom": "AssNat",
+    "numero_adresse": 1050,
+    "adresse": "rue de Parlementaire",
+    "etage": null,
+    "code_postal": "G1A 1A3",
+    "ville": "Qu\u00e9bec",
+    "employes": {}
+}, {
+    "no": "7231",
+    "nom": "MERN",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": null,
+    "employes": {}
+}, {
+    "no": "7232",
+    "nom": "CSPQ",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": null,
+    "employes": {}
+}, {
+    "no": "7234",
+    "nom": "ARQ",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": null,
+    "employes": {}
+}, {
+    "no": "7238",
+    "nom": "ARQ",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": null,
+    "employes": {}
+}, {
+    "no": "7245",
+    "nom": "RAMQ",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": null,
+    "employes": {}
+}, {
+    "no": "7246",
+    "nom": "MESS",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": null,
+    "employes": {}
+}, {
+    "no": "7248",
+    "nom": "ARQ",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": null,
+    "employes": {}
+}, {
+    "no": "7252",
+    "nom": "MESS",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": null,
+    "employes": {}
+}, {
+    "no": "7253",
+    "nom": "RAMQ",
+    "numero_adresse": 1125,
+    "adresse": "Grande All\u00e9e Ouest",
+    "etage": null,
+    "code_postal": "G1S 1E7",
+    "ville": "Qu\u00e9bec",
+    "employes": {}
+}, {
+    "no": "7262",
+    "nom": "CSPQ",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": null,
+    "employes": {}
+}, {
+    "no": "7270",
+    "nom": "RDDC",
+    "numero_adresse": 2459,
+    "adresse": "Route de la Bravoure",
+    "etage": "Sous-sol",
+    "code_postal": "G0A 1R1",
+    "ville": "Qu\u00e9bec",
+    "employes": {}
+}, {
+    "no": "7279",
+    "nom": "RBQ",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": null,
+    "employes": {}
+}, {
+    "no": "7280",
+    "nom": "Inalco",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": null,
+    "employes": {}
+}, {
+    "no": "7281",
+    "nom": "Inalco",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": null,
+    "employes": {}
+}, {
+    "no": "7286",
+    "nom": "EBD",
+    "numero_adresse": 330,
+    "adresse": "rue Saint-Vallier Est",
+    "etage": "1",
+    "code_postal": "G1K 9C5",
+    "ville": "Qu\u00e9bec",
+    "employes": {}
+}, {
+    "no": "7287",
+    "nom": "CSPQ",
+    "numero_adresse": 150,
+    "adresse": "boul. Ren\u00e9-L\u00e9vesque E",
+    "etage": "4",
+    "code_postal": "G1R 2A9",
+    "ville": "Qu\u00e9bec",
+    "employes": {}
+}, {
+    "no": "7289",
+    "nom": "Inalco",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": null,
+    "employes": {}
+}, {
+    "no": "7290",
+    "nom": "Inalco",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": null,
+    "employes": {}
+}, {
+    "no": "7295",
+    "nom": "CSST",
+    "numero_adresse": 530,
+    "adresse": "Boul. l'Atrium",
+    "etage": null,
+    "code_postal": "G1H 7H1",
+    "ville": "Qu\u00e9bec",
+    "employes": {}
+}, {
+    "no": "7300",
+    "nom": "RDL",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": null,
+    "employes": {}
+}, {
+    "no": "7301",
+    "nom": "ARQ",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": null,
+    "employes": {}
+}, {
+    "no": "7303",
+    "nom": "GACEQ",
+    "numero_adresse": 330,
+    "adresse": "rue Saint-Vallier Est",
+    "etage": "1",
+    "code_postal": "G1K 9C5",
+    "ville": "Qu\u00e9bec",
+    "employes": {}
+}, {
+    "no": "7305",
+    "nom": "CSST",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": null,
+    "employes": {}
+}, {
+    "no": "7307",
+    "nom": "MEES",
+    "numero_adresse": 1035,
+    "adresse": "rue de la Chevroti\u00e8re",
+    "etage": "25",
+    "code_postal": "G1R 5A5",
+    "ville": "Qu\u00e9bec",
+    "employes": {}
+}, {
+    "no": "7308",
+    "nom": "SSQ",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": null,
+    "employes": {}
+}, {
+    "no": "7310",
+    "nom": "RRQ",
+    "numero_adresse": 2600,
+    "adresse": "Boul. Laurier",
+    "etage": null,
+    "code_postal": "G1V 4T3",
+    "ville": "Qu\u00e9bec",
+    "employes": {}
+}, {
+    "no": "7312",
+    "nom": "MAMOT",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": null,
+    "employes": {}
+}, {
+    "no": "7316",
+    "nom": "ARQ",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": null,
+    "employes": {}
+}, {
+    "no": "_Carmax",
+    "nom": "NSC",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": null,
+    "employes": {}
+}, {
+    "no": "_DGEQ",
+    "nom": "NSC",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": null,
+    "employes": {}
+}, {
+    "no": "_GACEQ",
+    "nom": "NSC",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": null,
+    "employes": {}
+}, {
+    "no": "_INALCO",
+    "nom": "NSC",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": null,
+    "employes": {}
+}, {
+    "no": "_MDDELC",
+    "nom": "NSC",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": null,
+    "employes": {}
+}, {
+    "no": "_SiteCore",
+    "nom": "NSC",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": null,
+    "employes": {}
+}, {
+    "no": "7092",
+    "nom": "Inalco",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": null,
+    "employes": {}
+}, {
+    "no": "_VdeMontrealEst",
+    "nom": "NSC",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": null,
+    "employes": {}
+}, {
+    "no": "_ULaval",
+    "nom": "NSC",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": null,
+    "employes": {}
+}, {
+    "no": "7326",
+    "nom": "CAA",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": null,
+    "employes": {}
+}, {
+    "no": "7315",
+    "nom": "RazorfishLLC",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": null,
+    "employes": {}
+}, {
+    "no": "7318",
+    "nom": "RazorfishLLC",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": null,
+    "employes": {}
+}, {
+    "no": "7314",
+    "nom": "IBM",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": null,
+    "employes": {}
+}, {
+    "no": "_MCC",
+    "nom": "NSC",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": null,
+    "employes": {}
+}, {
+    "no": "7323",
+    "nom": "MESI",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": null,
+    "employes": {}
+}, {
+    "no": "7321",
+    "nom": "SAAQ",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": null,
+    "employes": {}
+}, {
+    "no": "_AssNat",
+    "nom": "NSC",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": null,
+    "employes": {}
+}, {
+    "no": "_AMF",
+    "nom": "NSC",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": null,
+    "employes": {}
+}, {
+    "no": "7330",
+    "nom": "SQI",
+    "numero_adresse": 1075,
+    "adresse": "rue de l'Am\u00e9rique-Fran\u00e7aise",
+    "etage": "Rez-de-chauss\u00e9e",
+    "code_postal": "G1R 5P8",
+    "ville": "Qu\u00e9bec",
+    "employes": {}
+}, {
+    "no": "_BCOR",
+    "nom": "NSC",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": null,
+    "employes": {}
+}, {
+    "no": "_Vid\u00e9otron",
+    "nom": "NSC",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": null,
+    "employes": {}
+}, {
+    "no": "7331",
+    "nom": "CSST",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": null,
+    "employes": {}
+}, {
+    "no": "_FinAgr",
+    "nom": "NSC",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": null,
+    "employes": {}
+}, {
+    "no": "_WGL",
+    "nom": "NSC",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": null,
+    "employes": {}
+}, {
+    "no": "_CRDI",
+    "nom": "NSC",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": null,
+    "employes": {}
+}, {
+    "no": "_Recyc-Qu\u00e9bec",
+    "nom": "NSC",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": null,
+    "employes": {}
+}, {
+    "no": "7334",
+    "nom": "CARRA",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": null,
+    "employes": {}
+}, {
+    "no": "6915",
+    "nom": "NSC",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": null,
+    "employes": {}
+}, {
+    "no": "7304",
+    "nom": "SAAQ",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": null,
+    "employes": {}
+}, {
+    "no": "CEPM",
+    "nom": "NSC",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": null,
+    "employes": {}
+}, {
+    "no": "7335",
+    "nom": "ULAVAL",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": null,
+    "employes": {}
+}, {
+    "no": "_SHQ",
+    "nom": "NSC",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": null,
+    "employes": {}
+}, {
+    "no": "_VST-Aug",
+    "nom": "NSC",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": null,
+    "employes": {}
+}, {
+    "no": "7337",
+    "nom": "CAA",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": null,
+    "employes": {}
+}, {
+    "no": "7329",
+    "nom": "SAAQ",
+    "numero_adresse": 333,
+    "adresse": "boul. Jean-Lesage",
+    "etage": null,
+    "code_postal": "G1K 8J6",
+    "ville": "Qu\u00e9bec",
+    "employes": {}
+}, {
+    "no": "Heneiken",
+    "nom": "NSC",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": null,
+    "employes": {}
+}, {
+    "no": "_TAQ",
+    "nom": "NSC",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": null,
+    "employes": {}
+}, {
+    "no": "_MTQ",
+    "nom": "NSC",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": null,
+    "employes": {}
+}, {
+    "no": "_RZF Heineken",
+    "nom": "NSC",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": null,
+    "employes": {}
+}, {
+    "no": "_Familiprix",
+    "nom": "NSC",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": null,
+    "employes": {}
+}, {
+    "no": "Heineken",
+    "nom": "PbcNA",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": null,
+    "employes": {}
+}, {
+    "no": "_QualitechLM",
+    "nom": "NSC",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": null,
+    "employes": {}
+}, {
+    "no": "7347",
+    "nom": "Heineken",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": null,
+    "employes": {}
+}, {
+    "no": "7348",
+    "nom": "Familiprix",
+    "numero_adresse": 330,
+    "adresse": "rue Saint-Vallier Est",
+    "etage": "1",
+    "code_postal": "G1K 9C5",
+    "ville": "Qu\u00e9bec",
+    "employes": {}
+}, {
+    "no": "7352",
+    "nom": "RAMQ",
+    "numero_adresse": 525,
+    "adresse": "boul. Ren\u00e9-L\u00e9vesque E",
+    "etage": null,
+    "code_postal": "G1R 5R3",
+    "ville": "Qu\u00e9bec",
+    "employes": {}
+}, {
+    "no": "7349",
+    "nom": "BSA",
+    "numero_adresse": 330,
+    "adresse": "rue Saint-Vallier Est",
+    "etage": "1",
+    "code_postal": "G1K 9C5",
+    "ville": "Qu\u00e9bec",
+    "employes": {}
+}, {
+    "no": "RRQ",
+    "nom": "NSC",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": null,
+    "employes": {}
+}, {
+    "no": "_V3Rivi\u00e8res",
+    "nom": "NSC",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": null,
+    "employes": {}
+}, {
+    "no": "7353",
+    "nom": "TAT",
+    "numero_adresse": 900,
+    "adresse": "place D'Youville",
+    "etage": null,
+    "code_postal": "G1R 3P9",
+    "ville": "Qu\u00e9bec",
+    "employes": {}
+}, {
+    "no": "_MAPAQ",
+    "nom": "NSC",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": null,
+    "employes": {}
+}, {
+    "no": "_Retraite_Qc",
+    "nom": "NSC",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": null,
+    "employes": {}
+}, {
+    "no": "7358",
+    "nom": "RazorfishLLC",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": null,
+    "employes": {}
+}, {
+    "no": "7355",
+    "nom": "CAA",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": null,
+    "employes": {}
+}, {
+    "no": "7365",
+    "nom": "MEIE",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": null,
+    "employes": {}
+}, {
+    "no": "7361",
+    "nom": "Inalco",
+    "numero_adresse": 1091,
+    "adresse": "Grande All\u00e9e Ouest",
+    "etage": null,
+    "code_postal": "G1S 4Y7",
+    "ville": "Qu\u00e9bec",
+    "employes": {}
+}, {
+    "no": "7409",
+    "nom": "Promutuel",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": null,
+    "employes": {}
+}, {
+    "no": "7362",
+    "nom": "Inalco",
+    "numero_adresse": 1080,
+    "adresse": "Grande All\u00e9e Ouest",
+    "etage": null,
+    "code_postal": "G1K 7M3",
+    "ville": "Qu\u00e9bec",
+    "employes": {}
+}, {
+    "no": "_MJQ",
+    "nom": "NSC",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": null,
+    "employes": {}
+}, {
+    "no": "Proposition",
+    "nom": "CAA",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": null,
+    "employes": {}
+}, {
+    "no": "7363",
+    "nom": "VDSTONEHAM",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": null,
+    "employes": {}
+}, {
+    "no": "7401",
+    "nom": "Inalco",
+    "numero_adresse": 1080,
+    "adresse": "Grande All\u00e9e Ouest",
+    "etage": null,
+    "code_postal": "G1K 7M3",
+    "ville": "Qu\u00e9bec",
+    "employes": {}
+}, {
+    "no": "7346",
+    "nom": "ARQ",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": null,
+    "employes": {}
+}, {
+    "no": "_MTESS",
+    "nom": "NSC",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": null,
+    "employes": {}
+}, {
+    "no": "_RazorfishLLC",
+    "nom": "NSC",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": null,
+    "employes": {}
+}, {
+    "no": "HP",
+    "nom": "NSC",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": null,
+    "employes": {}
+}, {
+    "no": "7376",
+    "nom": "MTQ",
+    "numero_adresse": 930,
+    "adresse": "Chemin Ste-Foy",
+    "etage": "2",
+    "code_postal": "G1S 4X9",
+    "ville": "Qu\u00e9bec",
+    "employes": {}
+}, {
+    "no": "Obligations familiales",
+    "nom": "NSC",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": null,
+    "employes": {}
+}, {
+    "no": "PasDeVacances",
+    "nom": "NSC",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": null,
+    "employes": {}
+}, {
+    "no": "7367",
+    "nom": "MRCVS",
+    "numero_adresse": 330,
+    "adresse": "rue Saint-Vallier Est",
+    "etage": "1",
+    "code_postal": "G1K 9C5",
+    "ville": "Qu\u00e9bec",
+    "employes": {}
+}, {
+    "no": "7383",
+    "nom": "CNESST",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": null,
+    "employes": {}
+}, {
+    "no": "NSC_ePMIS",
+    "nom": "AMF",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": null,
+    "employes": {}
+}, {
+    "no": "_NSC",
+    "nom": "NYC DEP",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": null,
+    "employes": {}
+}, {
+    "no": "_MIDI",
+    "nom": "NSC",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": null,
+    "employes": {}
+}, {
+    "no": "_Telus",
+    "nom": "NSC",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": null,
+    "employes": {}
+}, {
+    "no": "NTMS",
+    "nom": "NSC",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": null,
+    "employes": {}
+}, {
+    "no": "7388",
+    "nom": "Hyundai",
+    "numero_adresse": 330,
+    "adresse": "rue Saint-Vallier Est",
+    "etage": "1",
+    "code_postal": "G1K 9C5",
+    "ville": "Qu\u00e9bec",
+    "employes": {}
+}, {
+    "no": "RZF_Oklahoma",
+    "nom": "NSC",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": null,
+    "employes": {}
+}, {
+    "no": "_Korem",
+    "nom": "Korem",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": null,
+    "employes": {}
+}, {
+    "no": "_CNESST-Proposition",
+    "nom": "NSC",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": null,
+    "employes": {}
+}, {
+    "no": "SSQ",
+    "nom": "NSC",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": null,
+    "employes": {}
+}, {
+    "no": "7381",
+    "nom": "Inalco",
+    "numero_adresse": 1080,
+    "adresse": "Grande All\u00e9e Ouest",
+    "etage": null,
+    "code_postal": "G1K 7M3",
+    "ville": "Qu\u00e9bec",
+    "employes": {}
+}, {
+    "no": "_MFFP",
+    "nom": "NSC",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": null,
+    "employes": {}
+}, {
+    "no": "_NYC",
+    "nom": "NSC",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": null,
+    "employes": {}
+}, {
+    "no": "7386",
+    "nom": "MSSS",
+    "numero_adresse": 555,
+    "adresse": "Boul. Wilfrid-Hamel",
+    "etage": null,
+    "code_postal": "G1M 3X7",
+    "ville": "Qu\u00e9bec",
+    "employes": {}
+}, {
+    "no": "7387",
+    "nom": "Promutuel",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": null,
+    "employes": {}
+}, {
+    "no": "Sans solde",
+    "nom": "NSC",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": null,
+    "employes": {}
+}, {
+    "no": "7370",
+    "nom": "RDL",
+    "numero_adresse": 900,
+    "adresse": "boul. Ren\u00e9-L\u00e9vesque E",
+    "etage": "Rez-de-chauss\u00e9e",
+    "code_postal": "G1R 2B5",
+    "ville": "Qu\u00e9bec",
+    "employes": {}
+}, {
+    "no": "_MFA",
+    "nom": "NSC",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": null,
+    "employes": {}
+}, {
+    "no": "7389",
+    "nom": "SSQ",
+    "numero_adresse": 2525,
+    "adresse": "Boul. Laurier",
+    "etage": "3",
+    "code_postal": "G1V 2L2",
+    "ville": "Qu\u00e9bec",
+    "employes": {}
+}, {
+    "no": "_SIFRI",
+    "nom": "NSC",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": null,
+    "employes": {}
+}, {
+    "no": "_CLQ",
+    "nom": "NSC",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": null,
+    "employes": {}
+}, {
+    "no": "7379",
+    "nom": "HP",
+    "numero_adresse": 330,
+    "adresse": "rue Saint-Vallier Est",
+    "etage": "1",
+    "code_postal": "G1K 9C5",
+    "ville": "Qu\u00e9bec",
+    "employes": {}
+}, {
+    "no": "Cong\u00e9s_Sociaux",
+    "nom": "NSC",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": null,
+    "employes": {}
+}, {
+    "no": "7398",
+    "nom": "MEES",
+    "numero_adresse": 1035,
+    "adresse": "rue de la Chevroti\u00e8re",
+    "etage": "24",
+    "code_postal": "G1R 5A5",
+    "ville": "Qu\u00e9bec",
+    "employes": {}
+}, {
+    "no": "7399",
+    "nom": "MFA",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": null,
+    "employes": {}
+}, {
+    "no": "7397",
+    "nom": "CLQ",
+    "numero_adresse": 70,
+    "adresse": "rue Dalhousie",
+    "etage": null,
+    "code_postal": "G1K 4B2",
+    "ville": "Qu\u00e9bec",
+    "employes": {}
+}, {
+    "no": "7405",
+    "nom": "Honda",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": null,
+    "employes": {}
+}, {
+    "no": "7404",
+    "nom": "CNESST",
+    "numero_adresse": 524,
+    "adresse": "rue Bourdages",
+    "etage": null,
+    "code_postal": "\u00a0G1K 7E2",
+    "ville": "Qu\u00e9bec",
+    "employes": {}
+}, {
+    "no": "Chrysler",
+    "nom": "NSC",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": null,
+    "employes": {}
+}, {
+    "no": "_IFRI",
+    "nom": "NSC",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": null,
+    "employes": {}
+}, {
+    "no": "7410",
+    "nom": "CAI",
+    "numero_adresse": 900,
+    "adresse": "place D'Youville",
+    "etage": null,
+    "code_postal": "G1R 3P9",
+    "ville": "Qu\u00e9bec",
+    "employes": {}
+}, {
+    "no": "CE-SD",
+    "nom": "NSC",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": null,
+    "employes": {}
+}, {
+    "no": "CE-CLOUD",
+    "nom": "NSC",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": null,
+    "employes": {}
+}, {
+    "no": "CE-ST",
+    "nom": "NSC",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": null,
+    "employes": {}
+}, {
+    "no": "_SWS",
+    "nom": "NSC",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": null,
+    "employes": {}
+}, {
+    "no": "_Sheridan",
+    "nom": "NSC",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": null,
+    "employes": {}
+}, {
+    "no": "7411",
+    "nom": "ARQ",
+    "numero_adresse": 3800,
+    "adresse": "rue de Marly",
+    "etage": null,
+    "code_postal": "G1X 4A5",
+    "ville": "Qu\u00e9bec",
+    "employes": {}
+}, {
+    "no": "0000",
+    "nom": "Torngats",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": null,
+    "employes": {}
+}, {
+    "no": "7416",
+    "nom": "RAMQ",
+    "numero_adresse": 1125,
+    "adresse": "Grande All\u00e9e Ouest",
+    "etage": null,
+    "code_postal": "G1S 1E7",
+    "ville": "Qu\u00e9bec",
+    "employes": {}
+}, {
+    "no": "7430",
+    "nom": "Desjardins",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": null,
+    "employes": {}
+}, {
+    "no": "Pour besoin proposition",
+    "nom": "PROPOSITIONS",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": null,
+    "employes": {}
+}, {
+    "no": "LCI",
+    "nom": "NSC",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": null,
+    "employes": {}
+}, {
+    "no": "Lexisnexis_Proposition",
+    "nom": "Lexisnexis",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": null,
+    "employes": {}
+}, {
+    "no": "Proposition Glasshouse",
+    "nom": "Glasshouse",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": null,
+    "employes": {}
+}, {
+    "no": "CE-AS",
+    "nom": "NSC",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": null,
+    "employes": {}
+}, {
+    "no": "7419",
+    "nom": "Inalco",
+    "numero_adresse": 330,
+    "adresse": "rue Saint-Vallier Est",
+    "etage": "1",
+    "code_postal": "G1K 9C5",
+    "ville": "Qu\u00e9bec",
+    "employes": {}
+}, {
+    "no": "Proposition-Avjet",
+    "nom": "AVJET",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": null,
+    "employes": {}
+}, {
+    "no": "Proposition-NYCDOE",
+    "nom": "NYCDOE",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": null,
+    "employes": {}
+}, {
+    "no": "EN ATTENTE",
+    "nom": "Chappuis",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": null,
+    "employes": {}
+}, {
+    "no": "7425",
+    "nom": "BNC",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": null,
+    "employes": {}
+}, {
+    "no": "NSC",
+    "nom": "BNC",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": null,
+    "employes": {}
+}, {
+    "no": "Cadre gouv",
+    "nom": "\u00c9PQ",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": null,
+    "employes": {}
+}, {
+    "no": "7426",
+    "nom": "ARQ",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": null,
+    "employes": {}
+}, {
+    "no": "7375",
+    "nom": "MEIE",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": null,
+    "employes": {}
+}, {
+    "no": "7424",
+    "nom": "RDDC",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": null,
+    "employes": {}
+}, {
+    "no": "Gestion de projets en s\u00e9curit\u00e9",
+    "nom": "Inalco",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": null,
+    "employes": {}
+}, {
+    "no": "Maladie prolong\u00e9e",
+    "nom": "NSC",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": null,
+    "employes": {}
+}, {
+    "no": "_FDE - Proposition",
+    "nom": "NSC",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": null,
+    "employes": {}
+}, {
+    "no": "Proposition-SISTA",
+    "nom": "TAT",
+    "numero_adresse": null,
+    "adresse": null,
+    "etage": null,
+    "code_postal": null,
+    "ville": null,
+    "employes": {}
+}];

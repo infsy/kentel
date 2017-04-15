@@ -1,0 +1,16 @@
+{# src/Nurun/RhBundle/Resources/views/ConseillerCompetences/add.html.twig #}
+
+{% extends "NurunRhBundle::layout.html.twig" %}
+
+{% block title %}
+  Ajouter une expertise - {{ parent() }}
+{% endblock %}
+
+{% block body %}
+
+  <h2>Ajouter une expertise</h2>
+
+  {{ include("NurunRhBundle:ConseillerCompetence:form.html.twig") }}
+
+<h4>Rappel : les niveaux à choisir pour les méthodologies et technologies sont en nombre de projets, tandis que les langages se définissent par années d'expérience.</h4>
+{% endblock %}

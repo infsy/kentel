@@ -1,0 +1,30 @@
+{# src/Nurun/NurunSystemBundle/Resources/views/Admin/editUserForm.html.twig #}
+
+
+<div class="row" style="padding:10px 15px;">
+    <div class="col-xs-12">
+        <br>
+        {{ form_start(form, {'attr': {'class': ''}}) }}
+        {{ form_errors(form) }}
+
+        {#<div class="form-group form-court">#}
+            {#{{ form_widget(form.changePhoto, {'attr': {'class': '' }}) }}#}
+            {#{{ form_label(form.changePhoto, 'Changer photo', {'label_attr': {'class': ''}}) }}#}
+            {#{{ form_errors(form.changePhoto, {'attr': {'class': ''}}) }}#}
+        {#</div>#}
+
+        <div class="form-group form-court">
+            {{ form_label(form.roles, 'roles'|trans, {'label_attr': {'class': ''}}) }}
+            <div class="txt-info form-court">
+                {{ form_widget(form.roles, {'attr': {'class': 'txt-info', 'rows': '4'}}) }}
+            </div>
+        </div>
+        <div class="form-group form-court" style="margin-top:36px;">
+            {{ form_widget(form.save,  {'attr': {'class': 'blue-btn'}}) }}
+        </div>
+
+    </div>
+
+    {{ form_end(form) }}
+
+</div>

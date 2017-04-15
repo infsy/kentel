@@ -1,0 +1,53 @@
+{# src/Nurun/RhBundle/Resources/view/Conseiller/view.html.twig #}
+
+{% extends "NurunRhBundle::layout.html.twig" %}
+
+{% block title %}
+  Lecture des conseillers d'un Gestionnaire - {{ parent() }}
+{% endblock %}
+
+{% block rh_body %}
+
+    {# On vérifie qu'une image soit bien associée à l'annonce #}
+{% if rdp.photo is not null %}
+    <img src="data:image/jpg;base64,{{ rdp.photo }}" alt="" />{% endif %}
+<h2>{{ rdp.nom|capitalize }}</h2>
+  <i>{{ rdp.prenom }}, embauché le {{ rdp.dateArrivee|date('d/m/Y') }}</i>
+
+  <div class="well">
+    {{ rdp.nbreHeures }}
+  </div>
+
+  <h2>Liste des ressources</h2>
+
+  <ul>
+    {% for conseillerRdp in conseillersRdp %}
+      <li>
+        <a href="{{ path('nurun_rh_view', {'id': conseillerRdp.conseiller.id}) }}">
+          {{ conseillerRdp.conseiller.prenom }} {{ conseillerRdp.conseiller.nom }}
+        </a>
+        
+{#     remplir avec détail mandat et chargé de projet   #}
+      </li>
+    {% else %}
+      <li>Pas (encore !) de ressources</li>
+    {% endfor %}
+  </ul>
+  
+  
+  <p>
+    <a href="{{ path('nurun_rdp_home') }}" class="btn btn-default">
+      <i class="glyphicon glyphicon-chevron-left"></i>
+      Retour à la liste
+    </a>
+    <a href="{{ path('nurun_rh_edit', {'id': rdp.id}) }}" class="btn btn-default">
+      <i class="glyphicon glyphicon-edit"></i>
+      Modifier le conseiller
+    </a>
+    <a href="{{ path('nurun_rh_delete', {'id': rdp.id}) }}" class="btn btn-danger">
+      <i class="glyphicon glyphicon-trash"></i>
+      Supprimer le conseiller
+    </a>
+  </p>
+
+{% endblock %}

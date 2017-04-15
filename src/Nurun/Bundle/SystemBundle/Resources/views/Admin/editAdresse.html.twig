@@ -1,0 +1,24 @@
+{# src/Nurun/SystemBundle/Resources/view/Admin/editAdresse.html.twig    #}
+
+{% extends "NurunRhBundle::layout.html.twig" %}
+
+{% block title %}
+    {{ parent () }} - Édition d'une adresse
+{% endblock %}
+
+{% block rh_body %}
+    <div class="row zone-titre">
+        <h2 class="titre-page">Modifier l'adresse <br>{{ adresse.numeroAdresse }}, {{ adresse.ligne1Adresse }}</h2>
+    </div>
+
+    <div class="col-xs-6">
+        {% include "NurunSystemBundle:Admin:adresseForm.html.twig" %}
+    </div>
+{% endblock %}
+
+{% block javascriptsPage %}
+  {% include "::webjs/jquery.dataTables.html.twig" %}
+  <script src="{{ asset('js/data-tables/dataTables.responsive.min.js') }}"></script>
+  <script src="{{ asset('js/data-tables/dataTables.bootstrap.min.js') }}"></script>
+  <script src="{{ asset('js/table.js') }}"></script>
+{% endblock %}

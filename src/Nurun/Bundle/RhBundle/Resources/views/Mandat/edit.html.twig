@@ -1,0 +1,20 @@
+{# src/Nurun/RhBundle/Resources/views/Mandat/edit.html.twig #}
+
+{% extends "NurunRhBundle::layout.html.twig" %}
+
+{% block title %}
+  Modifier un mandat - {{ parent() }}
+{% endblock %}
+
+{% block rh_body %}
+
+  <h2>Modifier un mandat</h2>
+
+  {{ include("NurunRhBundle:Mandat:form.html.twig") }}
+
+  <p>
+    Vous éditez un mandat déjà existant, merci de vérifier vos changements avant validation.
+  </p>
+
+
+{% endblock %}

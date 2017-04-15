@@ -1,0 +1,14 @@
+{# src/Nurun/RhBundle/Resources/view/BesoinAffectation/email.html.twig #}
+
+<h1> {{ action }} d'un besoin d'affectation<br>
+<h3> Besoin {{ besoin.prioriteBesoin.priorite }} d'un profil {{ besoin.profil.profil }}
+</h3>
+<hr>
+<ul>
+    <li>Numéro du besoin : <a href="{{ url('nurun_affectation_besoin_view', {'id': besoin.id}) }}">{{ besoin.id }}</a></li>
+    <li>Type du besoin : {{ besoin.typeBesoin.type }}</li>
+    <li>Client visé : {{ besoin.client.acronyme }}</li>
+    <li>Contexte du besoin : {{ besoin.contexte }}</li>
+</ul>
+<hr>
+Auteur : <a href="mailto:{{ user.email }}">{{ user.username }}</a>

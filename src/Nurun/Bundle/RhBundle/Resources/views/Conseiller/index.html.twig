@@ -1,0 +1,197 @@
+{# src/Nurun/RhBundle/Resources/views/Conseiller/index.html.twig #}
+
+{% extends "NurunRhBundle::layout.html.twig" %}
+
+{% block title %}
+  Liste des conseillers - {{ parent() }}
+{% endblock %}
+
+{% block rh_body %}
+  {% if mode == "RGE" %}
+    <h2>Mes ressources</h2>
+  {% else %}
+    <h2>Liste des conseillers</h2>
+  {% endif %}
+  <a href="{{ path('nurun_conseiller_add') }}" class="btn btn-primary">
+    <i class="glyphicon glyphicon-plus"></i>
+    Ajouter conseiller
+  </a>
+  {% if is_granted('ROLE_ADMIN') %}
+  <a href="{{ path('nurun_conseiller_export') }}" class="btn btn-primary">
+    <i class="glyphicon glyphicon-floppy-save"></i>
+    Exporter en XLS
+  </a>
+  {% endif %}
+
+  {% if is_granted('ROLE_GESTION') %}
+    {% if viewAll is null %}
+      <a href="{{ path('nurun_conseiller_index', {'viewAll': '1'}) }}" class="btn btn-primary" style="float: right; background-color: #99cc33; border-color: #99cc33;">
+        Voir tous les conseillers
+      </a>
+    {% elseif viewAll == 1 %}
+      <a href="{{ path('nurun_conseiller_index') }}" class="btn btn-primary" style="float: right; background-color: #99cc33; border-color: #99cc33;">
+        Retour aux conseillers actifs
+      </a>
+    {% endif %}
+  {% endif %}
+  <div id="message" style="margin-top: 5px;">
+    <!-- Pour pour écrire des notifications -->
+  </div>
+  <table id="listConseillers" class="display nowrap" cellspacing="0" width="100%">
+    <thead>
+      <tr>
+        <th>Prénom</th>
+        <th>Nom</th>
+        <th>Profil</th>
+        <th>Secteur <input type="text" class="form-control table-control"/></th>
+        <th>Poste</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+
+      <!--début de la boucle-->
+    {% for conseiller in conseillers if viewAll is null and conseiller.isDeleted == 0 or viewAll == 1 %}
+      <tr id="row{{ conseiller.id }}">
+        <td>{{ conseiller.prenom }}</td>
+        <td>{{ conseiller.nom }}</td>
+        {% if conseiller.profil is not null %}
+          <td>{{ conseiller.profil }}</td>
+        {% else %}
+          <td>Pas de profil attribué</td>
+        {% endif %}
+      {% if conseiller.vicePresidence is not null %}
+        <td>{{ conseiller.vicePresidence.acronyme }}</td>
+      {% else %}
+        <td>Secteur inconnu</td>
+      {% endif %}
+        {% if conseiller.poste is not null %}
+          <td>{{ conseiller.poste }}</td>
+        {% else %}
+          <td>Pas de poste attribué</td>
+        {% endif %}
+        <td>
+          <a href="{{ path('nurun_conseiller_view', {'id': conseiller.id}) }}" class="bt-table" title="Plus de détails" data-hover="tooltip"><span class="glyphicon glyphicon-search"></span></a>
+          {% if is_granted('ROLE_GESTION') %}
+            {% if conseiller.isDeleted %}
+              <a id="actionBtn{{ conseiller.id }}" href="#" data-hover="tooltip" role="button" data-toggle="modal" data-toggle="tooltip" class="bt-table" data-target="#restaurer_conseiller{{ conseiller.id }}" title="Restaurer le conseiller"><span class="glyphicon glyphicon-repeat"></span></a>
+            {% else %}
+              <a id="actionBtn{{ conseiller.id }}" href="#" data-hover="tooltip" role="button" data-toggle="modal" data-toggle="tooltip" class="bt-table red-btn" data-target="#supprimer_conseiller{{ conseiller.id }}" title="Supprimer le conseiller"><span class="glyphicon glyphicon-remove"></span></a>
+            {% endif %}
+            <div class="modal fade" id="supprimer_conseiller{{ conseiller.id }}" tabindex="-1" role="dialog" aria-labelledby="Supprimer le conseiller">
+              <div class="modal-dialog modal-md" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Supprimer le conseiller?</h4>
+                  </div>
+                  <div class="modal-body">
+                    <div class="row" style="padding:10px 15px;">
+                      <div class="col-xs-12">
+                        <a type="button" class="btn btn-primary" urlOption="{{ conseiller.id }}" action="suppression">
+                          Oui
+                        </a>
+                        <button type="button" class="btn btn-primary-red" data-dismiss="modal" aria-label="Close">
+                          Non
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="modal fade" id="restaurer_conseiller{{ conseiller.id }}" tabindex="-1" role="dialog" aria-labelledby="Restaurer le conseiller">
+              <div class="modal-dialog modal-md" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Restaurer le conseiller?</h4>
+                  </div>
+                  <div class="modal-body">
+                    <div class="row" style="padding:10px 15px;">
+                      <div class="col-xs-12">
+                        <a type="button" class="btn btn-primary" urlOption="{{ conseiller.id }}" action="restauration">
+                          Oui
+                        </a>
+                        <button type="button" class="btn btn-primary-red" data-dismiss="modal" aria-label="Close">
+                          Non
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          {% endif %}
+        </td>
+      </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+
+  <script>
+    $(document).ready(function() {
+      $(".btn-primary").click(function () {
+        var conseillerId = $(this).attr("urlOption");
+        var action = $(this).attr("action");
+
+        if(action == 'suppression') {
+          var url = "{{ path('nurun_conseiller_delete', {'id': 'conseillerId'}) }}";
+          url = url.replace("conseillerId", conseillerId);
+
+          $.ajax({
+            url: url,
+            type: "POST",
+            success: function() { 
+            },
+
+            error: function(XMLHttpRequest, textStatus, errorThrown)
+            {
+                alert('Error: ' +  errorThrown);
+            }
+          });
+          $("#actionBtn"+conseillerId).find('span').removeClass('glyphicon-remove');
+          $("#actionBtn"+conseillerId).find('span').addClass('glyphicon-repeat');
+          $("#actionBtn"+conseillerId).removeClass('red-btn');
+          $("#actionBtn"+conseillerId).attr('data-target', '#restaurer_conseiller'+conseillerId);
+          $("#actionBtn"+conseillerId).attr('data-original-title', "Restaurer le conseiller");
+
+          $("#message").html("Conseiller archivé");
+          $("#message").css('color', 'red');
+
+          $('#supprimer_conseiller'+conseillerId).modal('hide');
+          {% if viewAll is null %}
+            $("#row"+conseillerId).hide();
+          {% endif %}
+        }
+        else if(action == 'restauration') {
+          var url = "{{ path('nurun_conseiller_restore', {'id': 'conseillerId'}) }}";
+          url = url.replace("conseillerId", conseillerId);
+
+          $.ajax({
+            url: url,
+            type: "POST",
+            success: function() { 
+            },
+
+            error: function(XMLHttpRequest, textStatus, errorThrown)
+            {
+                alert('Error: ' +  errorThrown);
+            }
+          });
+          $("#actionBtn"+conseillerId).find('span').removeClass('glyphicon-repeat');
+          $("#actionBtn"+conseillerId).find('span').addClass('glyphicon-remove');
+          $("#actionBtn"+conseillerId).addClass('red-btn');
+          $("#actionBtn"+conseillerId).attr('data-target', '#supprimer_conseiller'+conseillerId);
+          $("#actionBtn"+conseillerId).attr('data-original-title', "Supprimer le conseiller");
+
+          $("#message").html("Conseiller restauré");
+          $("#message").css('color', '#27a5c3');
+
+          $('#restaurer_conseiller'+conseillerId).modal('hide');
+        }
+      });     
+    });
+  </script>
+
+{% endblock %}

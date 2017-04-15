@@ -1,0 +1,104 @@
+{# src/Nurun/SystemBundle/Resources/view/Admin/competences.html.twig #}
+
+{% extends "NurunRhBundle::layout.html.twig" %}
+
+{% block title %}
+    {{ parent () }} - Gestion des compétences
+{% endblock %}
+
+{% block rh_body %}
+    <div class="row zone-titre">
+    
+        <h2 class="titre-page">Gestion des compétences</h2>
+
+        {% if is_granted('ROLE_ROOT') %}
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ajouter_competence">
+                <i class="glyphicon glyphicon-plus"></i>
+                Ajouter une compétence
+            </button>
+            <a href="{{ path('nurun_admin_typeCompetences') }}" type="button" class="btn btn-primary" style="float:right;">
+                Modifier les types de compétence
+            </a>
+        {% endif %}
+    </div>
+
+    <table id="competenceList" class="display nowrap" cellspacing="0" width="100%">
+        <thead>
+            <tr>
+                <th>Nom</th>
+                <th>Description</th>
+                <th>Type</th>
+                <th></th>
+            </tr>
+        </thead>
+
+        {% if competenceList|length > 0 %}
+            <tbody>
+                {% for competence in competenceList %}
+                    <tr>
+                        <td>{{ competence.competence }}</td>
+                        <td>{{ competence.description }}</td>
+                        <td>
+                            {% if competence.type is not null %}
+                                {{ competence.type.type }}
+                            {% endif %}
+                        </td>
+                        <td>
+                            <a href="{{ path('nurun_admin_competence_edit', {'competenceId':  competence.id} ) }}"  data-toggle="tooltip"  class="bt-table"  title="modifier la compétence"><span class="glyphicon glyphicon-edit"></span></a>
+                            <a href="#" data-hover="tooltip" role="button" data-toggle="modal" data-toggle="tooltip" class="bt-table" data-target="#supprimer_competence{{ competence.id }}" title="Supprimer la compétence" style="color:red;"><span class="glyphicon glyphicon-remove"></span></a>
+                        </td>
+                    </tr>
+
+                    <div class="modal fade" id="supprimer_competence{{ competence.id }}" tabindex="-1" role="dialog" aria-labelledby="Supprimer la compétence">
+                        <div class="modal-dialog modal-md" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                    <h4 class="modal-title" id="myModalLabel">Supprimer la compétence ?</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="row" style="padding:10px 15px;">
+                                        <div class="col-xs-12">
+                                            <a type="button" class="btn btn-primary" href="{{ path('nurun_admin_competence_remove', {'competenceId':  competence.id} ) }}">
+                                                Oui
+                                            </a>
+                                            <button type="button" class="btn btn-primary" data-dismiss="modal" aria-label="Close" style="background-color:red;border-color:red;">
+                                                Non
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                {% endfor %}
+            </tbody>
+        {% endif %}
+    </table>
+
+    <div class="modal fade" id="ajouter_competence" tabindex="-1" role="dialog" aria-labelledby="Ajouter compétence">
+        <div class="modal-dialog modal-md" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Ajouter une compétence</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row" style="padding:10px 30px;">
+                        <div class="col-xs-12">
+                            {% include "NurunSystemBundle:Admin:competenceForm.html.twig" %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascriptsPage %}
+  {% include "::webjs/jquery.dataTables.html.twig" %}
+  <script src="{{ asset('js/data-tables/dataTables.responsive.min.js') }}"></script>
+  <script src="{{ asset('js/data-tables/dataTables.bootstrap.min.js') }}"></script>
+  <script src="{{ asset('js/table.js') }}"></script>
+{% endblock %}

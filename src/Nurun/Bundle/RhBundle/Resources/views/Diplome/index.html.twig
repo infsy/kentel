@@ -1,0 +1,42 @@
+{# src/Nurun/RhBundle/Resources/views/Diplome/index.html.twig #}
+
+{% extends "NurunRhBundle::layout.html.twig" %}
+
+{% block title %}
+  Liste des diplômes - {{ parent() }}
+{% endblock %}
+
+{% block rh_body %}
+
+  <h2>Liste des diplômes</h2>
+
+<a href="{{ path('nurun_diplome_add') }}" class="btn btn-primary">
+    <i class="glyphicon glyphicon-plus"></i>
+    Ajouter diplôme
+  </a>
+
+  <table id="listDiplomes" class="display nowrap" cellspacing="0" width="100%">
+	  <thead>
+	    <tr>
+	      <th>Niveau</th>
+	      <th>Description</th>
+	      <th>Actions</th>
+	    </tr>
+	  </thead>
+	  <tbody>
+
+	{% for diplome in diplomes %}
+	    <tr>
+	      <td>{{ diplome.niveau }}</td>
+	      <td>{{ diplome.description }}</td>
+	      <td>
+	        <a href="{{ path('nurun_diplome_view', {'id': diplome.id}) }}" class="bt-table" title="Plus de détails" data-hover="tooltip"><span class="glyphicon glyphicon-search"></span></a>
+	      </td>
+	    </tr>
+	{% endfor %}
+
+	  </tbody>
+	</table>
+  {# {{ grid(grid) }} #}
+    
+{% endblock %}

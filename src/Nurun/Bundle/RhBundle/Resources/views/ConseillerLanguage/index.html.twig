@@ -1,0 +1,42 @@
+{# src/Nurun/RhBundle/Resources/views/Mandat/index.html.twig #}
+
+{% extends "NurunRhBundle::layout.html.twig" %}
+
+{% block title %}
+  Liste des languages d'un conseiller - {{ parent() }}
+{% endblock %}
+
+{% block rh_body %}
+
+  <h2>Liste des langues étrangères d'un conseiller</h2>
+    <a href="{{ path('nurun_conseiller_language_add', {'id': id}) }}" class="btn btn-primary">
+        <i class="glyphicon glyphicon-plus"></i>
+        Ajouter une langue étrangère
+    </a>
+  <table id="listConseillerLanguages" class="display nowrap" cellspacing="0" width="100%">
+    <thead>
+      <tr>
+        <th>Langue</th>
+        <th>Niveau</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+
+      <!--début de la boucle-->
+  {% for conseillerLanguage in conseillerLanguages %}
+    <tr>
+        <td>{{ conseillerLanguage.language.language }}</td>
+        <td>{{ conseillerLanguage.niveau.niveau }}</td>
+        <td>
+          <a href="{{ path('nurun_conseiller_language_edit', {'id': conseillerLanguage.id}) }}" class="bt-table" title="Éditer" data-hover="tooltip"><span class="glyphicon glyphicon-edit"></span></a>
+            <a href="{{ path('nurun_conseiller_language_delete', {'id': conseillerLanguage.id}) }}" class="bt-table red-btn" title="Supprimer" data-hover="tooltip"><span class="glyphicon glyphicon-remove"></span></a>
+        </td>
+      </tr>
+      <!--fin de la boucle-->
+  {% endfor %}
+
+    </tbody>
+  </table>
+
+{% endblock %}

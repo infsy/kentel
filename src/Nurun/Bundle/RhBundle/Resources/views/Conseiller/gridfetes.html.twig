@@ -1,0 +1,54 @@
+{# src/Nurun/RhBundle/Resources/views/Conseiller/gridfetes.html.twig #}
+
+{% extends "NurunRhBundle::layout.html.twig" %}
+
+{% block title %}
+  Liste des anniversaires - {{ parent() }}
+{% endblock %}
+
+{% block rh_body %}
+
+  <h2>Liste des conseillers ayant bientôt leur fête </h2>
+  <p>
+  <a href="{{ path('nurun_save_fetes', {'vp': vp, 'dateDeb': dateDeb, 'dateFin': dateFin}) }}" class="btn btn-primary">
+    <i class="glyphicon glyphicon-floppy-save"></i>
+    Exporter en XLS
+  </a>
+  </p>
+  <table id="listFetes" class="display nowrap" cellspacing="0" width="100%">
+    <thead>
+    <tr>
+      <th>Prénom</th>
+      <th>Nom</th>
+      <th>Affectations</th>
+      <th>RGE</th>
+      <th>Date de fête</th>
+    </tr>
+    </thead>
+    <tbody>
+
+    <!--début de la boucle-->
+    {% for conseiller in conseillers %}
+      <tr>
+        <td>{{ conseiller.prenom }}</td>
+        <td>{{ conseiller.nom }}</td>
+        {% if conseiller.affectations is empty %}
+        <td>Pas d'affectations</td>
+        {% else %}
+          <td>
+          {% for affectation in conseiller.affectations %}
+            {{ affectation.mandat.client.acronyme }}
+          {% endfor %}
+          </td>
+        {% endif %}
+      {% if conseiller.rge is empty %}
+        <td>Pas de RGE</td>
+      {% else %}
+        <td>{{ conseiller.rge.rdp.prenom }} {{ conseiller.rge.rdp.nom }}</td>
+      {% endif %}
+        <td>{{ conseiller.dateFete | date("M-d") }}</td>
+      </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}

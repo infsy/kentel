@@ -1,0 +1,24 @@
+nurun_system:
+    resource: "@NurunSystemBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+nurun_rh:
+    resource: "@NurunRhBundle/Resources/config/routing.yml"
+    prefix:   /rh
+    
+main:
+    pattern: /
+    defaults:  { _controller: NurunRhBundle:Conseiller:index, page: 1 }
+    requirements:
+        page: \d*
+
+logout:
+    pattern:   /logout
+    
+fos_user_security:
+    resource: "@FOSUserBundle/Resources/config/routing/security.xml"
+    
+fos_user_profile:
+    resource: "@FOSUserBundle/Resources/config/routing/profile.xml"
+    prefix: /profile

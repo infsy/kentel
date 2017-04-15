@@ -1,0 +1,15 @@
+{# src/Nurun/RhBundle/Resources/views/Mandat/edit.html.twig #}
+
+{% extends "NurunRhBundle::layout.html.twig" %}
+
+{% block title %}
+  Modifier un niveau - {{ parent() }}
+{% endblock %}
+
+{% block rh_body %}
+
+  <h2>Modifier un niveau</h2>
+
+  {{ include("NurunRhBundle:Niveau:form.html.twig") }}
+
+{% endblock %}

@@ -1,0 +1,59 @@
+{# src/Nurun/RhBundle/Resources/views/ConseillerCompetence/index.html.twig #}
+
+{% extends "NurunRhBundle::layout.html.twig" %}
+
+{% block title %}
+  Liste des coordonnateurs d'un mandat - {{ parent() }}
+{% endblock %}
+
+{% block rh_body %}
+
+  <h2>Liste des coordonnateurs rattachés à ce mandat </h2>
+    <a href="{{ path('nurun_mandat_coordonnateurs_add', {'mandatId': id}) }}" class="btn btn-primary">
+        <i class="glyphicon glyphicon-plus"></i>
+        Ajouter des coordonnateurs
+    </a>
+    <a href="{{ path('nurun_mandat_view', {'id': id}) }}" type="button" class="btn btn-primary" style="float:right;">
+        Retour au mandat
+    </a>
+    <div id="message" style="margin-top: 5px;">
+    {% if alerte is defined %}
+        {{ alerte }}
+    {% endif %}
+    </div>
+  <table id="listMandatCoordonnateurs" class="display nowrap" cellspacing="0" width="100%">
+    <thead>
+      <tr>
+        <th>Nom</th>
+        <th>Mandat</th>
+        <th>Secteur</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+
+      <!--début de la boucle-->
+  {% for coordonnateur in coordonnateurs %}
+    <tr>
+        <td>{{ coordonnateur.prenom }} {{ coordonnateur.nom }}</td>
+        <td>
+            {% if coordonnateur.mandats is not null %}
+        {% for mandatC in coordonnateur.mandats %}
+            {% if mandatC is not null and mandatC.deletedAt is null %}
+                {{ mandatC.mandat.identifiant }}-{{ mandatC.mandat.client.acronyme }}
+            {% endif %}
+        {% endfor %}
+                {% endif %}
+        </td>
+        <td>{{ coordonnateur.vicePresidence.acronyme }} </td>
+        <td>
+            <a href="{{ path('nurun_mandat_coordonnateur_delete', {'mandatId': id, 'coordonnateurId': coordonnateur.id }) }}" class="bt-table red-btn" title="Supprimer" data-hover="tooltip"><span class="glyphicon glyphicon-remove"></span></a>
+        </td>
+      </tr>
+      <!--fin de la boucle-->
+  {% endfor %}
+
+    </tbody>
+  </table>
+
+{% endblock %}

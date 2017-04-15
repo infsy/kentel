@@ -1,0 +1,8 @@
+
+services:
+    rh.conseiller:
+        class: Nurun\Bundle\RhBundle\Security\ConseillerVoter
+        tags:
+            - { name: security.voter }
+        # small performance boost
+        public: false

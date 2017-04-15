@@ -1,0 +1,40 @@
+{# src/Nurun/RhBundle/Resources/views/TypeBesoin/index.html.twig #}
+
+{% extends "NurunRhBundle::layout.html.twig" %}
+
+{% block title %}
+  Liste des type de besoin - {{ parent() }}
+{% endblock %}
+
+{% block rh_body %}
+
+  <h2>Liste des type de besoin</h2>
+    <a href="{{ path('nurun_typeBesoin_add') }}" class="btn btn-primary">
+        <i class="glyphicon glyphicon-plus"></i>
+        Ajouter un type
+    </a>
+  <table id="listTypesBesoins" class="display nowrap" cellspacing="0" width="100%">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+
+      <!--début de la boucle-->
+  {% for type in types %}
+    <tr>
+        <td>{{ type.type }}</td>
+        <td>
+          <a href="{{ path('nurun_typeBesoin_edit', {'id': type.id}) }}" class="bt-table" title="Éditer" data-hover="tooltip"><span class="glyphicon glyphicon-edit"></span></a>
+            <a href="{{ path('nurun_typeBesoin_delete', {'id': type.id}) }}" class="bt-table red-btn" title="Supprimer" data-hover="tooltip"><span class="glyphicon glyphicon-remove"></span></a>
+        </td>
+      </tr>
+      <!--fin de la boucle-->
+  {% endfor %}
+
+    </tbody>
+  </table>
+
+{% endblock %}

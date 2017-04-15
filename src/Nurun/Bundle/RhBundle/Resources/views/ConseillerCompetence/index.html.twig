@@ -1,0 +1,45 @@
+{# src/Nurun/RhBundle/Resources/views/ConseillerCompetence/index.html.twig #}
+
+{% extends "NurunRhBundle::layout.html.twig" %}
+
+{% block title %}
+  Liste des expertises d'un conseiller - {{ parent() }}
+{% endblock %}
+
+{% block rh_body %}
+
+  <h2>Liste des expertises d'un conseiller</h2>
+    <a href="{{ path('nurun_conseiller_competence_add', {'id': id}) }}" class="btn btn-primary">
+        <i class="glyphicon glyphicon-plus"></i>
+        Ajouter une expertise
+    </a>
+    <a href="{{ path('nurun_conseiller_view', {'id': id}) }}" type="button" class="btn btn-primary" style="float:right;">
+        Retour au conseiller
+    </a>
+  <table id="listConseillerCompetences" class="display nowrap" cellspacing="0" width="100%">
+    <thead>
+      <tr>
+        <th>Expertise</th>
+        <th>Niveau</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+
+      <!--début de la boucle-->
+  {% for conseillerCompetence in conseillerCompetences %}
+    <tr>
+        <td>{{ conseillerCompetence.competence.competence }}</td>
+        <td>{{ conseillerCompetence.niveau.niveau }}</td>
+        <td>
+          <a href="{{ path('nurun_conseiller_competence_edit', {'id': conseillerCompetence.id}) }}" class="bt-table" title="Éditer" data-hover="tooltip"><span class="glyphicon glyphicon-edit"></span></a>
+            <a href="{{ path('nurun_conseiller_competence_delete', {'id': conseillerCompetence.id}) }}" class="bt-table red-btn" title="Supprimer" data-hover="tooltip"><span class="glyphicon glyphicon-remove"></span></a>
+        </td>
+      </tr>
+      <!--fin de la boucle-->
+  {% endfor %}
+
+    </tbody>
+  </table>
+
+{% endblock %}

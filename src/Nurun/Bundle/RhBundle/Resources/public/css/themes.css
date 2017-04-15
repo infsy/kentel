@@ -1,0 +1,17 @@
+/* ===== Kentel - Themes ===== */
+
+/* Colors */
+
+.nurun-blue {
+    background: #28A5C3;
+}
+
+.nurun-blue:hover, .nurun-blue:focus {
+    background: #19badf;
+}
+
+/* Icons */
+
+.icone-chevron:after {
+    content: url(../images/icone-chevron-blanc.png);      
+}

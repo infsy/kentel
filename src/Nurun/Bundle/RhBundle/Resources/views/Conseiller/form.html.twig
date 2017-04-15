@@ -1,0 +1,228 @@
+{# src/Nurun/RhBundle/Resources/views/Conseiller/form.html.twig #}
+{% block javascriptsPages %}
+    <script src="{{ asset('js/jquery-1.11.2.min.js') }}"></script>
+    <script src="{{ asset('js/jquery-ui.min.js') }}"></script>
+{{ form_javascript(form) }}
+{% endblock %}
+
+{# Cette vue n'hérite de personne, elle sera incluse par d'autres vues #}
+{% for flashMessage in app.session.flashbag.get('notice') %}
+    <div class="flash notice">
+        {{ flashMessage }}
+    </div>
+{% endfor %}
+{# On laisse vide la vue pour l'instant, on la comblera plus tard
+   lorsqu'on saura afficher un formulaire. #}
+<div class="well">
+{# {{ form(form) }}#}
+  {{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
+{#    {% form_theme form 'NurunRhBundle:Form:form_nurun_type.html.twig' %}#}
+    {# Les erreurs générales du formulaire. #}
+    {{ form_errors(form) }}
+
+ {# Affichage et gestion du numEmploye #}
+    <div class="form-group">
+      {{ form_label(form.numEmploye, "Numéro employé *", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+      {{ form_errors(form.numEmploye) }}
+      <div class="col-sm-4">
+        {{ form_widget(form.numEmploye, {'attr': {'class': 'form-control'}}) }}
+      </div>
+    </div>
+      
+    {# Affichage et gestion du prénom #}
+    <div class="form-group">
+      {{ form_label(form.prenom, "Prénom du conseiller *", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+      {{ form_errors(form.prenom) }}
+      <div class="col-sm-4">
+        {{ form_widget(form.prenom, {'attr': {'class': 'form-control'}}) }}
+      </div>
+    </div>
+
+    {# Idem pour nom #}
+    <div class="form-group">
+      {{ form_label(form.nom, "Nom du conseiller *", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+      {{ form_errors(form.nom) }}
+      <div class="col-sm-4">
+        {{ form_widget(form.nom, {'attr': {'class': 'form-control'}}) }}
+      </div>
+    </div>
+      
+    {# Idem pour nom #}
+    <div class="form-group">
+      {{ form_label(form.dateFete, "Date de naissance", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+      {{ form_errors(form.dateFete) }}
+      <div class="col-sm-4">
+        {{ form_widget(form.dateFete, {'attr': {'class': 'form-control'}}) }}
+      </div>
+    </div>
+      
+      {# Idem pour courriel #}
+    <div class="form-group">
+      {{ form_label(form.courriel, "Courriel du conseiller", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+      {{ form_errors(form.courriel) }}
+      <div class="col-sm-4">
+        {{ form_widget(form.courriel, {'attr': {'class': 'form-control'}}) }}
+      </div>
+    </div>
+      
+      {# Idem pour vice-presidence #}
+    <div class="form-group">
+      {{ form_label(form.vicePresidence, "Vice Présidence", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+      {{ form_errors(form.vicePresidence) }}
+      <div class="col-sm-4">
+        {{ form_widget(form.vicePresidence, {'attr': {'class': 'form-control'}}) }}
+      </div>
+    </div>
+      
+      {# Idem pour statut #}
+    <div class="form-group">
+      {{ form_label(form.statut, "Statut d'emploi *", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+      {{ form_errors(form.statut) }}
+      <div class="col-sm-4">
+        {{ form_widget(form.statut, {'attr': {'class': 'form-control'}}) }}
+      </div>
+    </div>
+      
+      {# Idem pour poste #}
+    <div class="form-group">
+      {{ form_label(form.poste, "Poste du conseiller", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+      {{ form_errors(form.poste) }}
+      <div class="col-sm-4">
+        {{ form_widget(form.poste, {'attr': {'class': 'form-control'}}) }}
+      </div>
+    </div>
+
+    {# Idem pour profil #}
+    <div class="form-group">
+        {{ form_label(form.profil, "Profil du conseiller", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+        {{ form_errors(form.profil) }}
+        <div class="col-sm-4">
+            {{ form_widget(form.profil, {'attr': {'class': 'form-control'}}) }}
+        </div>
+    </div>
+      
+      {# Idem pour role #}
+    <div class="form-group">
+      {{ form_label(form.role, "Rôle du conseiller", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+      {{ form_errors(form.role) }}
+      <div class="col-sm-4">
+        {{ form_widget(form.role, {'attr': {'class': 'form-control'}}) }}
+      </div>
+    </div>
+      
+      {# Idem pour domaine #}
+    <div class="form-group">
+      {{ form_label(form.domaine, "Domaine d'emploi", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+      {{ form_errors(form.domaine) }}
+      <div class="col-sm-4">
+        {{ form_widget(form.domaine, {'attr': {'class': 'form-control'}}) }}
+      </div>
+    </div>
+
+ {# Affichage et gestion du telephoneNurun #}
+    <div class="form-group">
+      {{ form_label(form.telephoneNurun, "Téléphone chez Nurun du conseiller", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+      {{ form_errors(form.telephoneNurun) }}
+      <div class="col-sm-4">
+        {{ form_widget(form.telephoneNurun, {'attr': {'class': 'form-control'}}) }}
+      </div>
+    </div>
+
+ {# Affichage et gestion du telephoneMandat #}
+    <div class="form-group">
+      {{ form_label(form.telephoneMandat, "Téléphone en mandat du conseiller", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+      {{ form_errors(form.telephoneMandat) }}
+      <div class="col-sm-4">
+        {{ form_widget(form.telephoneMandat, {'attr': {'class': 'form-control'}}) }}
+      </div>
+    </div>
+
+    {# Affichage et gestion du telephoneAutres #}
+    <div class="form-group">
+        {{ form_label(form.telephoneAutres, "Autres téléphone (paget, cell)", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+        {{ form_errors(form.telephoneAutres) }}
+        <div class="col-sm-4">
+            {{ form_widget(form.telephoneAutres, {'attr': {'class': 'form-control'}}) }}
+        </div>
+    </div>
+      {# Idem pour dateArrivee #}
+    <div class="form-group">
+      {{ form_label(form.dateArrivee, "Date d'arrivée chez Nurun", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+      {{ form_errors(form.dateArrivee) }}
+      <div class="col-sm-4">
+        {{ form_widget(form.dateArrivee, {'attr': {'class': 'form-control'}}) }}
+      </div>
+    </div>
+
+    <div class="form-group">
+        {{ form_label(form.experienceAnnees, "Nbre d'années d'expérience *", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+        {{ form_errors(form.experienceAnnees) }}
+        <div class="col-sm-4">
+            {{ form_widget(form.experienceAnnees, {'attr': {'class': 'form-control'}}) }}
+        </div>
+    </div>
+
+    <div class="form-group">
+        {{ form_label(form.experienceMois, "Nbre de mois d'expérience *", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+        {{ form_errors(form.experienceMois) }}
+        <div class="col-sm-4">
+            {{ form_widget(form.experienceMois, {'attr': {'class': 'form-control'}}) }}
+        </div>
+    </div>
+
+    {# Idem pour dateDepart #}
+    {#<div class="form-group">
+      {{ form_label(form.dateDepart, "Date de départ de Nurun", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+      {{ form_errors(form.dateDepart) }}
+      <div class="col-sm-4">
+        {{ form_widget(form.dateDepart, {'attr': {'class': 'form-control'}}) }}
+      </div>
+    </div>  #}
+      
+    {# Idem pour dateDepart #}
+    <div class="form-group">
+      {{ form_label(form.nbreHeures, "Nombre d'heures payées *", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+      {{ form_errors(form.nbreHeures) }}
+      <div class="col-sm-4">
+        {{ form_widget(form.nbreHeures, {'attr': {'class': 'form-control'}}) }}
+      </div>
+    </div> 
+      
+      {# Idem pour diplomes #}
+  {#  <div class="form-group">
+      {{ form_label(form.diplomes, "Diplômes", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+      {{ form_errors(form.diplomes) }}
+      <div class="col-sm-4">
+        {{ form_widget(form.diplomes, {'attr': {'class': 'form-control'}}) }}
+      </div>
+    </div>
+      #}
+    {# Idem pour actif #}
+    <div class="form-group">
+      {{ form_label(form.actif, "Employé actif *", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+      {{ form_errors(form.actif) }}
+      <div class="col-sm-4">
+        {{ form_widget(form.actif, {'attr': {'class': 'form-control checkboxwidth'}}) }}
+      </div>
+    </div>
+
+    {# Idem pour actif #}
+    <div class="form-group">
+        {{ form_label(form.consigne, "Consigne d'affectation", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+        {{ form_errors(form.consigne) }}
+        <div class="col-sm-4">
+            {{ form_widget(form.consigne, {'attr': {'class': 'form-control'}}) }}
+        </div>
+    </div>	
+
+    {# Pour le retour à la bonne page #}
+    <input type="hidden" name="origine" value="{{ app.request.headers.get('referer') }}">  {{ form_widget(form.save, { 'label': 'Sauvegarder', 'attr': {'class': 'btn btn-primary'}}) }}
+ 
+  {# Génération automatique des champs pas encore écrits.
+     Dans cet exemple, ce serait le champ CSRF (géré automatiquement par Symfony !)
+     et tous les champs cachés (type « hidden »). #}
+  {{ form_rest(form) }}
+  
+  {# Fermeture de la balise <form> du formulaire HTML #}
+  {{ form_end(form) }}
+</div>

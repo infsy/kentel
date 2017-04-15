@@ -1,0 +1,91 @@
+{# src/Nurun/RhBundle/Resources/views/ConseillerMandat/index.html.twig #}
+
+{% extends "NurunRhBundle::layout.html.twig" %}
+
+{% block title %}
+  Liste des affectations - {{ parent() }}
+{% endblock %}
+
+{% block rh_body %}
+
+  <h2>Liste des affectations</h2>
+  <hr>
+  <ul>
+      {#<li>
+          <a>Conseillers en inter-mandat</a>
+        {{ grid(grid0) }}
+      </li>#}
+      <li>
+          <a>Conseillers sans affectation ni proposition</a>  <hr>
+
+        {% embed kitpages_data_grid.grid.default_twig with {'grid': grid00} %}
+            {% block kit_grid_thead_column %}
+            <th>Action</th>
+            {% endblock %}
+
+            {% block kit_grid_tbody_column %}
+                <td><a href="{{ path ("nurun_rh_view", {"id": item['c.id']}) }}">Voir</a></td>
+            {% endblock %}
+        {% endembed %}
+      </li>
+      <li>
+          <a>Conseillers hors clientèle</a>  <hr>
+
+        {% embed kitpages_data_grid.grid.default_twig with {'grid': grid0} %}
+            {% block kit_grid_thead_column %}
+            <th>Action</th>
+            {% endblock %}
+
+            {% block kit_grid_tbody_column %}
+                <td><a href="{{ path ("nurun_affectation_view", {"id": item['l.id']}) }}">Voir</a></td>
+            {% endblock %}
+        {% endembed %}
+      </li>
+      <li>
+          <a>Affectations se terminant ce mois</a>  <hr>
+
+        {% embed kitpages_data_grid.grid.default_twig with {'grid': grid1} %}
+            {% block kit_grid_thead_column %}
+            <th>Action</th>
+            {% endblock %}
+
+            {% block kit_grid_tbody_column %}
+                <td><a href="{{ path ("nurun_affectation_view", {"id": item['l.id']}) }}">Voir</a></td>
+            {% endblock %}
+        {% endembed %}
+      </li>
+      <li>
+          <a>Affectations se terminant le mois prochain</a>  <hr>
+
+        {% embed kitpages_data_grid.grid.default_twig with {'grid': grid2} %}
+            {% block kit_grid_thead_column %}
+            <th>Action</th>
+            {% endblock %}
+
+            {% block kit_grid_tbody_column %}
+                <td><a href="{{ path ("nurun_affectation_view", {"id": item['l.id']}) }}">Voir</a></td>
+            {% endblock %}
+        {% endembed %}
+      </li>
+      <li>
+          <a>Affectations se terminant dans 2 mois</a>  <hr>
+
+        {% embed kitpages_data_grid.grid.default_twig with {'grid': grid3} %}
+            {% block kit_grid_thead_column %}
+            <th>Action</th>
+            {% endblock %}
+
+            {% block kit_grid_tbody_column %}
+                <td><a href="{{ path ("nurun_affectation_view", {"id": item['l.id']}) }}">Voir</a></td>
+            {% endblock %}
+        {% endembed %}
+      </li>
+  </ul>
+  <p>
+    <a href="{{ path('nurun_affectation_add') }}" class="btn btn-default">
+      <i class="glyphicon glyphicon-plus"></i>
+      Ajouter affectation
+    </a>
+  </p>    
+
+{% endblock %}

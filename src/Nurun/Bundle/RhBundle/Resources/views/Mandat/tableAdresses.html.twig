@@ -1,0 +1,97 @@
+{# src/Nurun/RhBundle/Resources/view/Mandat/tableAdresses.html.twig #}
+
+<table id="listAdresses" class="display nowrap" cellspacing="0" width="100%">
+    <thead>
+      	<tr>
+	        <th>Rue</th>
+	        <th>Code Postal</th>
+			<th>Ville</th>
+			<th>Action</th>
+      	</tr>
+    </thead>
+
+    {% if adresses|length > 0 %}
+      	<tbody>
+      	{% for adresse in adresses %}
+          {#{% if is_granted(action.role) or app.user != user %}#}
+          	{% set found = 0 %}
+          	{% if adresse.mandats|length > 0 %}
+          		{% for mandatInspect in adresse.mandats %}
+            		{% if mandatInspect is not null %}
+            			{% if mandatInspect.id == mandat.id %}
+              			{% set found = 1 %}
+            			{% endif %}
+            		{% endif %}
+          		{% endfor %}
+          	{% endif %}
+
+          	<tr>
+            		<td>{{ adresse.numeroAdresse }}, {{ adresse.ligne1Adresse }}
+						{% if adresse.ligne2Adresse is not empty %}
+							, {{ adresse.ligne2Adresse }}
+						{% endif %}
+						{% if adresse.ligne3Adresse is not empty %}
+							, {{ adresse.ligne3Adresse }}
+						{% endif %}
+					</td>
+            		<td>{{ adresse.codepostal }}</td>
+					<td>{{ adresse.ville }}</td>
+            		<td>
+                		{% if found == 0 %}
+                  		<a data-toggle="tooltip" title="Ajouter l'adresse" class="bt-table" style="color:green" urlOption="{{ adresse.id }}"><span class="glyphicon glyphicon-plus"></span></a>
+                		{% else %}
+                  		<a data-toggle="tooltip" title="Retirer l'adresse" class="bt-table" style="color:red" urlOption="{{ adresse.id }}"><span class="glyphicon glyphicon-minus"></span></a>
+                		{% endif %}
+            		</td>
+          	</tr>
+        {% endfor %}
+     	</tbody>
+    {% endif %}
+</table>
+<script>
+	$(".glyphicon").parent().click(function () 
+	{
+		if($(this).find('span').attr('class') == "glyphicon glyphicon-plus"){
+
+			var adresseId = $(this).attr("urlOption");
+			var url = "{{ path('nurun_mandat_adresse_add', {'mandatId': mandat.id, 'adresseId': 'adresseId' }) }}";
+			url = url.replace("adresseId", adresseId);
+			$.ajax({ 
+				url: url,
+				type: "POST",
+				success: function() { 
+				},  
+				error: function(XMLHttpRequest, textStatus, errorThrown)
+				{
+					alert('Error: ' +  errorThrown);
+				} 
+			}); 
+			$(this).find('span').removeClass('glyphicon-plus'); 
+			$(this).find('span').addClass('glyphicon-minus'); 
+			$(this).css('color', 'red');  
+			$("#message").html("Adresse ajoutée"); 
+			$("#message").css('color', 'green'); 
+		} 
+		else if($(this).find('span').attr('class') == "glyphicon glyphicon-minus"){ 
+			var actionId = $(this).attr("urlOption"); 
+			var url = "{{ path('nurun_mandat_adresse_delete', {'mandatId': mandat.id, 'adresseId': 'adresseId' }) }}"; 
+			url = url.replace("adresseId", adresseId);  
+			$.ajax({ 
+				url: url, 
+				type: "POST", 
+				success: function()
+				{ 
+				},  
+				error: function(XMLHttpRequest, textStatus, errorThrown) 
+				{ 
+					alert('Error: ' +  errorThrown); 
+				} 
+			}); 
+			$(this).find('span').removeClass('glyphicon-minus'); 
+			$(this).find('span').addClass('glyphicon-plus'); 
+			$(this).css('color', 'green');  
+			$("#message").html("Adresse retirée"); 
+			$("#message").css('color', 'red'); 
+		} });
+</script>
+

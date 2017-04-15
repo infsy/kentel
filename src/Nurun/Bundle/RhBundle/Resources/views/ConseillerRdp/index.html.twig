@@ -1,0 +1,27 @@
+{# src/Nurun/RhBundle/Resources/views/Conseiller/index.html.twig #}
+
+{% extends "NurunRhBundle::layout.html.twig" %}
+
+{% block title %}
+  Accueil - {{ parent() }}
+{% endblock %}
+
+{% block rh_body %}
+
+  <h2>Liste des Gestionnaires</h2>
+
+  <ul>
+    {% for rdp in listConseillersRdp %}
+      <li>
+        <a href="{{ path('nurun_rdp_view', {'id': rdp.rdp.id}) }}">
+          {{ rdp.rdp.prenom }} {{ rdp.rdp.nom }}
+        </a>
+        encadre {{ rdp.conseiller.prenom }} {{ rdp.conseiller.nom }},
+        depuis {{ rdp.datedebut|date('d/m/Y') }}
+      </li>
+    {% else %}
+      <li>Pas (encore !) de rdp</li>
+    {% endfor %}
+  </ul>
+
+{% endblock %}

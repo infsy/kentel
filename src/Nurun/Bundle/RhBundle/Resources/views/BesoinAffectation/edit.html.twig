@@ -1,0 +1,23 @@
+{# src/Nurun/RhBundle/Resources/views/BesoinAffectation/edit.html.twig #}
+
+{% extends "NurunRhBundle::layout.html.twig" %}
+
+{% block title %}
+  Modifier un besoin - {{ parent() }}
+{% endblock %}
+
+{% block rh_body %}
+
+  <h2>Modifier un besoin</h2>
+
+  {{ include("NurunRhBundle:BesoinAffectation:form.html.twig") }}
+
+  <p>
+    Vous éditez un besoin existant, merci de vérifier vos changements avant validation.
+  </p>
+
+  <p>
+    
+  </p>
+
+{% endblock %}

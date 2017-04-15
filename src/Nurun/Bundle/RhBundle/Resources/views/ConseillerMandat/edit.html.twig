@@ -1,0 +1,23 @@
+{# src/Nurun/RhBundle/Resources/views/ConseillerMandat/edit.html.twig #}
+
+{% extends "NurunRhBundle::layout.html.twig" %}
+
+{% block title %}
+  Modifier une affectation - {{ parent() }}
+{% endblock %}
+
+{% block rh_body %}
+
+  <h2>Modifier l'affectation<br>{{ affectation.identifiantMandat }}</h2>
+
+  {{ include("NurunRhBundle:ConseillerMandat:formEdit.html.twig") }}
+
+  <p>
+    Vous éditez une affectation existante, merci de vérifier vos changements avant validation.
+  </p>
+
+  <p>
+    
+  </p>
+
+{% endblock %}

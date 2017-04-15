@@ -1,0 +1,176 @@
+{# src/Nurun/RhBundle/Resources/views/ConseillerMandat/form.html.twig #}
+{% block stylesheets %}
+    <link href="{{ asset('css/jquery-ui.css') }}" rel="stylesheet" />
+    <link href="{{ asset('css/jquery-ui.theme.css') }}" rel="stylesheet" />
+    {{ form_stylesheet(form) }}
+{% endblock %}
+
+{% block javascriptsPages %}
+    <script src="{{ asset('js/jquery-1.11.2.min.js') }}"></script>
+    <script src="{{ asset('js/jquery-ui.min.js') }}"></script>
+{{ form_javascript(form) }}
+{% endblock %}
+<style type="text/css">
+  .col-sm-12 {
+    margin-top:5px;
+    margin-bottom:5px;
+  } 
+</style> 
+
+{# Cette vue n'hérite de personne, elle sera incluse par d'autres vues #}
+
+{# On laisse vide la vue pour l'instant, on la comblera plus tard
+   lorsqu'on saura afficher un formulaire. #}
+<div class="well">
+{# {{ form(form) }}#}
+  {{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
+    {# Les erreurs générales du formulaire. #}
+    <div style="color: red; font-weight: bold;">
+      {{ form_errors(form) }}
+    </div>
+    <div id="identifiantMandat" style="display:none;">
+      {{ form_label(form.mandat, "Identifiant du mandat", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+      {{ form_errors(form.mandat) }}
+      <div class="col-sm-3">
+        {{ form_widget(form.mandat, {'attr': {'class': 'form-control'}}) }}
+      </div>
+    </div>
+
+    <div class="col-sm-12" style="display:none;">
+      {{ form_label(form2.conseiller, "Conseiller affecté", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+      {{ form_errors(form2.conseiller) }}
+      <div class="col-sm-3">
+        {{ form_widget(form2.conseiller, {'attr': {'class': 'form-control'}}) }}
+      </div>
+    </div>
+    
+    <div class="col-sm-12">
+      {{ form_label(form.dateDebut, "Date de début de mandat", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+      {{ form_errors(form.dateDebut) }}
+      <div class="col-sm-3">
+        {{ form_widget(form.dateDebut, {'attr': {'class': 'form-control', 'onchange': 'setDateFin($(this).val())'}}) }}
+      </div>
+
+      {{ form_label(form.dateFin, "Date de fin de mandat", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+      {{ form_errors(form.dateFin) }}
+      <div class="col-sm-3">
+        {{ form_widget(form.dateFin, {'attr': {'class': 'form-control'}}) }}
+      </div>
+    </div>
+
+    <div class="col-sm-12">
+      {{ form_label(form.statutAffectation, "Statut affectation", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+      {{ form_errors(form.statutAffectation) }}
+      <div class="col-sm-3">
+        {{ form_widget(form.statutAffectation, {'attr': {'class': 'form-control'}}) }}
+      </div>
+      {{ form_label(form.pourcentage, "Pourcentage", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+      {{ form_errors(form.pourcentage) }}
+      <div class="col-sm-3">
+        {{ form_widget(form.pourcentage, {'attr': {'class': 'form-control'}}) }}
+      </div>
+    </div>
+
+    <div class="col-sm-12">
+      {# Idem pour commentaire #}
+      {{ form_label(form.commentaire, "Commentaire", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+      {{ form_errors(form.commentaire) }}
+      <div class="col-sm-9">
+        {{ form_widget(form.commentaire, {'attr': {'class': 'form-control', 'rows': '3'}}) }}
+      </div>
+    </div>
+
+    <p style="font-weight:bold;">Veuillez sélectionner le/les conseiller(s):<p>
+
+    <table id="conseillerList" class="display nowrap" cellspacing="0" width="100%">
+    <thead>
+      <tr>
+        <th>Prénom</th>
+        <th>Nom</th>
+        <th>Profil</th>
+        <th>Secteur <input type="text" class="form-control table-control"/></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+
+      <!--début de la boucle-->
+    {% for conseiller in conseillerList %}
+      <tr>
+        <td>{{ conseiller.prenom }}</td>
+        <td>{{ conseiller.nom }}</td>
+        {% if conseiller.profil is not null %}
+          <td>{{ conseiller.profil }}</td>
+        {% else %}
+          <td>Pas de profil attribué</td>
+        {% endif %}
+        {% if conseiller.vicePresidence is not null %}
+          <td>{{ conseiller.vicePresidence.acronyme }}</td>
+        {% else %}
+          <td>Secteur inconnu</td>
+        {% endif %}
+        <td><a data-toggle="tooltip" title="ajouter le conseiller" class="bt-table" style="color:green" conseillerId="({{ conseiller.id }})"><span class="glyphicon glyphicon-plus"></span></a></td>
+      </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+
+    
+    {# Pour le bouton, pas de label ni d'erreur, on affiche juste le widget #}
+    {{ form_widget(form.save, {'label': 'Sauvegarder', 'attr': {'class': 'btn btn-primary'}}) }}
+
+    {# Génération automatique des champs pas encore écrits.
+       Dans cet exemple, ce serait le champ CSRF (géré automatiquement par Symfony !)
+       et tous les champs cachés (type « hidden »). #}
+    {{ form_rest(form) }}
+    
+    {# Fermeture de la balise <form> du formulaire HTML #}
+  {{ form_end(form) }}
+</div>
+
+<script>
+  function setDateFin(val){
+    var $dateFin = $('#nurun_bundle_rhbundle_addConseillerMandats_dateFin');
+    $dateFin.val(val);
+  }
+
+  var conseiller = $('#form_conseiller');
+   
+  $(".glyphicon").parent().click(function ()
+  {
+    if($(this).find('span').attr('class') == "glyphicon glyphicon-plus"){
+      var conseillerId = $(this).attr("conseillerId");
+      
+      $(this).attr('data-original-title', 'retirer le conseiller');
+      $(this).css('color', 'red');
+
+      $(this).find('span').removeClass('glyphicon-plus');
+      $(this).find('span').addClass('glyphicon-minus');
+
+      if(conseiller.val() != ""){
+        conseiller.val(conseiller.val()+", "+conseillerId);
+      }
+      else{
+        conseiller.val(conseillerId);
+      }
+    }
+    else if($(this).find('span').attr('class') == "glyphicon glyphicon-minus"){
+      var conseillerId = $(this).attr("conseillerId");
+
+      $(this).attr('data-original-title', 'ajouter le conseiller');
+      $(this).css('color', 'green');
+
+      $(this).find('span').removeClass('glyphicon-minus');
+      $(this).find('span').addClass('glyphicon-plus');
+
+      var foundAt = conseiller.val().search(conseillerId);
+      var length = conseillerId.length;
+      if(foundAt != -1){
+        conseiller.val(conseiller.val().replace(conseillerId, ""));
+      }
+      else{
+        //this shouldn't happen
+      }
+    }
+  });
+</script>

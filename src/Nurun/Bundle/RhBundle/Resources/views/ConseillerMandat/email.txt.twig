@@ -1,0 +1,28 @@
+{# src/Nurun/RhBundle/Resources/view/ConseillerMandat/view.html.twig #}
+{#
+{% extends "NurunRhBundle::layout.html.twig" %}
+
+{% block title %}
+  Détails de l'affectation de {{ affectation.conseiller.nom }} sur le 
+  {{ affectation.mandat.client.identifiant }}-{{ affectation.mandat.identifiant }} - {{ parent() }}
+{% endblock %}
+#}
+{% block rh_body %}
+    <h1> {{ action }} d'affectation<br>
+    <h3>{{ affectation.conseiller.prenom }} {{ affectation.conseiller.nom }}
+        sur {{ affectation.mandat.client.acronyme|capitalize }}
+        -{{ affectation.mandat.identifiant }}
+    </h3>
+    <hr>
+    <ul>
+        <li>Description du mandat : {{ affectation.mandat.titre }}</li>
+        <li>Statut de l'affectation : {{ affectation.statutAffectation }}</li>
+        <li>Pourcentage d'affectation : {{ affectation.pourcentage }}%</li>
+        <li>Date de début d'affectation : {{ affectation.dateDebut | date('Y-m-d') }}</li>
+        <li>Date de fin d'affectation : {{ affectation.dateFin | date('Y-m-d') }}</li>
+        <li>Commentaire : {{ affectation.commentaire }}</li>
+        <li>Type d'employé : {{ affectation.conseiller.statut.description }}</li>
+    </ul>
+    <hr>
+    Auteur de la mise à jour : <a href="mailto:{{ auteur }}@nurun.com">{{ auteur }}</a>
+{% endblock %}

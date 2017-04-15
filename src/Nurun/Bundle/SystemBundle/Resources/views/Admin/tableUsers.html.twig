@@ -1,0 +1,55 @@
+<table id="listUsers" class="display nowrap" cellspacing="0" width="100%">
+    <thead>
+    <tr>
+        <th>Nom usager</th>
+        <th>Courriel</th>
+        <th>Secteur</th>
+        <th> </th>
+        <th>Roles</th>
+    </tr>
+    </thead>
+
+    {% if users|length > 0 %}
+    <tbody>
+    {% for user in users %}
+        <tr>
+            <td>{{ user.username }}</td>
+            <td>{{ user.email }}</td>
+            {% if user.vp is not null %}
+                <td>{{ user.vp }}</td>
+            {% else %}
+                <td>Inconnu</td>
+            {% endif %}
+                <td>
+                    <a href="{{ path('nurun_admin_user_role_edit', {'userId': user.id}) }}"  data-toggle="tooltip"  class="bt-table"  title="Modifier le rôle"><span class="glyphicon glyphicon-lock"></span></a>
+                    <a href="{{ path('nurun_admin_user_fonctions', {'userId': user.id}) }}"  data-toggle="tooltip"  class="bt-table"  title="Modifier les fonctions"><span class="glyphicon glyphicon-briefcase"></span></a>
+                    <a href="{{ path('nurun_admin_user_notifications', {'userId': user.id}) }}"  data-toggle="tooltip"  class="bt-table"  title="Modifier les notifications"><span class="glyphicon glyphicon-envelope"></span></a>
+                    <a href="#" data-hover="tooltip" role="button" data-toggle="modal" class="bt-table red-bt-table" data-target="#{{ user.id }}" title="supprimer utilisateur"><span class="glyphicon glyphicon-remove"></span></a>
+                </td>
+            <td>{{ user.roles|join(', ')}}</td>
+        </tr>
+        <div class="modal fade" id="{{ user.id }}" tabindex="-1" role="dialog" aria-labelledby="Supprimer utilisateur">
+            <div class="modal-dialog modal-md" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="myModalLabel">Supprimer utilisateur {{ user.username }} ?</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row" style="padding:10px 15px;">
+                            <div class="col-xs-12">
+                                <a type="button" class="blue-btn" href="{{ path('nurun_admin_remove_user', {'id': user.id }) }}">
+                                    Oui
+                                </a>
+                                <button type="button" class="red-btn" data-dismiss="modal" aria-label="Close">
+                                    Non
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+    {% endif %}
+</table>

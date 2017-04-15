@@ -1,0 +1,744 @@
+# src/Nurun/RhBundle/Resources/config/routing.yml
+
+nurun_accueil:
+    path:      /accueil
+    defaults:  { _controller: NurunRhBundle:Conseiller:accueil }
+    
+nurun_conseiller_index:
+    path:      /
+    defaults:  { _controller: NurunRhBundle:Conseiller:index }
+
+nurun_conseiller_competences:
+    path:      /competences
+    defaults:  { _controller: NurunRhBundle:Conseiller:competences }
+
+nurun_conseiller_export:
+    path:      /conseiller/export
+    defaults:  { _controller: NurunRhBundle:Conseiller:export }
+
+nurun_conseiller_localisation:
+    path:       /conseiller/localisation
+    defaults:   { _controller: NurunRhBundle:Conseiller:localisation }
+
+nurun_conseiller_annuaire:
+    path:      /conseiller/annuaire
+    defaults:  { _controller: NurunRhBundle:Conseiller:indexAnnuaire }
+
+nurun_conseiller_annuaire_export:
+    path:      /conseiller/annuaire/export
+    defaults:  { _controller: NurunRhBundle:Conseiller:exportAnnuaire }
+
+nurun_conseiller_mesressources:
+    path:       /conseiller/mesressources
+    defaults:   { _controller: NurunRhBundle:Conseiller:listMesRessources }
+
+nurun_conseillerdiplome_add:
+    path:      /conseillerdiplome/add/{id}
+    defaults:  { _controller: NurunRhBundle:ConseillerDiplome:add }
+    requirements:
+        id: \d+
+
+nurun_diplome_view:
+    path:      /diplome/view/{id}
+    defaults:  { _controller: NurunRhBundle:Diplome:view }
+    requirements:
+        id: \d+
+        
+nurun_diplome_home:
+    path:      /diplome
+    defaults:  { _controller: NurunRhBundle:Diplome:index }
+        
+nurun_diplome_upload:
+    path:      /diplome/upload
+    defaults:  { _controller: NurunRhBundle:Diplome:upload }    
+
+nurun_diplome_edit:
+    path:      /diplome/edit/{id}
+    defaults:  { _controller: NurunRhBundle:Diplome:edit }
+    requirements:
+        id: \d+
+       
+nurun_diplome_delete:
+    path:      /diplome/delete/{id}
+    defaults:  { _controller: NurunRhBundle:Diplome:delete }
+    requirements:
+        id: \d+
+
+nurun_diplome_add:
+    path:      /diplome/add
+    defaults:  { _controller: NurunRhBundle:Diplome:add }          
+        
+nurun_client_home:
+    path:      /client/
+    defaults:  { _controller: NurunRhBundle:Client:index }
+        
+nurun_client_upload:
+    path:      /client/upload
+    defaults:  { _controller: NurunRhBundle:Client:upload }    
+      
+nurun_client_view:
+    path:      /client/view/{id}
+    defaults:  { _controller: NurunRhBundle:Client:view }
+    requirements:
+        id: \d+
+
+nurun_client_add:
+    path:      /client/add
+    defaults:  { _controller: NurunRhBundle:Client:add }  
+    
+nurun_client_delete:
+    path:      /client/delete/{id}
+    defaults:  { _controller: NurunRhBundle:Client:delete }
+    requirements:
+        id: \d+
+
+nurun_client_edit:
+    path:      /client/edit/{id}
+    defaults:  { _controller: NurunRhBundle:Client:edit }
+    requirements:
+        id: \d+
+        
+nurun_mandat_home:
+    path:      /mandat/
+    defaults:  { _controller: NurunRhBundle:Mandat:index }
+        
+nurun_mandat_view:
+    path:      /mandat/view/{id}
+    defaults:  { _controller: NurunRhBundle:Mandat:view }
+    requirements:
+        id: \d+
+        
+nurun_mandat_add:
+    path:      /mandat/add
+    defaults:  { _controller: NurunRhBundle:Mandat:add }  
+    
+nurun_mandat_upload:
+    path:      /mandat/upload
+    defaults:  { _controller: NurunRhBundle:Mandat:upload }  
+
+nurun_mandat_edit:
+    path:      /mandat/edit/{id}
+    defaults:  { _controller: NurunRhBundle:Mandat:edit }  
+    requirements:
+        id: \d+
+        
+nurun_mandat_delete:
+    path:      /mandat/delete/{id}
+    defaults:  { _controller: NurunRhBundle:Mandat:delete }
+    requirements:
+        id: .+
+
+nurun_mandat_restore:
+    path:      /mandat/restore/{id}
+    defaults:  { _controller: NurunRhBundle:Mandat:restore }
+    requirements:
+        id: .+
+
+nurun_mandat_adresse_delete:
+    path:      /mandat/adresses/delete/{mandatId}/{adresseId}
+    defaults:  { _controller: NurunRhBundle:Mandat:adresseDelete }
+    requirements:
+        mandatId: \d+
+        adresseId: .+
+
+nurun_mandat_adresses_add:
+    path:      /mandat/adresses/add/{mandatId}
+    defaults:  { _controller: NurunRhBundle:Mandat:adressesAdd }
+    requirements:
+        mandatId: .+
+
+nurun_mandat_adresse_add:
+    path:      /mandat/adresse/add/{mandatId}/{adresseId}
+    defaults:  { _controller: NurunRhBundle:Mandat:adresseAdd }
+    requirements:
+        mandatId: .+
+        adressId: .+
+
+nurun_mandat_adresses_index:
+    path:      /mandat/adresses/{id}
+    defaults:  { _controller: NurunRhBundle:Mandat:adressesIndex }
+    requirements:
+        id: .+
+
+nurun_mandat_coordonnateurs_add:
+    path:      /mandat/coordonnateurs/add/{mandatId}
+    defaults:  { _controller: NurunRhBundle:Mandat:coordonnateursAdd }
+    requirements:
+        mandatId: .+
+
+nurun_mandat_coordonnateur_add:
+    path:      /mandat/coordonnateur/add/{mandatId}/{coordonnateurId}
+    defaults:  { _controller: NurunRhBundle:Mandat:coordonnateurAdd }
+    requirements:
+        mandatId: .+
+        coordonnateurId: .+
+
+nurun_mandat_coordonnateur_delete:
+    path:      /mandat/coordonnateur/delete/{mandatId}/{coordonnateurId}
+    defaults:  { _controller: NurunRhBundle:Mandat:coordonnateurDelete }
+    requirements:
+        mandatId: \d+
+        coordonnateurId: .+
+
+nurun_mandat_coordonnateurs_index:
+    path:      /mandat/coordonnateurs/{id}
+    defaults:  { _controller: NurunRhBundle:Mandat:coordonnateursIndex }
+    requirements:
+        id: .+
+
+nurun__mandat_affectations_add:
+    path:      /mandat{mandatId}/addAffectations
+    defaults:  { _controller: NurunRhBundle:Mandat:addAffectations }
+    requirements:
+        mandatId: \d+
+    
+nurun_rdp_home:
+    path:      /rdp/{page}
+    defaults:  { _controller: NurunRhBundle:ConseillerRdp:index, page: 1 }
+    requirements:
+        page: \d*
+
+nurun_rdp_view:
+    path:      /rdp/view/{id}
+    defaults:  { _controller: NurunRhBundle:ConseillerRdp:view }
+    requirements:
+        id: \d+
+
+nurun_rdp_edit:
+    path:      /rdp/edit/{id}
+    defaults:  { _controller: NurunRhBundle:ConseillerRdp:edit }
+    requirements:
+        id: \d+
+    
+nurun_conseiller_view:
+    path:      /conseiller/{id}
+    defaults:  { _controller: NurunRhBundle:Conseiller:view }
+    requirements:
+        id: \d+
+    
+nurun_conseiller_add:
+    path:      /conseiller/add
+    defaults:  { _controller: NurunRhBundle:Conseiller:add }
+    
+nurun_rh_add_conge:
+    path:      /conseiller/addconge/{id}
+    defaults:  { _controller: NurunRhBundle:Conseiller:addConge }
+    requirements:
+        id: \d+
+        
+nurun_conseiller_edit:
+    path:      /conseiller/edit/{id}
+    defaults:  { _controller: NurunRhBundle:Conseiller:edit }
+    requirements:
+        id: \d+
+
+nurun_rh_edit_mandat:
+    path:      /conseiller/editmandat/{id}
+    defaults:  { _controller: NurunRhBundle:Conseiller:editmandat }
+    requirements:
+        id: \d+
+
+nurun_affectation_edit_conge:
+    path:      /conseiller/editconge/{id}
+    defaults:  { _controller: NurunRhBundle:ConseillerMandat:editconge }
+    requirements:
+        id: \d+
+        
+nurun_conseiller_delete:
+    path:      /conseiller/delete/{id}
+    defaults:  { _controller: NurunRhBundle:Conseiller:delete }
+    requirements:
+        id: .+
+
+nurun_conseiller_restore:
+    path:      /conseiller/restore/{id}
+    defaults:  { _controller: NurunRhBundle:Conseiller:restore }
+    requirements:
+        id: .+
+        
+nurun_affectation_view:
+    path:      /conseillermandat/view/{id}
+    defaults:  { _controller: NurunRhBundle:ConseillerMandat:view }
+    requirements:
+        id: \d+
+
+nurun_affectation_home:
+    path:      /conseillermandat
+    defaults:  { _controller: NurunRhBundle:ConseillerMandat:index }
+
+nurun_affectation_export:
+    path:      /conseillermandat/export
+    defaults:  { _controller: NurunRhBundle:ConseillerMandat:exportAffectations }
+
+nurun_affectation_add:
+    path:      /conseillermandat/add/{id}
+    defaults:  { _controller: NurunRhBundle:ConseillerMandat:add, id: 0 }
+    requirements:
+        id: \d+
+
+nurun_affectation_edit:
+    path:      /conseillermandat/edit/{id}
+    defaults:  { _controller: NurunRhBundle:ConseillerMandat:edit }
+    requirements:
+        id: \d+
+        
+nurun_affectation_delete:
+    path:      /conseillermandat/delete/{id}
+    defaults:  { _controller: NurunRhBundle:ConseillerMandat:delete }
+    requirements:
+        id: .+
+
+nurun_affectation_restore:
+    path:      /conseillermandat/restore/{id}
+    defaults:  { _controller: NurunRhBundle:ConseillerMandat:restore }
+    requirements:
+        id: .+
+
+nurun_affectation_delete_conge:
+    path:      /conseillermandat/deleteconge/{id}
+    defaults:  { _controller: NurunRhBundle:ConseillerMandat:deleteconge }
+    requirements:
+        id: \d+
+        
+nurun_affectation_upload:
+    path:      /conseillermandat/upload
+    defaults:  { _controller: NurunRhBundle:ConseillerMandat:upload } 
+
+nurun_commun_choosevp:
+    path:      /commun/choosevp/{target}
+    defaults:  { _controller: NurunRhBundle:Commun:chooseVp } 
+
+nurun_commun_chooseprofil:
+    path:      /commun/chooseprofil/{target}
+    defaults:  { _controller: NurunRhBundle:Commun:chooseProfil }
+
+nurun_commun_choosevpdates:
+    path:      /commun/choosevpdates/{target}
+    defaults:  { _controller: NurunRhBundle:Commun:chooseVpDates } 
+
+nurun_affectation_listvp:
+    path:      /conseillermandat/list/{vp}
+    defaults:  { _controller: NurunRhBundle:ConseillerMandat:listByVp }
+
+nurun_affectation_choosevpdates:
+    path:      /conseillermandat/choosevpdates/{target}
+    defaults:  { _controller: NurunRhBundle:ConseillerMandat:chooseVpDates } 
+
+nurun_affectation_executivevp:
+    path:      /conseillermandat/executive/{vp}/{dateDeb} - {dateFin}
+    defaults:  { _controller: NurunRhBundle:ConseillerMandat:executiveByVp }
+    requirements:
+        dateDeb: .+
+        dateFin: .+
+
+nurun_affectation_executive_export:
+    path:      /conseillermandat/export/executive/{vp}/{dateDeb} - {dateFin}
+    defaults:  { _controller: NurunRhBundle:ConseillerMandat:executiveExport }
+    requirements:
+        dateDeb: .+
+        dateFin: .+
+
+nurun_affectation_details:
+    path:      /conseillermandat/details
+    defaults:  { _controller: NurunRhBundle:ConseillerMandat:details } 
+    
+nurun_affectation_mail:
+    path:      /conseillermandat/mail
+    defaults:  { _controller: NurunRhBundle:ConseillerMandat:mail } 
+
+nurun_affectation_besoin_new:
+    path:      /conseillermandat/besoin/new
+    defaults:  { _controller: NurunRhBundle:BesoinAffectation:Add }
+
+nurun_affectation_besoin_index:
+    path:      /conseillermandat/besoin/
+    defaults:  { _controller: NurunRhBundle:BesoinAffectation:Index }
+
+nurun_affectation_besoin_delete:
+    path:      /conseillermandat/besoin/delete/{id}
+    defaults:  { _controller: NurunRhBundle:BesoinAffectation:Delete }
+    requirements:
+        userId: \d+
+
+nurun_affectation_besoin_view:
+    path:      /conseillermandat/besoin/view/{id}
+    defaults:  { _controller: NurunRhBundle:BesoinAffectation:view }
+    requirements:
+        id: \d+
+
+nurun_affectation_besoin_edit:
+    path:      /conseillermandat/besoin/edit/{id}
+    defaults:  { _controller: NurunRhBundle:BesoinAffectation:edit }
+    requirements:
+        id: \d+
+
+nurun_affectation_besoin_export_all:
+    path:      /conseillermandat/besoin/exportAll
+    defaults:  { _controller: NurunRhBundle:BesoinAffectation:exportAll }
+
+nurun_affectation_besoin_export:
+    path:      /conseillermandat/besoin{besoinId}/export
+    defaults:  { _controller: NurunRhBundle:BesoinAffectation:export }
+    requirements:
+        besoinId: \d+
+
+nurun_list_fetes:
+    path:      /rapports/listfetes/{vp}/{dateDeb}/{dateFin}
+    defaults:  { _controller: NurunRhBundle:Conseiller:rapportfetes }
+
+nurun_list_affectations:
+    path:      /rapports/listaffectations
+    defaults:  { _controller: NurunRhBundle:ConseillerMandat:rapportAffects }    
+
+nurun_list_vacances:
+    path:      /rapports/listvacances/{vp}/{dateDeb}/{dateFin}
+    defaults:  { _controller: NurunRhBundle:ConseillerMandat:rapportVacances }
+
+nurun_save_fetes:
+    path:      /rapports/savefetes/{vp}/{dateDeb}/{dateFin}
+    defaults:  { _controller: NurunRhBundle:Conseiller:saveFetes }
+
+nurun_list_executive:
+    path:      /rapports/executiverapport/{vp}
+    defaults:  { _controller: NurunRhBundle:Conseiller:rapportExecutif }
+
+nurun_list_executive_profil:
+    path:      /rapports/executiverapportprofil/{profilId}
+    defaults:  { _controller: NurunRhBundle:Conseiller:rapportExecutifProfil }
+    requirements:
+        profil: \d+
+
+nurun_admin_users:
+    path:      /admin/users
+    defaults:  { _controller: NurunSystemBundle:Admin:users }
+
+nurun_admin_user_role_edit:
+    path:      /admin/user{userId}/editRole
+    defaults:  { _controller: NurunSystemBundle:Admin:editUserRole }
+    requirements:
+        userId: \d+
+
+nurun_admin_remove_user:
+    path:      /admin/user/remove/{id}
+    defaults:  { _controller: NurunSystemBundle:Admin:removeUser }
+
+nurun_admin_user_notifications:
+    path:      /admin/user{userId}/notifications
+    defaults:  { _controller: NurunSystemBundle:Admin:userNotifications }
+    requirements:
+        userId: \d+
+
+nurun_admin_user_add_notification:
+    path:      /admin/user{userId}/addNotification{actionId}
+    defaults:  { _controller: NurunSystemBundle:Admin:userAddNotification }
+    requirements:
+        userId: \d+
+        actionId: .+
+
+nurun_admin_user_remove_notification:
+    path:      /admin/user{userId}/removeNotification{actionId}
+    defaults:  { _controller: NurunSystemBundle:Admin:userRemoveNotification }
+    requirements:
+        userId: \d+
+        actionId: .+
+
+nurun_admin_user_fonctions:
+    path:      /admin/user{userId}/fonctions
+    defaults:  { _controller: NurunSystemBundle:Admin:userFonctions }
+    requirements:
+        userId: \d+
+
+nurun_admin_user_add_fonction:
+    path:      /admin/user{userId}/addFonction{fonctionId}
+    defaults:  { _controller: NurunSystemBundle:Admin:userAddFonction }
+    requirements:
+        userId: \d+
+        fonctionId: .+
+
+nurun_admin_user_remove_fonction:
+    path:      /admin/user{userId}/removeFonction{fonctionId}
+    defaults:  { _controller: NurunSystemBundle:Admin:userRemoveFonction }
+    requirements:
+        userId: \d+
+        fonctionId: .+
+
+nurun_admin_fonctions:
+    path:      /admin/fonctions
+    defaults:  { _controller: NurunSystemBundle:Admin:fonctions }
+
+nurun_admin_fonction_edit:
+    path:      /admin/fonction{fonctionId}/edit
+    defaults:  { _controller: NurunSystemBundle:Admin:editFonction }
+    requirements:
+        fonctionId: \d+
+
+nurun_admin_fonction_remove:
+    path:      /admin/fonction{fonctionId}/remove
+    defaults:  { _controller: NurunSystemBundle:Admin:removeFonction }
+    requirements:
+        fonctionId: \d+
+
+nurun_admin_fonction_permissions:
+    path:      /admin/fonction{fonctionId}/editPermissions
+    defaults:  { _controller: NurunSystemBundle:Admin:editFonctionPermissions }
+    requirements:
+        fonctionId: \d+
+
+nurun_admin_fonction_add_permission:
+    path:      /admin/fonction{fonctionId}/addPermission{actionId}
+    defaults:  { _controller: NurunSystemBundle:Admin:fonctionAddPermission }
+    requirements:
+        fonctionId: \d+
+        actionId: .+
+
+nurun_admin_fonction_remove_permission:
+    path:      /admin/fonction{fonctionId}/removePermission{actionId}
+    defaults:  { _controller: NurunSystemBundle:Admin:fonctionRemovePermission }
+    requirements:
+        fonctionId: \d+
+        actionId: .+
+
+nurun_admin_adresses:
+    path:      /admin/adresses
+    defaults:  { _controller: NurunSystemBundle:Admin:adresses }
+
+
+nurun_admin_adresse_edit:
+    path:      /admin/adresse{adresseId}/edit
+    defaults:  { _controller: NurunSystemBundle:Admin:editAdresse }
+    requirements:
+        adresseId: \d+
+
+nurun_admin_adresse_remove:
+    path:      /admin/adresse{adresseId}/remove
+    defaults:  { _controller: NurunSystemBundle:Admin:removeAdresse }
+    requirements:
+        competenceId: \d+
+
+nurun_admin_competences:
+    path:      /admin/competences
+    defaults:  { _controller: NurunSystemBundle:Admin:competences }
+
+nurun_admin_competence_edit:
+    path:      /admin/competence{competenceId}/edit
+    defaults:  { _controller: NurunSystemBundle:Admin:editCompetence }
+    requirements:
+        competenceId: \d+
+
+nurun_admin_competence_remove:
+    path:      /admin/competence{competenceId}/remove
+    defaults:  { _controller: NurunSystemBundle:Admin:removeCompetence }
+    requirements:
+        competenceId: \d+
+
+nurun_admin_typeCompetences:
+    path:      /admin/typeCompetences
+    defaults:  { _controller: NurunSystemBundle:Admin:typeCompetences }
+
+nurun_admin_typeCompetence_edit:
+    path:      /admin/typeCompetence{typeCompetenceId}/edit
+    defaults:  { _controller: NurunSystemBundle:Admin:editTypeCompetence }
+    requirements:
+        typeCompetenceId: \d+
+
+nurun_admin_typeCompetence_remove:
+    path:      /admin/typeCompetence{typeCompetenceId}/remove
+    defaults:  { _controller: NurunSystemBundle:Admin:removeTypeCompetence }
+    requirements:
+        typeCompetenceId: \d+
+
+nurun_admin_statutAffectations:
+    path:      /admin/statutAffectations
+    defaults:  { _controller: NurunSystemBundle:Admin:statutAffectations }
+
+nurun_admin_statutAffectation_edit:
+    path:      /admin/statutAffectation{statutAffectationId}/edit
+    defaults:  { _controller: NurunSystemBundle:Admin:editStatutAffectation }
+    requirements:
+        statutAffectationId: \d+
+
+nurun_admin_statutAffectation_remove:
+    path:      /admin/statutAffectation{statutAffectationId}/remove
+    defaults:  { _controller: NurunSystemBundle:Admin:removeStatutAffectation }
+    requirements:
+        statutAffectationId: \d+
+
+nurun_admin_languages:
+    path:      /admin/languages
+    defaults:  { _controller: NurunSystemBundle:Admin:languages }
+
+nurun_admin_language_edit:
+    path:      /admin/language{languageId}/edit
+    defaults:  { _controller: NurunSystemBundle:Admin:editLanguage }
+    requirements:
+        languageId: \d+
+
+nurun_admin_language_remove:
+    path:      /admin/language{languageId}/remove
+    defaults:  { _controller: NurunSystemBundle:Admin:removeLanguage }
+    requirements:
+        languageId: \d+
+
+nurun_admin_actions:
+    path:      /admin/actions
+    defaults:  { _controller: NurunSystemBundle:Admin:actions }
+
+nurun_admin_action_edit:
+    path:      /admin/action{actionId}/edit
+    defaults:  { _controller: NurunSystemBundle:Admin:editAction }
+    requirements:
+        actionId: \d+
+
+nurun_admin_action_remove:
+    path:      /admin/action{actionId}/remove
+    defaults:  { _controller: NurunSystemBundle:Admin:removeAction }
+    requirements:
+        actionId: \d+
+
+nurun_niveau_home:
+    path:      /niveau/
+    defaults:  { _controller: NurunRhBundle:Niveau:index }
+
+nurun_niveau_add:
+    path:      /niveau/add
+    defaults:  { _controller: NurunRhBundle:Niveau:add }
+
+nurun_niveau_delete:
+    path:      /niveau/delete/{id}
+    defaults:  { _controller: NurunRhBundle:Niveau:delete }
+    requirements:
+        id: \d+
+
+nurun_niveau_edit:
+    path:      /niveau/edit/{id}
+    defaults:  { _controller: NurunRhBundle:Niveau:edit }
+    requirements:
+        id: \d+
+
+nurun_typeBesoin_home:
+    path:      /typebesoin/
+    defaults:  { _controller: NurunRhBundle:TypeBesoin:index }
+
+nurun_typeBesoin_add:
+    path:      /typebesoin/add
+    defaults:  { _controller: NurunRhBundle:TypeBesoin:add }
+
+nurun_typeBesoin_delete:
+    path:      /typebesoin/delete/{id}
+    defaults:  { _controller: NurunRhBundle:TypeBesoin:delete }
+    requirements:
+        id: \d+
+
+nurun_typeBesoin_edit:
+    path:      /typebesoin/edit/{id}
+    defaults:  { _controller: NurunRhBundle:TypeBesoin:edit }
+    requirements:
+        id: \d+
+
+nurun_prioriteBesoin_home:
+    path:      /prioritebesoin/
+    defaults:  { _controller: NurunRhBundle:PrioriteBesoin:index }
+
+nurun_prioriteBesoin_add:
+    path:      /prioritebesoin/add
+    defaults:  { _controller: NurunRhBundle:PrioriteBesoin:add }
+
+nurun_prioriteBesoin_delete:
+    path:      /prioritebesoin/delete/{id}
+    defaults:  { _controller: NurunRhBundle:PrioriteBesoin:delete }
+    requirements:
+        id: \d+
+
+nurun_prioriteBesoin_edit:
+    path:      /prioritebesoin/edit/{id}
+    defaults:  { _controller: NurunRhBundle:PrioriteBesoin:edit }
+    requirements:
+        id: \d+
+
+nurun_sourceAffectation_home:
+    path:      /sourceaffectation/
+    defaults:  { _controller: NurunRhBundle:SourceAffectation:index }
+
+nurun_sourceAffectation_add:
+    path:      /sourceaffectation/add
+    defaults:  { _controller: NurunRhBundle:SourceAffectation:add }
+
+nurun_sourceAffectation_delete:
+    path:      /sourceaffectation/delete/{id}
+    defaults:  { _controller: NurunRhBundle:SourceAffectation:delete }
+    requirements:
+        id: \d+
+
+nurun_sourceAffectation_edit:
+    path:      /sourceaffectation/edit/{id}
+    defaults:  { _controller: NurunRhBundle:SourceAffectation:edit }
+    requirements:
+        id: \d+
+
+nurun_conseiller_language_edit:
+    path:     /conseiller/language/edit/{id}
+    defaults: { _controller: NurunRhBundle:ConseillerLanguage:edit }
+    requirements:
+        id: \d+
+
+nurun_conseiller_language_delete:
+    path:     /conseiller/language/delete/{id}
+    defaults: { _controller: NurunRhBundle:ConseillerLanguage:delete }
+    requirements:
+        id: \d+
+
+nurun_conseiller_language_index:
+    path:     /conseiller/language/index/{id}
+    defaults: { _controller: NurunRhBundle:ConseillerLanguage:index }
+    requirements:
+        id: \d+
+
+nurun_conseiller_language_add:
+    path:     /conseiller/language/add/{id}
+    defaults: { _controller: NurunRhBundle:ConseillerLanguage:add }
+    requirements:
+        id: \d+
+
+nurun_conseiller_competence_edit:
+    path:     /conseiller/competence/edit/{id}
+    defaults: { _controller: NurunRhBundle:ConseillerCompetence:edit }
+    requirements:
+        id: \d+
+
+nurun_conseiller_competence_delete:
+    path:     /conseiller/competence/delete/{id}
+    defaults: { _controller: NurunRhBundle:ConseillerCompetence:delete }
+    requirements:
+        id: \d+
+
+nurun_conseiller_competence_index:
+    path:     /conseiller/competence/index/{id}
+    defaults: { _controller: NurunRhBundle:ConseillerCompetence:index }
+    requirements:
+        id: \d+
+
+nurun_conseiller_competence_add:
+    path:     /conseiller/competence/add/{id}
+    defaults: { _controller: NurunRhBundle:ConseillerCompetence:add }
+    requirements:
+        id: \d+
+
+nurun_conseiller_fonction_edit:
+    path:     /conseiller{conseillerId}/fonctions/edit
+    defaults: { _controller: NurunRhBundle:Conseiller:editFonction }
+    requirements:
+        conseillerId: \d+
+
+nurun_conseiller_fonction_add:
+    path:      /conseiller{conseillerId}/addFonction{fonctionId}
+    defaults:  { _controller: NurunRhBundle:Conseiller:addFonction }
+    requirements:
+        fonctionId: .+
+        conseillerId: \d+
+
+nurun_conseiller_fonction_remove:
+    path:      /conseiller{conseillerId}/removeFonction{fonctionId}
+    defaults:  { _controller: NurunRhBundle:Conseiller:removeFonction }
+    requirements:
+        fonctionId: .+
+        conseillerId: \d+

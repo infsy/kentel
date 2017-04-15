@@ -1,0 +1,54 @@
+{# src/Nurun/RhBundle/Resources/views/Mandat/index.html.twig #}
+
+{% extends "NurunRhBundle::layout.html.twig" %}
+
+{% block title %}
+    Liste des niveaux - {{ parent() }}
+{% endblock %}
+
+{% block rh_body %}
+
+    <h2>Liste des niveaux</h2>
+    <a href="{{ path('nurun_niveau_add') }}" class="btn btn-primary">
+        <i class="glyphicon glyphicon-plus"></i>
+        Ajouter niveau
+    </a>
+    <table id="listNiveaux" class="display nowrap" cellspacing="0" width="100%">
+        <thead>
+        <tr>
+            <th>Niveau</th>
+            <th>Description</th>
+            <th>Domaine</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+
+        <!--début de la boucle-->
+        {% for niveau in niveaux %}
+            <tr>
+                <td>{{ niveau.niveau }}</td>
+            {% if niveau.description is not null %}
+                <td>{{ niveau.description }}</td>
+            {% else %}
+                <td></td>
+            {% endif %}
+            {% if niveau.domaine is not null %}
+                <td>{{ niveau.domaine }}</td>
+            {% else %}
+                <td></td>
+            {% endif %}
+                <td>
+                    <a href="{{ path('nurun_niveau_edit', {'id': niveau.id}) }}" class="bt-table" title="Éditer"
+                       data-hover="tooltip"><span class="glyphicon glyphicon-edit"></span></a>
+                    <a href="{{ path('nurun_niveau_delete', {'id': niveau.id}) }}" class="bt-table red-btn"
+                       title="Supprimer" data-hover="tooltip"><span class="glyphicon glyphicon-remove"></span></a>
+                </td>
+            </tr>
+            <!--fin de la boucle-->
+        {% endfor %}
+
+        </tbody>
+    </table>
+
+{% endblock %}

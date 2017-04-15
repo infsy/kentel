@@ -1,0 +1,188 @@
+{# src/Nurun/RhBundle/Resources/views/Mandat/index.html.twig #}
+
+{% extends "NurunRhBundle::layout.html.twig" %}
+
+{% block title %}
+    Liste des mandats - {{ parent() }}
+{% endblock %}
+
+{% block rh_body %}
+
+    <h2>Liste des mandats</h2>
+    {% if is_granted('ROLE_GESTION') %}
+        <a href="{{ path('nurun_mandat_add') }}" class="btn btn-primary">
+            <i class="glyphicon glyphicon-plus"></i>
+            Ajouter mandat
+        </a>
+        {% if viewAll is null %}
+            <a href="{{ path('nurun_mandat_home', {'viewAll': '1'}) }}" class="btn btn-primary" style="float: right; background-color: #99cc33; border-color: #99cc33;">
+                Voir tous les mandats
+            </a>
+        {% elseif viewAll == 1 %}
+            <a href="{{ path('nurun_mandat_home') }}" class="btn btn-primary" style="float: right; background-color: #99cc33; border-color: #99cc33;">
+                Retour aux mandats actifs
+            </a>
+        {% endif %}
+    {% endif %}
+    <div id="message" style="margin-top: 5px;">
+        <!-- Pour pour écrire des notifications -->
+    </div>
+
+    <table id="listMandats" class="display nowrap" cellspacing="0" width="100%">
+        <thead>
+            <tr>
+                <th>Client</th>
+                <th>Identifiant</th>
+                <th>titre</th>
+                <th>Type</th>
+                <th>Mandataire</th>
+                <th>Commentaire</th>
+                <th>CP</th>
+                <th>VP <input type="text" class="form-control table-control"/></th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for mandat in mandats if viewAll is null and mandat.isDeleted == 0 or viewAll == 1 %}
+                <tr id="row{{ mandat.id }}">
+                    <td>{{ mandat.client.acronyme }}</td>
+                    <td>{{ mandat.identifiant }}</td>
+                    <td>{{ mandat.titre }}</td>
+                    <td>{{ mandat.type }}</td>
+                    <td>{{ mandat.mandataire }}</td>
+                    <td>{{ mandat.commentaire }}</td>
+                    <td>{{ mandat.chargeprojet }}</td>
+                    <td>{{ mandat.secteur }}</td>
+                    <td>
+                        {% if mandat.isDeleted == false %}
+                            <a href="{{ path('nurun_mandat_view', {'id': mandat.id}) }}" class="bt-table" title="Plus de détails" data-hover="tooltip"><span class="glyphicon glyphicon-search"></span></a>
+                            <a href="{{ path('nurun__mandat_affectations_add', {'mandatId': mandat.id}) }}" class="bt-table" title="Ajouter des affectations" data-hover="tooltip"><span class="glyphicon glyphicon-plus"></span></a>
+                            <a href="{{ path('nurun_mandat_edit', {'id': mandat.id}) }}" class="bt-table" title="Modifier" data-hover="tooltip"><span class="glyphicon glyphicon-pencil"></span></a>
+                        {% endif %}
+
+                        {% if is_granted('ROLE_GESTION') %}
+                            {% if mandat.isDeleted %}
+                                <a href="{{ path('nurun_mandat_view', {'id': mandat.id}) }}" class="bt-table" title="Plus de détails" data-hover="tooltip"><span class="glyphicon glyphicon-search"></span></a>
+                                <a id="actionBtn{{ mandat.id }}" href="#" data-hover="tooltip" role="button" data-toggle="modal" data-toggle="tooltip" class="bt-table" data-target="#restaurer_mandat{{ mandat.id }}" title="Restaurer le mandat"><span class="glyphicon glyphicon-repeat"></span></a>
+                            {% else %}
+                                <a id="actionBtn{{ mandat.id }}" href="#" data-hover="tooltip" role="button" data-toggle="modal" data-toggle="tooltip" class="bt-table red-btn" data-target="#supprimer_mandat{{ mandat.id }}" title="Supprimer le mandat"><span class="glyphicon glyphicon-remove"></span></a>
+                            {% endif %}
+                            <div class="modal fade" id="supprimer_mandat{{ mandat.id }}" tabindex="-1" role="dialog" aria-labelledby="Supprimer le mandat">
+                                <div class="modal-dialog modal-md" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                            <h4 class="modal-title" id="myModalLabel">Supprimer le mandat?</h4>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="row" style="padding:10px 15px;">
+                                                <div class="col-xs-12">
+                                                    <a type="button" class="btn btn-primary" urlOption="{{ mandat.id }}" action="suppression">
+                                                        Oui
+                                                    </a>
+                                                    <button type="button" class="btn btn-primary-red" data-dismiss="modal" aria-label="Close">
+                                                        Non
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal fade" id="restaurer_mandat{{ mandat.id }}" tabindex="-1" role="dialog" aria-labelledby="Restaurer le mandat">
+                                <div class="modal-dialog modal-md" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                            <h4 class="modal-title" id="myModalLabel">Restaurer le mandat?</h4>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="row" style="padding:10px 15px;">
+                                                <div class="col-xs-12">
+                                                    <a type="button" class="btn btn-primary" urlOption="{{ mandat.id }}" action="restauration">
+                                                        Oui
+                                                    </a>
+                                                    <button type="button" class="btn btn-primary-red" data-dismiss="modal" aria-label="Close">
+                                                        Non
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endif %}
+
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <script>
+        $(document).ready(function() {
+            $(".btn-primary").click(function () {
+                var mandatId = $(this).attr("urlOption");
+                var action = $(this).attr("action");
+
+                if(action == 'suppression') {
+                    var url = "{{ path('nurun_mandat_delete', {'id': 'mandatId'}) }}";
+                    url = url.replace("mandatId", mandatId);
+
+                    $.ajax({
+                        url: url,
+                        type: "POST",
+                        success: function() { 
+                        },
+
+                        error: function(XMLHttpRequest, textStatus, errorThrown)
+                        {
+                            alert('Error: ' +  errorThrown);
+                        }
+                    });
+                    $("#actionBtn"+mandatId).find('span').removeClass('glyphicon-remove');
+                    $("#actionBtn"+mandatId).find('span').addClass('glyphicon-repeat');
+                    $("#actionBtn"+mandatId).removeClass('red-btn');
+                    $("#actionBtn"+mandatId).attr('data-target', '#restaurer_mandat'+mandatId);
+                    $("#actionBtn"+mandatId).attr('data-original-title', "Restaurer le mandat");
+
+                    $("#message").html("Mandat archivé");
+                    $("#message").css('color', 'red');
+
+                    $('#supprimer_mandat'+mandatId).modal('hide');
+                    {% if viewAll is null %}
+                        $("#row"+mandatId).hide();
+                    {% endif %}
+                }
+                else if(action == 'restauration') {
+                    var url = "{{ path('nurun_mandat_restore', {'id': 'mandatId'}) }}";
+                    url = url.replace("mandatId", mandatId);
+
+                    $.ajax({
+                        url: url,
+                        type: "POST",
+                        success: function() { 
+                        },
+
+                        error: function(XMLHttpRequest, textStatus, errorThrown)
+                        {
+                            alert('Error: ' +  errorThrown);
+                        }
+                    });
+                    $("#actionBtn"+mandatId).find('span').removeClass('glyphicon-repeat');
+                    $("#actionBtn"+mandatId).find('span').addClass('glyphicon-remove');
+                    $("#actionBtn"+mandatId).addClass('red-btn');
+                    $("#actionBtn"+mandatId).attr('data-target', '#supprimer_mandat'+mandatId);
+                    $("#actionBtn"+mandatId).attr('data-original-title', "Supprimer le mandat");
+
+                    $("#message").html("Mandat restauré");
+                    $("#message").css('color', '#27a5c3');
+
+                    $('#restaurer_mandat'+mandatId).modal('hide');
+                }
+            });     
+        });
+    </script>
+
+{% endblock %}

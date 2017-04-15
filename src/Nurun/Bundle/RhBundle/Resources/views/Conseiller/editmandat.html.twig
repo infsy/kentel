@@ -1,0 +1,16 @@
+{# src/Nurun/RhBundle/Resources/views/Conseiller/editmandat.html.twig #}
+
+{% extends "NurunRhBundle::layout.html.twig" %}
+
+{% block title %}
+  Ajouter une affectation - {{ parent() }}
+{% endblock %}
+
+{% block rh_body %}
+
+  <h2>Ajouter une affectation</h2>
+
+  {{ include("NurunRhBundle:ConseillerMandat:form.html.twig") }}
+
+
+{% endblock %}

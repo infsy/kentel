@@ -1,0 +1,27 @@
+# This are the default paramaters needed to run this application
+parameters:
+    database_driver: pdo_mysql
+    database_host: 127.0.0.1
+    database_port: 3306
+    database_name: ~
+    database_user: ~
+    database_password: ~
+    locale: en
+    secret: rfjv5vrgèporkgdkvèdmvf
+    debug_toolbar: ~
+    debug_redirects: false
+    use_assetic_controller: true
+    ldap_user: ~
+    ldap_domainName: ~
+    ldap_domainNameShort: ~
+    ldap_password: ~
+    ldap_host: ~
+    ldap_port: ~
+    ldap_baseDn: ~
+    ldap_useSsl: ~
+    mail_user: ~
+    mail_password: ~
+    mail_transport: ~
+    mail_auth: ~
+    mail_host: ~
+    google_api_key: ~

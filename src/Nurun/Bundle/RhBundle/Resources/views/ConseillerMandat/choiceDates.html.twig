@@ -1,0 +1,85 @@
+{# src/Nurun/RhBundle/Resources/views/ConseillerMandat/choiceDates.html.twig #}
+
+{% extends "NurunRhBundle::layout.html.twig" %}
+
+{% block title %}
+  Choix de la VP et de la période - {{ parent() }}
+{% endblock %}
+
+{% block rh_body %}
+
+  <h2>Choix de la vice-présidence et de la période</h2>
+    
+  {% block javascriptsPages %}
+      <script src="{{ asset('js/jquery-1.11.2.min.js') }}"></script>
+      <script src="{{ asset('js/jquery-ui.min.js') }}"></script>
+      <script src="{{ asset('js/jquery.selectric.min.js') }}"></script>
+  {{ form_javascript(form) }}
+  {% endblock %}
+    <div class="well">
+      {{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
+        {{ form_errors(form) }}
+
+        <div class="form-group">
+          {{ form_label(form.Secteur, "Secteur", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+          {{ form_errors(form.Secteur) }}
+          <div class="col-sm-4">
+            {{ form_widget(form.Secteur, {'attr': {'class': 'form-control'}}) }}
+          </div>
+        </div>
+  
+        <div class="form-group">
+          {{ form_label(form.dateDeb, "Date de début", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+          {{ form_errors(form.dateDeb) }}
+          <div class="col-sm-4">
+            {{ form_widget(form.dateDeb, {'attr': {'class': 'form-control', 'onchange': 'setDateFin($(this).val())'}}) }}
+          </div>
+        </div>
+
+        <div class="form-group">
+          {{ form_label(form.dateFin, "Date de fin", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+          <div class="col-sm-4">
+            {{ form_widget(form.dateFin, {'attr': {'class': 'form-control'}}) }}
+            <div style="color: red; margin-top: 5px;">
+              {{ form_errors(form.dateFin, {'attr': {'style': 'color:red'}}) }}
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          {{ form_label(form.affichage, "Format", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+          {{ form_errors(form.pigiste) }}
+          <div class="col-sm-4">
+            {{ form_widget(form.affichage, {'attr': {'style': 'vertical-align: bottom', 'onchange': 'changePigiste($(this).val())'}}) }}
+          </div>
+        </div>
+
+        <div id="pigiste" class="form-group">
+          {{ form_label(form.pigiste, "Inclure pigiste?", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+          {{ form_errors(form.pigiste) }}
+          <div class="col-sm-4">
+            {{ form_widget(form.pigiste, {'attr': {'style': 'vertical-align: bottom'}}) }}
+          </div>
+        </div>        
+
+        {{ form_widget(form.Soumettre, {'attr': {'class': 'btn btn-primary'}}) }}
+        {{ form_rest(form) }}
+          
+      {{ form_end(form) }}
+    </div>
+    <script>
+      function setDateFin(val){
+        var $dateFin = $('#form_dateFin');
+        $dateFin.val(val);
+      }
+      function changePigiste(val){
+        if(val == "bench"){
+          $('#pigiste').show();
+        }
+        else {
+          $('#pigiste').hide();
+        }
+      }
+    </script>
+
+{% endblock %}

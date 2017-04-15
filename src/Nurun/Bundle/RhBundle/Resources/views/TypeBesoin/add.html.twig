@@ -1,0 +1,15 @@
+{# src/Nurun/RhBundle/Resources/views/TypeBesoin/add.html.twig #}
+
+{% extends "NurunRhBundle::layout.html.twig" %}
+
+{% block title %}
+  Ajouter un type de besoin - {{ parent() }}
+{% endblock %}
+
+{% block body %}
+
+  <h2>Ajouter un type de besoin</h2>
+
+  {{ include("NurunRhBundle:TypeBesoin:form.html.twig") }}
+
+{% endblock %}

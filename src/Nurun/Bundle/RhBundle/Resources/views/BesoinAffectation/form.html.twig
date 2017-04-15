@@ -1,0 +1,220 @@
+{# src/Nurun/RhBundle/Resources/views/ConseillerMandat/form.html.twig #}
+{% block stylesheets %}
+    <link href="{{ asset('css/jquery-ui.css') }}" rel="stylesheet" />
+    <link href="{{ asset('css/jquery-ui.theme.css') }}" rel="stylesheet" />
+    {{ form_stylesheet(form) }}
+{% endblock %}
+
+{% block javascriptsPages %}
+    <script src="{{ asset('js/jquery-1.11.2.min.js') }}"></script>
+    <script src="{{ asset('js/jquery-ui.min.js') }}"></script>
+{{ form_javascript(form) }}
+{% endblock %}
+{# Cette vue n'hérite de personne, elle sera incluse par d'autres vues #}
+{# On laisse vide la vue pour l'instant, on la comblera plus tard
+   lorsqu'on saura afficher un formulaire. #}
+<div class="well">
+{# {{ form(form) }}#}
+  {{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
+    {# Les erreurs générales du formulaire. #}
+    {{ form_errors(form) }}
+     {# Idem pour typeBesoin #}
+    <div class="form-group">
+      {{ form_label(form.typeBesoin, "Type de besoin *", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+      {{ form_errors(form.typeBesoin) }}
+      <div class="col-sm-4">
+        {{ form_widget(form.typeBesoin, {'attr': {'class': 'form-control'}}) }}
+      </div>
+    </div>
+      {# Idem pour client #}
+    <div class="form-group">
+      {{ form_label(form.client, "Client *", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+      {{ form_errors(form.client) }}
+      <div class="col-sm-4">
+        {{ form_widget(form.client, {'attr': {'class': 'form-control'}}) }}
+      </div>
+    </div>
+  {# Idem pour mandat #}
+  <div class="form-group" id="mandat">
+    {{ form_label(form.mandat, "Mandat *", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+    {{ form_errors(form.mandat) }}
+    <div class="col-sm-4">
+      {{ form_widget(form.mandat, {'attr': {'class': 'form-control'}}) }}
+    </div>
+  </div>
+      {# Idem pour dateDebut #}
+    <div class="form-group">
+      {{ form_label(form.dateDebut, "Date de début du besoin *", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+      {{ form_errors(form.dateDebut) }}
+      <div class="col-sm-4">
+        {{ form_widget(form.dateDebut, {'attr': {'class': 'form-control'}}) }}
+      </div>
+    </div>
+      {# Idem pour dateFin #}
+    <div class="form-group">
+      {{ form_label(form.dateFin, "Date de fin du besoin *", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+      {{ form_errors(form.dateFin) }}
+      <div class="col-sm-4">
+        {{ form_widget(form.dateFin, {'attr': {'class': 'form-control'}}) }}
+      </div>
+    </div>
+  {# Idem pour dateRequise #}
+  <div class="form-group">
+    {{ form_label(form.dateRequise, "Date Requise *", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+    {{ form_errors(form.dateRequise) }}
+    <div class="col-sm-4">
+      {{ form_widget(form.dateRequise, {'attr': {'class': 'form-control'}}) }}
+    </div>
+  </div>
+      {# Idem pour priorite #}
+    <div class="form-group">
+      {{ form_label(form.prioriteBesoin, "Priorité de la demande *", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+      {{ form_errors(form.prioriteBesoin) }}
+      <div class="col-sm-4">
+        {{ form_widget(form.prioriteBesoin, {'attr': {'class': 'form-control'}}) }}
+      </div>
+    </div>
+    
+      {# Idem pour contexte #}
+    <div class="form-group">
+      {{ form_label(form.contexte, "Contexte", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+      {{ form_errors(form.contexte) }}
+      <div class="col-sm-4">
+        {{ form_widget(form.contexte, {'attr': {'class': 'form-control', 'rows': '3'}}) }}
+      </div>
+    </div>
+
+  {# Idem pour profil demandé #}
+  <div class="form-group">
+    {{ form_label(form.profil, "Profil souhaité", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+    {{ form_errors(form.profil) }}
+    <div class="col-sm-4">
+      {{ form_widget(form.profil, {'attr': {'class': 'form-control'}}) }}
+    </div>
+  </div>
+
+  {# Idem pour niveau compétence #}
+  <div class="form-group">
+    {{ form_label(form.niveauCompetence, "Niveau de compétence souhaité *", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+    {{ form_errors(form.niveauCompetence) }}
+    <div class="col-sm-4">
+      {{ form_widget(form.niveauCompetence, {'attr': {'class': 'form-control'}}) }}
+    </div>
+  </div>
+
+
+  {# Idem pour niveau mobilité #}
+  <div class="form-group">
+    {{ form_label(form.niveauMobilite, "Niveau de mobilité souhaité *", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+    {{ form_errors(form.niveauMobilite) }}
+    <div class="col-sm-4">
+      {{ form_widget(form.niveauMobilite, {'attr': {'class': 'form-control'}}) }}
+    </div>
+  </div>
+
+  {# Idem pour niveau langue #}
+  <div class="form-group">
+    {{ form_label(form.niveauLangue, "Niveau de langue souhaité *", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+    {{ form_errors(form.niveauLangue) }}
+    <div class="col-sm-4">
+      {{ form_widget(form.niveauLangue, {'attr': {'class': 'form-control'}}) }}
+    </div>
+  </div>
+
+  {# Idem pour commentaire #}
+  <div class="form-group">
+    {{ form_label(form.commentaire, "Commentaire", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+    {{ form_errors(form.commentaire) }}
+    <div class="col-sm-4">
+      {{ form_widget(form.commentaire, {'attr': {'class': 'form-control', 'rows': '3'}}) }}
+    </div>
+  </div>
+
+
+  {# Idem pour proposition affectation #}
+  <div class="form-group">
+    {{ form_label(form.propositionAffectation, "Conseiller proposé", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+    {{ form_errors(form.propositionAffectation) }}
+    <div class="col-sm-4">
+      {{ form_widget(form.propositionAffectation, {'attr': {'class': 'form-control'}}) }}
+    </div>
+  </div>
+
+  {# Idem pour source affectation #}
+  <div class="form-group">
+    {{ form_label(form.sourceAffectation, "Source de l'affectation", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+    {{ form_errors(form.sourceAffectation) }}
+    <div class="col-sm-4">
+      {{ form_widget(form.sourceAffectation, {'attr': {'class': 'form-control'}}) }}
+    </div>
+  </div>
+
+
+  {# Idem pour statut affectation #}
+  <div class="form-group">
+    {{ form_label(form.statutAffectation, "Statut du besoin *", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+    {{ form_errors(form.statutAffectation) }}
+    <div class="col-sm-4">
+      {{ form_widget(form.statutAffectation, {'attr': {'class': 'form-control'}}) }}
+    </div>
+  </div>
+
+  {# Idem pour penalite #}
+  <div class="form-group">
+    {{ form_label(form.penalite, "Pénalité", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+    {{ form_errors(form.penalite) }}
+    <div class="col-sm-4">
+      {{ form_widget(form.penalite, {'attr': {'style': 'vertical-align: bottom'}}) }}
+    </div>
+  </div>
+
+  {# Idem pour budget #}
+  <div class="form-group">
+    {{ form_label(form.budget, "Budget", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+    {{ form_errors(form.budget) }}
+    <div class="col-sm-4">
+      {{ form_widget(form.budget, {'attr': {'class': 'form-control', 'rows': '3'}}) }}
+    </div>
+  </div>
+
+  {# Pour le bouton, pas de label ni d'erreur, on affiche juste le widget #}
+  {{ form_widget(form.save, {'label': 'Sauvegarder', 'attr': {'class': 'btn btn-primary'}}) }}
+
+  {# Génération automatique des champs pas encore écrits.
+     Dans cet exemple, ce serait le champ CSRF (géré automatiquement par Symfony !)
+     et tous les champs cachés (type « hidden »). #}
+  {{ form_rest(form) }}
+  
+  {# Fermeture de la balise <form> du formulaire HTML #}
+  {{ form_end(form) }}
+</div>
+
+<script>
+  $(document).ready(function () {
+    var $client = $('#nurun_bundle_rhbundle_besoinAffectation_client');
+
+    // When client gets selected ...
+    $client.change(function() {
+      var $mandat = $('#mandat');
+      // ... retrieve the corresponding form.
+      var $form = $(this).closest('form');
+      // Simulate form data, but only include the selected sport value.
+      var data = {};
+      data[$client.attr('name')] = $client.val();
+      // Submit data via AJAX to the form's action path.
+      $.ajax({
+        url : $form.attr('action'),
+        type: $form.attr('method'),
+        data : data,
+        success: function(html) {
+          // Replace current position field ...
+          $mandat.replaceWith(
+            // ... with the returned one from the AJAX response.
+            $(html).find('#mandat')
+          );
+          // Position field now displays the appropriate positions.
+        }
+      });
+    });
+  });
+</script>

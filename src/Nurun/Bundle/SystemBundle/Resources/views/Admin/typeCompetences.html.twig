@@ -1,0 +1,96 @@
+{# src/Nurun/SystemBundle/Resources/view/Admin/competenceTypes.html.twig #}
+
+{% extends "NurunRhBundle::layout.html.twig" %}
+
+{% block title %}
+    {{ parent () }} - Gestion des types de compétence
+{% endblock %}
+
+{% block rh_body %}
+    <div class="row zone-titre">
+    
+        <h2 class="titre-page">Gestion des types de compétence</h2>
+
+        {% if is_granted('ROLE_ROOT') %}
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ajouter_typeCompetence">
+                <i class="glyphicon glyphicon-plus"></i>
+                Ajouter un type de compétence
+            </button>
+            <a href="{{ path('nurun_admin_competences') }}" type="button" class="btn btn-primary" style="float:right;">
+                Retour aux compétences
+            </a>
+        {% endif %}
+    </div>
+
+    <table id="typeCompetenceList" class="display nowrap" cellspacing="0" width="100%">
+        <thead>
+            <tr>
+                <th>Nom</th>
+                <th></th>
+            </tr>
+        </thead>
+
+        {% if typeCompetenceList|length > 0 %}
+            <tbody>
+                {% for typeCompetence in typeCompetenceList %}
+                    <tr>
+                        <td>{{ typeCompetence.type }}</td>
+                        <td>
+                            <a href="{{ path('nurun_admin_typeCompetence_edit', {'typeCompetenceId':  typeCompetence.id} ) }}"  data-toggle="tooltip"  class="bt-table"  title="modifier le type de compétence"><span class="glyphicon glyphicon-edit"></span></a>
+                            <a href="#" data-hover="tooltip" role="button" data-toggle="modal" data-toggle="tooltip" class="bt-table" data-target="#supprimer_typeCompetence{{ typeCompetence.id }}" title="Supprimer le type de compétence" style="color:red;"><span class="glyphicon glyphicon-remove"></span></a>
+                        </td>
+                    </tr>
+
+                    <div class="modal fade" id="supprimer_typeCompetence{{ typeCompetence.id }}" tabindex="-1" role="dialog" aria-labelledby="Supprimer le type de compétence">
+                        <div class="modal-dialog modal-md" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                    <h4 class="modal-title" id="myModalLabel">Supprimer le type de compétence ?</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="row" style="padding:10px 15px;">
+                                        <div class="col-xs-12">
+                                            <a type="button" class="btn btn-primary" href="{{ path('nurun_admin_typeCompetence_remove', {'typeCompetenceId':  typeCompetence.id} ) }}">
+                                                Oui
+                                            </a>
+                                            <button type="button" class="btn btn-primary" data-dismiss="modal" aria-label="Close" style="background-color:red;border-color:red;">
+                                                Non
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                {% endfor %}
+            </tbody>
+        {% endif %}
+    </table>
+
+    <div class="modal fade" id="ajouter_typeCompetence" tabindex="-1" role="dialog" aria-labelledby="Ajouter un type de compétence">
+        <div class="modal-dialog modal-md" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Ajouter un type de compétence</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row" style="padding:10px 30px;">
+                        <div class="col-xs-12">
+                            {% include "NurunSystemBundle:Admin:typeCompetenceForm.html.twig" %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascriptsPage %}
+  {% include "::webjs/jquery.dataTables.html.twig" %}
+  <script src="{{ asset('js/data-tables/dataTables.responsive.min.js') }}"></script>
+  <script src="{{ asset('js/data-tables/dataTables.bootstrap.min.js') }}"></script>
+  <script src="{{ asset('js/table.js') }}"></script>
+{% endblock %}

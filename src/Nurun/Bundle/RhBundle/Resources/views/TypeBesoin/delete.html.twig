@@ -1,0 +1,29 @@
+{# src/Nurun/RhBundle/Resources/views/TypeBesoin/delete.html.twig #}
+
+{% extends "NurunRhBundle::layout.html.twig" %}
+
+{% block title %}
+  Supprimer un type de besoin - {{ parent() }}
+{% endblock %}
+
+{% block body %}
+
+  <h2>Supprimer un type de besoin</h2>
+
+  <p>
+    Etes-vous certain de vouloir supprimer le type de besoin "{{ type.type }}" ?
+  </p>
+
+  {# On met l'id de l'annonce dans la route de l'action du formulaire #}
+  <form action="{{ path('nurun_typeBesoin_delete', {'id': type.id}) }}" method="post">
+    <a href="{{ path('nurun_typeBesoin_home') }}" class="btn btn-default">
+      <i class="glyphicon glyphicon-chevron-left"></i>
+      Retour à la liste
+    </a>
+    {# Ici j'ai écrit le bouton de soumission à la main #}
+    <input type="submit" value="Supprimer" class="btn btn-danger" />
+    {# Ceci va générer le champ CSRF #}
+    {{ form_rest(form) }}
+  </form>
+
+{% endblock %}

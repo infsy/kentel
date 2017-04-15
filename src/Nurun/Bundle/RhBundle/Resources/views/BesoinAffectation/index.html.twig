@@ -1,0 +1,101 @@
+{# src/Nurun/RhBundle/Resources/views/BesoinAffectation/index.html.twig #}
+
+{% extends "NurunRhBundle::layout.html.twig" %}
+
+{% block title %}
+    Liste des besoin d'affectation - {{ parent() }}
+{% endblock %}
+{% block rh_body %}
+
+    <h2>Liste des Besoins</h2>
+    <a href="{{ path('nurun_affectation_besoin_new') }}" class="btn btn-primary">
+        <i class="glyphicon glyphicon-plus"></i>
+        Ajouter un besoin
+    </a>
+    {% if is_granted('ROLE_ADMIN') %}
+        <a href="{{ path('nurun_affectation_besoin_export_all') }}" class="btn btn-primary">
+            <i class="glyphicon glyphicon-floppy-save"></i>
+            Exporter en XLS
+        </a>
+    {% endif %}
+
+    <table id="listBesoins" class="display nowrap" cellspacing="0" width="100%">
+        <thead>
+        <tr>
+            <th>Num</th>
+            <th>Date demande</th>
+            <th>Auteur</th>
+            <th>Client</th>
+            <th>Mandat</th>
+            {#<th>Date requise</th>#}
+            <th>Priorité demande</th>
+            <th>Profil</th>
+            <th>Source</th>
+            <th>Statut</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+
+        <tbody>
+
+        {% for besoin in besoins %}
+            <tr>
+                <td>{{ besoin.id }}</td>
+                <td>{{ besoin.createdAt | date("Y/m/d") }}</td>
+                <td>{{ besoin.createdBy }}</td>
+                <td>{{ besoin.client.acronyme }}</td>
+                <td>{{ besoin.mandat.identifiant }}</td>
+                {#<td>{{ besoin.dateRequise | date("Y/m/d") }}</td>#}
+                <td>{{ besoin.prioriteBesoin.priorite }}</td>
+                <td>{{ besoin.profil.profil }}</td>
+                {% if besoin.sourceAffectation is not null %}
+                    <td>{{ besoin.sourceAffectation.source }}</td>
+                {% else %}
+                    <td>Incertain</td>
+                {% endif %}
+                <td>{{ besoin.statutAffectation.description }}</td>
+                <td>
+                    <a href="{{ path('nurun_affectation_besoin_view', {'id': besoin.id}) }}" class="bt-table"
+                       title="Plus de détails" data-hover="tooltip"><span class="glyphicon glyphicon-search"></span></a>
+                    <a href="{{ path('nurun_affectation_besoin_edit', {'id': besoin.id}) }}" class="bt-table"
+                       title="Modifier" data-hover="tooltip"><span class="glyphicon glyphicon-pencil"></span></a>
+                    <a href="{{ path('nurun_affectation_besoin_delete', {'id': besoin.id}) }}" class="bt-table red-btn"
+                       title="Supprimer" data-hover="tooltip"><span class="glyphicon glyphicon-remove"></span></a>
+                    {#<a href="#" class="bt-table red-btn" title="Supprimer" data-hover="tooltip" data-toggle="modal" data-target="{{ besoin.id }}"><span class="glyphicon glyphicon-remove"></span></a>#}
+                </td>
+            </tr>
+            <!--l'id de la boite modale doit correspondre au data target du lien supprimer-->
+            <div class="modal fade" id="{{ besoin.id }}" tabindex="-1" role="dialog" aria-labelledby="Supprimer">
+                <div class="modal-dialog modal-sm" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                        aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title" id="myModalLabel">Confirmer la suppression ?</h4>
+                        </div>
+                        <div class="modal-body">
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <a href="{{ path('nurun_affectation_besoin_delete', {'id': besoin.id}) }}"
+                                       type="button" class="btn btn-primary">
+                                        Confirmer<!--lien permettant la suppression-->
+                                    </a>
+
+                                    <a href="#" type="button" class="btn btn-danger" data-dismiss="modal"
+                                       aria-label="Close">
+                                        Annuler
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div><!--Fin de la modale-->
+        {% endfor %}
+
+        </tbody>
+    </table>
+
+    {# {{ grid(grid) }} #}
+
+{% endblock %}

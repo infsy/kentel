@@ -1,0 +1,129 @@
+<script>
+	/*------------------------------------------------------------------------------GRAPHIQUE LINÉAIRE-------------------------------------------------------------------------*/
+	$(function () {
+		Highcharts.setOptions({
+		 	colors: ['#27a5c3', '#428bca']
+		});
+	    $('#affectations-time').highcharts({
+	        chart: {
+	            type: 'area',
+				height: 280
+	        },
+			exporting: { enabled: false }, 
+	        title: {
+				margin:30,
+	            align: 'left',
+				x:0,
+				y:15,
+	            text: 'Projection des affectations'
+	        },
+	        
+	        xAxis: {
+				labels: {
+					x:15
+	            },
+				
+				tickmarkPlacement: 'on',
+				startOnTick: false,
+				
+	            categories: [
+	            	{% for week in stats|keys %}
+						'{{ week }}',
+					{% endfor %}
+	            ]
+	        },
+	        yAxis: {
+	        	tickAmount: 5,
+	            title: {
+	                text: ''
+	            },
+	            labels: {
+	                formatter: function () {
+	                    return this.value+'%';
+	                }
+	            }
+	        },
+	        tooltip: {
+	            pointFormat: '<b>{point.y:,.0f}%</b> {series.name}<!--en {point.x}-->'
+	        },
+	        plotOptions: {
+				series: {
+	                marker: {
+	                    states: {
+	                        hover: {
+	                            radiusPlus: 5,
+	                            lineWidthPlus: 1
+	                        }
+	                    }
+	                },
+	                states: {
+	                    hover: {
+	                        lineWidthPlus: 0
+	                    }
+	                }
+	            },
+	            area: {
+	                marker: {
+	                    enabled: false,
+	                    symbol: 'circle',
+	                    radius: 2,
+	                    states: {
+	                        hover: {
+	                            enabled: true
+	                        }
+	                    }
+	                }
+	            }
+	        },
+			legend: {
+				itemDistance: 10,
+				x: -10,
+	            y: 15,
+	            floating: true,
+	            enabled: true,
+				align: 'right',
+	            verticalAlign: 'top'
+	        },
+			credits: {
+	      		enabled: false
+	  		},
+	        series: [{
+	            name: 'Affectation et proposition',
+	            data: [
+	            	{% for affectation in stats %}
+						{{ affectation['proposition'] }},
+					{% endfor %}
+	            ],
+	            
+				
+				lineColor: '#27a5c3',
+				fillColor: {
+	                    linearGradient: [0, 0, 0, 300],
+	                    stops: [
+	                        [0.1, Highcharts.getOptions().colors[1]],
+	                        [1, Highcharts.Color(Highcharts.getOptions().colors[1]).setOpacity(0).get('rgba')]
+	                    ]
+	                }
+	        },
+			{
+	            name: 'Affectation',
+	            data: [
+	            	{% for affectation in stats %}
+						{{ affectation['affectation'] }},
+					{% endfor %}
+	            ],
+	            
+				
+				lineColor: '#428bca',
+				fillColor: {
+	                    linearGradient: [0, 0, 0, 300],
+	                    stops: [
+	                        [0.1, Highcharts.getOptions().colors[0]],
+	                        [1, Highcharts.Color(Highcharts.getOptions().colors[0]).setOpacity(0).get('rgba')]
+	                    ]
+	                }
+	        }
+			]
+	    });
+	});
+</script>

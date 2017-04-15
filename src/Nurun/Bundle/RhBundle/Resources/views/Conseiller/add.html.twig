@@ -1,0 +1,19 @@
+{# src/Nurun/RhBundle/Resources/views/Conseiller/add.html.twig #}
+
+{% extends "NurunRhBundle::layout.html.twig" %}
+
+{% block title %}
+  Ajouter un conseiller - {{ parent() }}
+{% endblock %}
+
+{% block body %}
+
+  <h2>Ajouter un conseiller</h2>
+
+  {{ include("NurunRhBundle:Conseiller:form.html.twig") }}
+
+  <p>
+    Attention : ce nouveau conseiller sera ajouté en base dès validation du formulaire.
+  </p>
+
+{% endblock %}

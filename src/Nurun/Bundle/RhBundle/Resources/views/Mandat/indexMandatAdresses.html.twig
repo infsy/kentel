@@ -1,0 +1,67 @@
+{# src/Nurun/RhBundle/Resources/views/ConseillerCompetence/index.html.twig #}
+
+{% extends "NurunRhBundle::layout.html.twig" %}
+
+{% block title %}
+  Liste des adresses d'un mandat - {{ parent() }}
+{% endblock %}
+
+{% block rh_body %}
+
+  <h2>Liste des adresses relative au mandat </h2>
+    <a href="{{ path('nurun_mandat_adresses_add', {'mandatId': id}) }}" class="btn btn-primary">
+        <i class="glyphicon glyphicon-plus"></i>
+        Ajouter des adresses
+    </a>
+    <a href="{{ path('nurun_mandat_view', {'id': id}) }}" type="button" class="btn btn-primary" style="float:right;">
+        Retour au mandat
+    </a>
+    <div id="message" style="margin-top: 5px;">
+    {% if alerte is defined %}
+        {{ alerte }}
+    {% endif %}
+    </div>
+  <table id="listMandatAdresses" class="display nowrap" cellspacing="0" width="100%">
+    <thead>
+      <tr>
+        <th>Adresse</th>
+        <th>Code Postal</th>
+        <th>Ville</th>
+          <th>Action</th>
+
+      </tr>
+    </thead>
+    <tbody>
+
+      <!--début de la boucle-->
+  {% for adresse in adresses %}
+    <tr>
+        <td>{{ adresse.numeroAdresse }}
+        {% if adresse.numeroAdresse is not null %}
+            ,
+        {% endif %}
+        {% if adresse.ligne1Adresse is not null %}
+            {{ adresse.ligne1Adresse }}
+        {% else %}
+            Pas d'adresse
+        {% endif %}
+        {% if adresse.ligne2Adresse is not null %}
+             {{ adresse.ligne2Adresse }}
+        {% endif %}
+        {% if adresse.ligne3Adresse is not null %}
+             {{ adresse.ligne3Adresse }}
+        {% endif %}
+        </td>
+        <td>    {{ adresse.codePostal }} </td>
+        <td>{{ adresse.ville }}</td>
+        <td>
+            <a href="{{ path('nurun_mandat_adresse_delete', {'mandatId': id, 'adresseId': adresse.id }) }}" class="bt-table red-btn" title="Supprimer" data-hover="tooltip"><span class="glyphicon glyphicon-remove"></span></a>
+        </td>
+      </tr>
+      <!--fin de la boucle-->
+  {% endfor %}
+
+    </tbody>
+  </table>
+
+{% endblock %}

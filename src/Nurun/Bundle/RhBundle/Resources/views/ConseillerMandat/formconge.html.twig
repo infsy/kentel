@@ -1,0 +1,83 @@
+{# src/Nurun/RhBundle/Resources/views/ConseillerMandat/form.html.twig #}
+{% block stylesheets %}
+    <link href="{{ asset('css/jquery-ui.css') }}" rel="stylesheet" />
+    <link href="{{ asset('css/jquery-ui.theme.css') }}" rel="stylesheet" />
+    {{ form_stylesheet(form) }}
+{% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset('js/jquery-1.11.2.min.js') }}"></script>
+    <script src="{{ asset('js/jquery-ui.min.js') }}"></script>
+{{ form_javascript(form) }}
+{% endblock %}
+{# Cette vue n'hérite de personne, elle sera incluse par d'autres vues #}
+<h3>Formulaire de gestion des congés</h3>
+{% for flashMessage in app.session.flashbag.get('notice') %}
+    <div class="flash notice">
+        {{ flashMessage }}
+    </div>
+{% endfor %}
+{# On laisse vide la vue pour l'instant, on la comblera plus tard
+   lorsqu'on saura afficher un formulaire. #}
+<div class="well">
+{# {{ form(form) }}#}
+  {{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
+    {# Les erreurs générales du formulaire. #}
+    {{ form_errors(form) }}
+     {# Idem pour mandat #}
+    <div class="form-group">
+      {{ form_label(form.conseiller, "Conseiller affecté", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+      {{ form_errors(form.conseiller) }}
+      <div class="col-sm-4">
+        {{ form_widget(form.conseiller, {'attr': {'class': 'form-control'}}) }}
+      </div>
+    </div>
+      
+      {# Idem pour dateDebut #}
+    <div class="form-group">
+      {{ form_label(form.dateDebut, "Date de début de mandat", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+      {{ form_errors(form.dateDebut) }}
+      <div class="col-sm-4">
+        {{ form_widget(form.dateDebut, {'attr': {'class': 'form-control'}}) }}
+      </div>
+    </div>
+      {# Idem pour dateDebut #}
+    <div class="form-group">
+      {{ form_label(form.dateFin, "Date de fin de mandat", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+      {{ form_errors(form.dateFin) }}
+      <div class="col-sm-4">
+        {{ form_widget(form.dateFin, {'attr': {'class': 'form-control'}}) }}
+      </div>
+    </div>
+      
+      {# Idem pour statut #}
+    <div class="form-group">
+      {{ form_label(form.statutAffectation, "Statut affectation", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+      {{ form_errors(form.statutAffectation) }}
+      <div class="col-sm-4">
+        {{ form_widget(form.statutAffectation, {'attr': {'class': 'form-control'}}) }}
+      </div>
+    </div>
+    
+      {# Idem pour pourcentage #}
+    <div class="form-group">
+      {{ form_label(form.pourcentage, "Pourcentage", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+      {{ form_errors(form.pourcentage) }}
+      <div class="col-sm-4">
+        {{ form_widget(form.pourcentage, {'attr': {'class': 'form-control'}}) }}
+      </div>
+    </div>
+    
+     
+      
+  {# Pour le bouton, pas de label ni d'erreur, on affiche juste le widget #}
+  {{ form_widget(form.save, {'attr': {'class': 'btn btn-primary'}}) }}
+
+  {# Génération automatique des champs pas encore écrits.
+     Dans cet exemple, ce serait le champ CSRF (géré automatiquement par Symfony !)
+     et tous les champs cachés (type « hidden »). #}
+  {{ form_rest(form) }}
+  
+  {# Fermeture de la balise <form> du formulaire HTML #}
+  {{ form_end(form) }}
+</div>

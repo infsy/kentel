@@ -1,0 +1,231 @@
+{# src/Nurun/RhBundle/Resources/view/ConseillerMandat/view.html.twig #}
+
+{% extends "NurunRhBundle::layout.html.twig" %}
+
+{% block title %}
+    Détails de l'affectation de {{ affectation.conseiller.nom }} sur le
+    {{ affectation.mandat.client.identifiant }}-{{ affectation.mandat.identifiant }} - {{ parent() }}
+{% endblock %}
+
+{% block rh_body %}
+
+    <h2>
+      <a href="{{ path('nurun_conseiller_view', {'id': affectation.conseiller.id}) }}">
+        {{ affectation.conseiller.prenom }} {{ affectation.conseiller.nom }}
+      </a>  
+      sur {{ affectation.mandat.client.acronyme|upper }} - 
+      <a href="{{ path('nurun_mandat_view', {'id': affectation.mandat.id}) }}">
+        {{ affectation.mandat.identifiant }}
+      </a>
+    </h2>
+{% if is_granted('ROLE_GESTION') %}      
+        <a href="{{ path('nurun_affectation_edit', {'id': affectation.id}) }}">
+          Modifier l'affectation <i class="glyphicon glyphicon-pencil"></i>
+        </a>
+      {% endif %}
+  <hr>
+  <ul>
+    {% if affectation.statutAffectation is not null %}                
+      <li>Statut de l'affectation : {{ affectation.statutAffectation.Description }}</li> 
+    {% else %}
+      <li>Statut de l'affectation : indéterminé</li> 
+    {% endif %}
+    <li>Pourcentage d'affectation : {{ affectation.pourcentage }}%</li>  
+    <li>Date de début d'affectation : {{ affectation.dateDebut | date('d/m/Y') }}</li>
+    <li>Date de fin d'affectation : {{ affectation.dateFin | date('d/m/Y') }}</li>
+    <li>Commentaire : {{ affectation.commentaire }}</li>
+  </ul>
+  <hr>
+  <ul>
+      <h3>
+          Propositions
+                {% if is_granted('ROLE_GESTION') %}      
+        <a href="{{ path('nurun_affectation_add', {'id': affectation.conseiller.id}) }}">
+          <span class="ajouter">&lsqb;Ajouter&rsqb;</span>
+        </a>
+      {% endif %}
+      </h3>
+      {% if propositions is empty %}
+    Pas de propositions.
+     {% endif %}
+
+  {% for proposition in propositions %}
+          <li>
+          <p>
+          <a href="{{ path('nurun_affectation_view', {'id': proposition.id}) }}">
+           &nbsp;&nbsp;{{ proposition.mandat.client.acronyme }}-
+           {{ proposition.mandat.identifiant }} - {{ proposition.pourcentage }}% - 
+           pour le {{ proposition.dateDebut|date('d/m/Y') }}
+          </a>
+          </p>
+          </li>
+      {% endfor %}
+  </ul>
+  <ul>
+      <h3>
+          Autres affectations
+      </h3
+      {% if otherAffectations is empty %}
+    Pas d'autres affectations.
+     {% endif %}>
+     
+  {% for otherAffectation in otherAffectations %}
+          <li>
+          <p>
+          <a href="{{ path('nurun_affectation_view', {'id': otherAffectation.id}) }}">
+           &nbsp;&nbsp;{{ otherAffectation.mandat.client.acronyme }}-
+           {{ otherAffectation.mandat.identifiant }} - {{ otherAffectation.pourcentage }}% - 
+           jusqu'au {{ otherAffectation.dateFin|date('d/m/Y') }}
+          </a>
+          </p>
+          </li>
+      {% endfor %}
+  </ul>
+  <p>
+    <a href="{{ path('nurun_affectation_home') }}" class="btn btn-default">
+      <i class="glyphicon glyphicon-chevron-left"></i>
+      Retour à la liste
+    </a>    
+    {% if affectation.isDeleted %}
+      {% if is_granted('ROLE_GESTION') %}
+        <a id="actionBtn{{ affectation.id }}" href="#" role="button" data-toggle="modal" data-toggle="tooltip" class="btn btn-danger" data-target="#restaurer_affectation{{ affectation.id }}" style="background-color: #99cc33; border-color: #99cc33;">
+            <span class="glyphicon glyphicon-repeat"></span>
+            Restaurer l'affectation
+        </a>
+        <div class="modal fade" id="restaurer_affectation{{ affectation.id }}" tabindex="-1" role="dialog" aria-labelledby="Restaurer l'affectation">
+          <div class="modal-dialog modal-md" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Restaurer l'affectation?</h4>
+              </div>
+              <div class="modal-body">
+                <div class="row" style="padding:10px 15px;">
+                  <div class="col-xs-12">
+                    <a type="button" class="btn btn-primary" urlOption="{{ affectation.id }}" action="restauration">
+                      Oui
+                    </a>
+                    <button type="button" class="btn btn-primary-red" data-dismiss="modal" aria-label="Close">
+                      Non
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      {% endif %}
+    {% else %}
+      {% if is_granted('ROLE_ADMIN') and affectation.mandat.identifiant == 'Vacances' and not is_granted('ROLE_GESTION') %}      
+        <a href="{{ path('nurun_affectation_edit_conge', {'id': affectation.id}) }}" class="btn btn-default">
+          <i class="glyphicon glyphicon-edit"></i>
+          Modifier le congé
+        </a>
+      {% endif %}
+                
+      {% if is_granted('ROLE_ADMIN') and affectation.mandat.identifiant == 'Vacances' and not is_granted('ROLE_GESTION') %}      
+        <a href="{{ path('nurun_affectation_delete_conge', {'id': affectation.id}) }}" class="btn btn-danger">
+          <i class="glyphicon glyphicon-trash"></i>
+          Supprimer le congé
+        </a>
+      {% endif %}
+      {% if is_granted('ROLE_ADMIN') and not is_granted('ROLE_GESTION') %}
+        <a href="{{ path('nurun_rh_add_conge', {'id': affectation.conseiller.id}) }}" class="btn btn-default">
+          <i class="glyphicon glyphicon-plus-sign"></i>
+          Ajouter des congés
+        </a>
+      {% endif %}
+      {% if is_granted('ROLE_GESTION') %}
+        <a id="actionBtn{{ affectation.id }}" href="#" role="button" data-toggle="modal" data-toggle="tooltip" class="btn btn-danger" data-target="#supprimer_affectation{{ affectation.id }}">
+          <span class="glyphicon glyphicon-trash"></span>
+          Supprimer l'affectation
+        </a>
+        <div class="modal fade" id="supprimer_affectation{{ affectation.id }}" tabindex="-1" role="dialog" aria-labelledby="Supprimer l'affectation">
+          <div class="modal-dialog modal-md" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Supprimer l'affectation?</h4>
+              </div>
+              <div class="modal-body">
+                <div class="row" style="padding:10px 15px;">
+                  <div class="col-xs-12">
+                    <a type="button" class="btn btn-primary" urlOption="{{ affectation.id }}" action="suppression">
+                      Oui
+                    </a>
+                    <button type="button" class="btn btn-primary-red" data-dismiss="modal" aria-label="Close">
+                      Non
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      {% endif %}
+    {% endif %}
+  </p>
+
+  <script>
+        $(document).ready(function() {
+            $(".btn-primary").click(function () {
+                var affectationId = $(this).attr("urlOption");
+                var action = $(this).attr("action");
+
+                if(action == 'suppression') {
+                    var url = "{{ path('nurun_affectation_delete', {'id': 'affectationId'}) }}";
+                    url = url.replace("affectationId", affectationId);
+
+                    $.ajax({
+                        url: url,
+                        type: "POST",
+                        success: function() { 
+                        },
+
+                        error: function(XMLHttpRequest, textStatus, errorThrown)
+                        {
+                            alert('Error: ' +  errorThrown);
+                        }
+                    });
+                    $("#actionBtn"+affectationId).find('span').removeClass('glyphicon-trash');
+                    $("#actionBtn"+affectationId).find('span').addClass('glyphicon-repeat');
+                    $("#actionBtn"+affectationId).attr('data-target', '#restaurer_affectation'+affectationId);
+                    $("#actionBtn"+affectationId).attr('style', "background-color: #99cc33; border-color: #99cc33;");
+                    $("#actionBtn"+affectationId).html("<span class=\"glyphicon glyphicon-repeat\"></span> Restaurer l'affectation");
+
+                    $("#message").html("Affectation retirée");
+                    $("#message").css('color', 'red');
+
+                    $('#supprimer_affectation'+affectationId).modal('hide');
+                }
+                else if(action == 'restauration') {
+                    var url = "{{ path('nurun_affectation_restore', {'id': 'affectationId'}) }}";
+                    url = url.replace("affectationId", affectationId);
+
+                    $.ajax({
+                        url: url,
+                        type: "POST",
+                        success: function() { 
+                        },
+
+                        error: function(XMLHttpRequest, textStatus, errorThrown)
+                        {
+                            alert('Error: ' +  errorThrown);
+                        }
+                    });
+                    $("#actionBtn"+affectationId).find('span').removeClass('glyphicon-repeat');
+                    $("#actionBtn"+affectationId).find('span').addClass('glyphicon-trash');
+                    $("#actionBtn"+affectationId).attr('data-target', '#supprimer_affectation'+affectationId);
+                    $("#actionBtn"+affectationId).attr('style', "");
+                    $("#actionBtn"+affectationId).html("<span class=\"glyphicon glyphicon-trash\"></span> Supprimer l'affectation");
+
+                    $("#message").html("Affectation restaurée");
+                    $("#message").css('color', '#27a5c3');
+
+                    $('#restaurer_affectation'+affectationId).modal('hide');
+                }
+            });     
+        });
+    </script>
+
+{% endblock %}

@@ -1,0 +1,17 @@
+{# src/Nurun/RhBundle/Resources/views/ConseillerCompetence/edit.html.twig #}
+
+{% extends "NurunRhBundle::layout.html.twig" %}
+
+{% block title %}
+  Modifier une compétence - {{ parent() }}
+{% endblock %}
+
+{% block rh_body %}
+
+  <h2>Modifier une compétence</h2>
+
+  {{ include("NurunRhBundle:ConseillerCompetence:form.html.twig") }}
+  <h4>Rappel : les niveaux à choisir pour les méthodologies et technologies sont en nombre de projets, tandis que les langages se définissent par années d'expérience.</h4>
+
+
+{% endblock %}
