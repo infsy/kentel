@@ -1,8 +1,16 @@
 
-app/cache/prod/twig/ff/ff98ed0955ef2324c001c17d6ce6e2416c4f18a55cd3ebc54a27d0b5c9235385.php
+app/cache/*
+
+app/logs/*
 
 app/config/.parameters.yml.swp
 
 app/config/parameters.yml
 
 *.php~
+
+app/bootstrap.php.cache
+
+composer.lock
+
+vendor/*

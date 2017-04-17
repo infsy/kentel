@@ -24,4 +24,5 @@ parameters:
     mail_transport: ~
     mail_auth: ~
     mail_host: ~
+    mailer_user: ~
     google_api_key: ~
