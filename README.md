@@ -28,4 +28,10 @@ Then update the application itself :
 
 This will download all the plugins needed by the application and prepare the web directory. At the end of the update, it will ask you some parameters regarding your LDAP directory for authentication, you mail server... You'll need for the Geolocation function a Google API you can obtain [here](https://developers.google.com/maps/documentation/javascript/get-api-key?hl=Fr).
 
+
+Don't forget to create your database with the parameters you filled in the parameters.yml then create tables :
+
+`php app/console doctrine:schema:update --force
+`
+
 Then, you just to configure your Web server to load the Web directory and that's it !
