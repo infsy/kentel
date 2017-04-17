@@ -20,7 +20,7 @@ security:
         fr3d_ldapbundle:
             id: fr3d_ldap.security.user.provider
         fos_userbundle:
-            id: fos_user.user_manager
+            id: fos_user.user_provider.username
     firewalls:
         dev:
             pattern:  ^/(_(profiler|wdt)|css|images|js)/

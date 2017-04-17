@@ -14,3 +14,7 @@ app/bootstrap.php.cache
 composer.lock
 
 vendor/*
+
+*.swp
+
+web/bundles/*

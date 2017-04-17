@@ -1,0 +1,389 @@
+
+.dataTables_wrapper .col-sm-12 {
+	overflow: auto;
+	width:100%;
+	}
+
+table tr td {
+	background-color: rgba(0,0,0,0.3);
+	}
+
+/*-----------------------------------------------------------------Styles pour le dropdown------------------------------------------------------*/
+
+.child {
+	text-align:left;
+	background:none !important;
+	background-color:rgba(0,0,0,0.3) !important;
+	cursor:default !important;
+	color:#fff;
+	font-size:14px;
+	white-space:normal !important;
+}
+
+.child:hover {
+	cursor:normal;
+}
+
+.child ul {
+	margin-top:5px !important;
+	}
+	
+.child li {
+	border-bottom:none !important;
+	}
+	
+.child li:first-child {
+	padding-top:8px !important;
+	border-bottom:none !important;
+	}	
+	
+.child li:last-child {
+	padding-bottom:15px !important;
+	border-bottom:none !important;
+	}	
+	
+.dtr-title {
+	color:#8c8c8f !important;
+	font-weight:500 !important;
+	}
+
+.dataTables_empty {
+	background: -webkit-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,0.3), rgba(0,0,0,0)) !important; 
+	background: -o-linear-gradient(right, rgba(0,0,0,0), rgba(0,0,0,0.3), rgba(0,0,0,0)) !important; 
+	background: -moz-linear-gradient(right, rgba(0,0,0,0), rgba(0,0,0,0.3), rgba(0,0,0,0)) !important; 
+	background: linear-gradient(to right, rgba(0,0,0,0), rgba(0,0,0,0.3), rgba(0,0,0,0)) !important; 
+	}
+
+.multiligne {
+	white-space:normal !important;
+	}
+/*---------------------------------------------------------Styles pour rows dégradé---------------------------------------------------*/	
+	
+@media (min-width:768px) {	
+	
+	table tr td:first-child {
+		background: -webkit-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,0.3)); 
+		background: -o-linear-gradient(right, rgba(0,0,0,0), rgba(0,0,0,0.3)); 
+		background: -moz-linear-gradient(right, rgba(0,0,0,0), rgba(0,0,0,0.3)); 
+		background: linear-gradient(to right, rgba(0,0,0,0), rgba(0,0,0,0.3)); 
+		}	
+		
+	table tr .sorting_1:first-child {
+		background: -webkit-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,0.4)) !important; 
+		background: -o-linear-gradient(right, rgba(0,0,0,0), rgba(0,0,0,0.4)) !important; 
+		background: -moz-linear-gradient(right, rgba(0,0,0,0), rgba(0,0,0,0.4)) !important; 
+		background: linear-gradient(to right, rgba(0,0,0,0), rgba(0,0,0,0.4)) !important; 
+		}		
+		
+		
+	table tr td:last-child {
+	
+		background: -webkit-linear-gradient(left, rgba(0,0,0,0.3), rgba(0,0,0,0)); 
+		background: -o-linear-gradient(right, rgba(0,0,0,0.3), rgba(0,0,0,0)); 
+		background: -moz-linear-gradient(right, rgba(0,0,0,0.3), rgba(0,0,0,0)); 
+		background: linear-gradient(to right, rgba(0,0,0,0.3), rgba(0,0,0,0)); 
+		}
+		
+	table tr .sorting_1:last-child {
+		background: -webkit-linear-gradient(left, rgba(0,0,0,0.4), rgba(0,0,0,0)) !important; 
+		background: -o-linear-gradient(right, rgba(0,0,0,0.4), rgba(0,0,0,0)) !important; 
+		background: -moz-linear-gradient(right, rgba(0,0,0,0.4), rgba(0,0,0,0)) !important; 
+		background: linear-gradient(to right, rgba(0,0,0,0.4), rgba(0,0,0,0)) !important; 
+		}
+		
+	/*table {
+		background:url(../../images/interface/fond-transparent-tableaux.png) repeat-y top right;
+			}	*/
+}
+
+
+/*---------------------------------------------------------Styles pour couleurs différentes---------------------------------------------------*/	
+	
+.rouge {
+	color:#ff4c5a;
+	}	
+	
+.orange {
+	color:#fd9547;
+	}	
+	
+.jaune {
+	color:#f2d533;
+	}	
+	
+.vert {
+	color:#c1e44a;
+	}					
+	
+.turquoise {
+	color:#def0a2;
+	}	
+
+/*---------------------------------------------------------Styles pour centrage---------------------------------------------------*/	
+	
+.table-center {
+	text-align:center;
+	}
+	
+/*------------------------------------------------------------------------------------------------------------*/	
+	
+table.dataTable thead .sorting:after, table.dataTable thead .sorting_asc:after, table.dataTable thead .sorting_desc:after, table.dataTable thead .sorting_asc_disabled:after, table.dataTable thead .sorting_desc_disabled:after {
+	font-size:12px;
+	bottom:12px;
+	}	
+	
+	
+	
+/*------------------------------------------------------------Styles pour le design de la pagination----------------------------------------	*/
+
+.pagination	{
+	margin:0 !important;
+	height:34px;
+	box-shadow:0px 0px 20px 0px rgba(0,0,0,0.2);
+	-webkit-box-shadow:0px 0px 20px 0px rgba(0,0,0,0.2);
+	border-radius:3px;
+	}
+	
+.pagination a	{
+	border-radius:0 !important;
+	font-size:14px !important;
+	border:none !important;
+	}
+	
+.pagination > li > a, .pagination > li > span {
+	background:#262626;
+	color:#fff;
+	border:none !important;
+	border-top:1px solid #414145 !important;
+	}
+	
+.pagination > li > a:hover {
+	border:none !important;
+	background:#2d2d2d;
+	color:#fff;
+	border-top:1px solid #414145 !important;
+	}		
+	
+.pagination > .disabled > span, .pagination > .disabled > span:hover, .pagination > .disabled > span:focus, .pagination > .disabled > a, .pagination > .disabled > a:hover, .pagination > .disabled > a:focus {
+	background:#262626;
+	color:#fff;
+	border:none;
+	}
+	
+.pagination > .active > a, .pagination > .active > span, .pagination > .active > a:hover, .pagination > .active > span:hover, .pagination > .active > a:focus, .pagination > .active > span:focus {
+	color:#000;
+	background-color:#86cff1;
+	border-top:1px solid #c3e4f3 !important;
+	}
+	
+.previous a {
+	border-top-left-radius:5px !important;
+	border-bottom-left-radius:5px !important;
+	}
+	
+.next a {
+	border-top-right-radius:5px !important;
+	border-bottom-right-radius:5px !important;
+	}
+	
+.previous a:focus {
+	background:#262626;
+	}
+	
+.next a:focus {
+	background:#262626 !important;
+	color:#fff !important;
+	}	
+
+ 	
+
+	
+/*----------------------------------------------------------------------Styles pour les champs de formulaire-------------------------------------------------------	*/
+
+	
+.dataTables_length select {
+	line-height:10px !important;
+	height:35px !important;
+	}
+
+
+option {
+	font-size:14px !important;
+	background:#141414 !important;
+	}	
+	
+input[type=search] {
+	padding:8px 35px 11px 10px !important;
+	}	
+	
+div.dataTables_wrapper div.dataTables_length label {
+	font-size:12px;
+	color:#8c8c8f;
+	}
+	
+div.dataTables_wrapper div.dataTables_filter input {
+	width:250px;
+	}	
+	
+.dataTables_length, .dataTables_info {
+	margin-left:18px;
+	}	
+	
+.dataTables_length select {
+	display:block !important;
+	margin-top:8px;
+	}	
+	
+.dataTables_info {
+	font-size:12px;
+	color:#8c8c8f !important;
+	}
+	
+h5 {
+	font-size:14px;
+	font-weight:400;
+	margin:5px 0;
+	}	
+	
+.loupe {
+	font-size:20px;
+	color:#666;
+	position:absolute;
+	margin-top:7px;
+	margin-left:-30px;
+	}	
+	
+.btn-right-title {
+	padding-top:30px;
+	text-align:right;
+	}
+	
+small {
+	color:#8c8c8f;
+	}	
+	
+.etoile {
+	font-size:20px;
+	}	
+	
+@media (max-width: 767px) {
+	
+	.btn-right-title {
+		padding-top:20px;
+		text-align:left;
+	}	
+	
+	.dataTables_length, .dataTables_info {
+		margin-left:0;
+		text-align:left !important;
+	}		
+	
+	.dataTables_length select {
+		display:block !important;
+		margin-top:8px;
+	}
+	
+	div.dataTables_wrapper div.dataTables_length,
+	div.dataTables_wrapper div.dataTables_filter,
+	div.dataTables_wrapper div.dataTables_info,
+	div.dataTables_wrapper div.dataTables_paginate {
+		text-align:left !important;
+		}
+		
+	.pagination > li > a, .pagination > li > span {
+		padding:6px 10px !important;
+		}		
+}	
+
+/*------------------------------------------------------------Styles pour les boutons--------------------------------------------------------*/
+
+table.dataTable>tbody>tr.child span.dtr-title {
+	display:inline !important;
+	}
+
+.bt-table {
+	display:inline-block;
+	width:26px;
+	height:26px;
+	padding-top:2px;
+	margin:0px 3px 0 3px;
+	text-decoration:none;
+	border:2px solid;
+	text-align:center;
+	}
+	
+.bt-i {
+	font-family:Arial, Helvetica, sans-serif;
+	display:inline-block;
+	width:26px;
+	height:26px;
+	margin:0px 3px 0 3px;
+	text-decoration:none;
+	border:2px solid;
+	text-align:center;
+	font-size:20px;
+	font-weight:500;
+	line-height:1.2;
+	}
+	
+.bt-i:hover, .bt-i:focus, .bt-i:active {
+	text-decoration:none;
+	}	
+	
+.red-bt-table, .red-bt-table:focus {
+	color:#ff4c5a;
+	border:2px solid #ff4c5a;
+	}	
+	
+.red-bt-table:hover, .red-bt-table:active {
+	color:#b8303a;
+	border:2px solid #b8303a;
+	}		
+	
+.bt-table2 {
+	display:inline-block;
+	height:26px;
+	padding:1px 8px 1px 28px;
+	margin:0;
+	text-decoration:none;
+	border:2px solid;
+	position:relative;
+	}	
+	
+.bt-table2:hover, .bt-table2:active, .bt-table2:focus, .bt-table2:visited {
+	text-decoration:none !important;
+	}	
+	
+.bt-table2 span{
+	position:absolute;
+	top:4px;
+	left:8px;
+	margin-left: 2px ;
+	}	
+
+.bt-table2 .glyphicon-plus{
+	font-size:12px;
+	}
+	
+	
+	
+/*------------------------------------------------------------Tableau d'exemple pour l'upload de la liste de logiciels--------------------------------------------------------*/
+
+
+
+	
+.exemple-softwares td {
+	padding:8px 20px;
+	border:1px solid #ccc;
+	background:none !important;
+	}
+	
+@media (max-width: 470px) {	
+	.exemple-softwares td {
+		padding:8px 10px;
+		border:1px solid #ccc;
+		background:none !important;
+		}
+}
+
+	

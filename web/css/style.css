@@ -1,0 +1,482 @@
+body{
+	background: url('../images/bg.jpg') no-repeat center center fixed; 
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+}
+
+/*------------------------------------------------------------------pour typos -----------------------------------------------	*/
+
+@font-face {
+  font-family: 'PlantinStd';
+  src: url('../fonts/PlantinStd.eot?#iefix') format('embedded-opentype'),  url('../fonts/PlantinStd.otf')  format('opentype'),
+	     url('../fonts/PlantinStd.woff') format('woff'), url('../fonts/PlantinStd.ttf')  format('truetype'), url('../fonts/PlantinStd.svg#PlantinStd') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'DINNextLTPro-Regular';
+  src: url('../fonts/DINNextLTPro-Regular.eot?#iefix') format('embedded-opentype'),  url('../fonts/DINNextLTPro-Regular.otf')  format('opentype'),
+	     url('../fonts/DINNextLTPro-Regular.woff') format('woff'), url('../fonts/DINNextLTPro-Regular.ttf')  format('truetype'), url('../fonts/DINNextLTPro-Regular.svg#DINNextLTPro-Regular') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'DINNextLTPro-Bold';
+  src: url('../fonts/DINNextLTPro-Bold.eot?#iefix') format('embedded-opentype'),  url('../fonts/DINNextLTPro-Bold.otf')  format('opentype'),
+	     url('../fonts/DINNextLTPro-Bold.woff') format('woff'), url('../fonts/DINNextLTPro-Bold.ttf')  format('truetype'), url('../fonts/DINNextLTPro-Bold.svg#DINNextLTPro-Bold') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/*-----------------------------------------------------------------------------------------------------------------	*/
+
+.header{
+	position: relative;
+}
+.header h1{
+	font-family: 'PlantinStd';
+	display: block;
+	position: relative;
+	font-size: 60px;
+	padding-right: 12%;
+	text-align: right;
+	color: #fff;
+	margin: 0;
+	margin-top:5%;
+}
+
+@media(max-width:767px) {
+	.header h1{
+		font-size: 40px;
+	}
+}
+
+#squaresContainer{
+	width: 80%;
+	margin: 0 auto;
+}
+.logoSquare{
+	display: block;
+	position: relative;
+	background: url('../images/bg_bloc_noir_alpha.png');
+	width: 150px;
+    height: 150px;
+	padding-bottom: 10%;
+}
+a.logout{
+	display: inline-block;
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	background: url('../images/bg_bloc_noir_alpha.png');
+	width: 5%;
+	padding-bottom: 5%;
+	text-align: center;
+}
+
+#preferences_home{
+    position: absolute !important;
+    bottom: 0px !important;
+    left: 0px !important;
+    width: 500px;
+}
+
+.menu-home{
+    width: 100px !important;
+    height: 100px !important;
+    margin-left: 0px !important;
+    font-size: 13px !important;
+}
+
+.logout-home{
+    height: 100px !important;
+    width: 100px !important;
+}
+
+
+a.logout{
+    height: 100px;
+    width: 100px;
+}
+
+a.logout .contenu{
+	display: block;
+	position: absolute;
+	top: 15%;
+	left: 10%;
+	width: 80%;
+	height: 70%;
+	text-align: center;
+	color: #fff;
+	font-size: 14px;
+	text-decoration: none;
+}
+a.logout .contenu img{
+	display: inline-block;
+	position: relative;
+	width: 100%;
+}
+.logoSquare .image{
+	display: block;
+	position: absolute;
+	width: 100%;
+	top: 50%;
+	transform: translateY(-50%);
+	text-align: center;
+}
+.logoSquare .image img{
+	max-width: 85%;
+}
+#squares{
+	display: block;
+	position: relative;
+}
+#squares .square{
+	display: block;
+	position: relative;
+	height: 0;
+    padding-bottom: 10%;
+    width: 10%;
+    overflow: hidden;
+    perspective: 1000;
+    transition: 0.6s;
+	transform-style: preserve-3d;
+}
+#squares .square .content{
+	display: block;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	margin: 2.5px;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	overflow: hidden;
+	backface-visibility: hidden;
+	z-index: 2;
+	/* for firefox 31 */
+	transform: rotateY(0deg);
+	-webkit-transition: all 200ms ease-in-out;
+	-moz-transition: all 200ms ease-in-out;
+	-ms-transition: all 200ms ease-in-out;
+	-o-transition: all 200ms ease-in-out;
+	transition: all 200ms ease-in-out;
+}
+#squares .square .back{
+	display: block;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	backface-visibility: hidden;
+	transform: rotateY(180deg);
+	margin: 2.5px;
+	z-index: 1;
+	-webkit-transition: all 200ms ease-in-out;
+	-moz-transition: all 200ms ease-in-out;
+	-ms-transition: all 200ms ease-in-out;
+	-o-transition: all 200ms ease-in-out;
+	transition: all 200ms ease-in-out;
+}
+#squares .square .back .liste{
+	position: relative;
+	top: 50%;
+	transform: translateY(-50%);
+}
+#squares .square .back .liste ul{
+	list-style-type: none;
+	margin: 0;
+	padding-left: 20px;
+}
+#squares .square .back .liste ul li{
+	padding: 0.35em 0;
+}
+#squares .square .back .liste ul li a{
+	font-family: 'DINNextLTPro-Regular';
+	text-transform: uppercase;
+	font-size: 14px;
+	font-weight: normal;
+	color: #fff;
+	text-decoration:none;
+}
+#squares .square .back .liste ul li a:hover{
+	color: #373636;
+}
+#squares .square .back .liste ul li a i{
+	display: inline-block;
+	position: relative;
+	height: 16px;
+	width: 10px;
+	background: url('../images/bloc_fleche_liste.png') no-repeat 0 0;
+	top: 2px;
+	margin-left: 7px;
+}
+#squares .square .back .liste ul li a:hover > i{
+	background-position: 0 -16px;
+}
+#squares .square .back .closeBtn{
+	display: block;
+	position: absolute;
+	height: 22px;
+	width: 22px;
+	top: 20px;
+	right: 20px;
+	background: url('../images/bloc_flip_close.png') no-repeat 0 0;
+	cursor: pointer;
+}
+#squares .square .back .closeBtn:hover{
+	background-position: 0 -22px;
+}
+#squares .square .back .closeBtn.inverse{
+	background-position: 0 -22px;
+}
+#squares .square .back .closeBtn.inverse:hover{
+	background-position: 0 0;
+}
+#squares .square.flipped .content{
+	transform: rotateY(180deg);
+	z-index: 1;
+}
+#squares .square.flipped .back{
+	transform: rotateY(0deg); 
+	z-index: 2;
+}
+#squares .content .blocInfos{
+	display: block;
+	position: relative;
+	background: url('../images/bg_bloc_noir_alpha.png');
+	overflow: hidden;
+	-webkit-transition: all 100ms ease-in-out;
+	-moz-transition: all 100ms ease-in-out;
+	-ms-transition: all 100ms ease-in-out;
+	-o-transition: all 100ms ease-in-out;
+	transition: all 100ms ease-in-out;
+	cursor: pointer;
+}
+#squares .content .blocInfos .blocInfos_content{
+	display: block;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+}
+#squares .content .blocInfos .titre{
+	font-family: 'DINNextLTPro-Regular';
+	position: relative;
+	top: 50%;
+	transform: translateY(-50%);
+	text-align: center;
+	font-size: 16px;
+	text-transform: uppercase;
+	color: #feffff; 
+	-webkit-transition: all 100ms ease-in-out;
+	-moz-transition: all 100ms ease-in-out;
+	-ms-transition: all 100ms ease-in-out;
+	-o-transition: all 100ms ease-in-out;
+	transition: all 100ms ease-in-out;
+}
+#squares .squareWidth{
+	width: 10%;
+}
+#squares .square.wi1{
+    width: 10%;
+}
+#squares .square.he1{
+    padding-bottom: 10%;
+}
+#squares .square.wi2{
+    width: 20%;
+}
+#squares .square.he2{
+    padding-bottom: 20%;
+}
+#squares .square.wi3{
+    width: 30%;
+}
+#squares .square.he3{
+    padding-bottom: 30%;
+}
+
+#blocAffectations .content{
+	background: url('../images/bloc_affectations.jpg') no-repeat center center; 
+}
+#blocAffectations .back{
+	background-color: #27a5c3;
+}
+#blocAffectations .back .liste ul li a{
+	color: #ffffff;
+}
+#blocAffectations .blocInfos{
+	width: 33.3333333%;
+	padding-bottom: 33.3333333%;
+	top: 66.7%;
+	left: 33.3333333%;
+}
+#blocClients .content{
+	background: url('../images/bloc_clients.jpg') no-repeat center center; 
+}
+#blocClients .back{
+	background-color: #99cc33;
+}
+#blocClients .blocInfos{
+	width: 50%;
+	padding-bottom: 50%;
+	top: 0%;
+	left: 0%;
+}
+#blocMandats .content{
+	background: url('../images/bloc_mandats.jpg') no-repeat center center; 
+}
+#blocMandats .back{
+	background-color: #d9d9d9;
+}
+#blocMandats .back .liste ul li a{
+	color: #373636 !important;
+}
+#blocMandats .back .liste ul li a:hover{
+	color: #777 !important;
+}
+#blocMandats .back .liste ul li a i{
+	background-position: 0 -16px !important;
+}
+#blocMandats .blocInfos{
+	width: 50%;
+	padding-bottom: 50%;
+	top: 0%;
+	left: 50%;
+}
+#blocConseillers .content{
+	background: url('../images/bloc_conseillers.jpg') no-repeat center center; 
+}
+#blocConseillers .back{
+	background-color: #99cc33;
+}
+#blocConseillers .blocInfos{
+	width: 33.3333333%;
+	padding-bottom: 33.3333333%;
+	top: 33.3333333%;
+	left: 0%;
+}
+#blocRapports .content{
+	background: url('../images/bloc_rapports.jpg') no-repeat center center; 
+}
+#blocRapports .back{
+	background-color: #d9d9d9;
+}
+#blocRapports .back .liste ul li a{
+	color: #373636 !important;
+}
+#blocRapports .back .liste ul li a:hover{
+	color: #99cc33 !important;
+}
+#blocRapports .back .liste ul li a i{
+	background-position: 0 -16px !important;
+}
+#blocRapports .blocInfos{
+	width: 50%;
+	padding-bottom: 50%;
+	top: 0%;
+	left: 0%;
+}
+#blocDiplomes .content{
+	background: url('../images/bloc_diplomes.jpg') no-repeat center center; 
+}
+#blocDiplomes .back{
+	background-color: #27a5c3; 
+}
+#blocDiplomes .blocInfos{
+	width: 50%;
+	padding-bottom: 50%;
+	top: 0%;
+	left: 50%;
+}
+
+@media (min-width: 1200px) and (max-width: 1399px) {
+	#squaresContainer{
+		width: 90%;
+	}
+}
+@media (max-width: 1200px) {
+	#squaresContainer{
+		width: 98%;
+	}
+	#squares .squareWidth{
+		width: 20%;
+	}
+	#squares .square.wi1{
+	    width: 20%;
+	}
+	#squares .square.he1{
+	    padding-bottom: 20%;
+	}
+	#squares .square.wi2{
+	    width: 40%;
+	}
+	#squares .square.he2{
+	    padding-bottom: 40%;
+	}
+	#squares .square.wi3{
+	    width: 60%;
+	}
+	#squares .square.he3{
+	    padding-bottom: 60%;
+	}
+}
+@media (max-width: 900px) {
+	a.logout-home{
+		width: 90px !important;
+        height: 90px !important;
+    	padding-bottom: 10%;
+	}
+    
+    .menu-home{
+        width: 90px !important;
+        height: 90px !important;
+        padding-bottom: 10%;
+    }
+    
+    .contenu{
+        width: 80px;
+        height: 80px;
+    }
+    
+	.header h1{
+		padding-right: 25%;
+	}
+    
+	.logoSquare{
+		width: 100px;
+        height: 100px;
+    	padding-bottom: 20%;
+	}
+    
+    .image img{
+        height: 90px;
+    }
+    
+    .titre{
+        font-size: 8pt !important;
+    }
+    
+    .liste ul li a{
+        font-size: 8pt !important;
+    }
+    
+   .liste ul li a i{
+        visibility: hidden;
+    }    
+}
+
+@media(max-width:760px) {
+    #preferences_home{
+        position: absolute !important;
+        top: 0px !important;
+        left: 110px !important;
+        width: 275px !important; 
+        z-index: 99;
+    }
+        
+}
