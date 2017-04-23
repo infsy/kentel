@@ -17,4 +17,6 @@ vendor/*
 
 *.swp
 
+.idea/*
+
 web/bundles/*

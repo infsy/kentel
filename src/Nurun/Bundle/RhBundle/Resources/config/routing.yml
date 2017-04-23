@@ -101,7 +101,11 @@ nurun_client_edit:
 nurun_mandat_home:
     path:      /mandat/
     defaults:  { _controller: NurunRhBundle:Mandat:index }
-        
+
+nurun_mandat_export:
+    path:      /mandat/export
+    defaults:  { _controller: NurunRhBundle:Mandat:exportMandats }
+
 nurun_mandat_view:
     path:      /mandat/view/{id}
     defaults:  { _controller: NurunRhBundle:Mandat:view }

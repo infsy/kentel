@@ -95,4 +95,13 @@ class MandatRepository extends EntityRepository
         $results=$query->getResult();
         return $results;
     }
+
+    public function findCoordonnateurs($mandat)
+    {
+        $em = $this->getEntityManager();
+        $query=$em->createQuery("select c from NurunRhBundle:Conseiller c where :mandatId MEMBER OF c.mandatsCoordination")
+            ->setParameter("mandatId", $mandat);
+        $results=$query->getResult();
+        return $results;
+    }
 }

@@ -14,6 +14,10 @@
             <i class="glyphicon glyphicon-plus"></i>
             Ajouter mandat
         </a>
+        <a href="{{ path('nurun_mandat_export') }}" class="btn btn-primary">
+            <i class="glyphicon glyphicon-floppy-save"></i>
+            Exporter en XLS
+        </a>
         {% if viewAll is null %}
             <a href="{{ path('nurun_mandat_home', {'viewAll': '1'}) }}" class="btn btn-primary" style="float: right; background-color: #99cc33; border-color: #99cc33;">
                 Voir tous les mandats

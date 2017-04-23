@@ -27,6 +27,7 @@ use Nurun\Bundle\RhBundle\Form\AddConseillerMandatsType;
 
 use Doctrine\ORM\EntityRepository;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\ResponseHeaderBag;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
@@ -34,6 +35,10 @@ use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 use Symfony\Component\Form\FormError;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
+
+use PHPExcel_Style_Alignment;
+use PHPExcel_Style_Fill;
+use PHPExcel_Style_Color;
 
 class MandatController extends Controller
 {
@@ -53,9 +58,159 @@ class MandatController extends Controller
       'mandats' => $listMandats,
       'viewAll' => $viewAll
     ));
-  }  
-  
-  /**
+  }
+
+
+    /**
+     * @Security("has_role('ROLE_RDP')")
+     */
+    public function exportMandatsAction(Request $request)
+    {
+
+        // On va travailler avec le $repository des mandats
+        $repository = $this->getDoctrine()
+            ->getManager()
+            ->getRepository('NurunRhBundle:Mandat');
+
+        // On récupère tous les mandats
+        $mandats = $repository->findAll();
+
+        $mandatsArray = array();
+
+
+        // On enrichit cette liste dans un tableau avec des indications supplémentaires
+        foreach ($mandats as $mandat) {
+            if (!($mandat->isDeleted())) {
+                $mandatArray = array();
+                $mandatArray['client'] = $mandat->getClient()->getAcronyme();
+                $mandatArray['titre'] = $mandat->getTitre();
+                $mandatArray['identifiant'] = $mandat->getIdentifiant();
+                $mandatArray['secteur'] = $mandat->getSecteur();
+                if (!empty($mandat->getChargeprojet())) {
+                    $mandatArray['CP'] = $mandat->getChargeprojet();
+                } else {
+                    $mandatArray['CP'] = 'Inconnu';
+                }
+                if (!empty($mandat->getMandataire())) {
+                    $mandatArray['mandataire'] = $mandat->getMandataire();
+                } else {
+                    $mandatArray['mandataire'] = 'Inconnu';
+                }
+                if (!empty($repository->findCoordonnateurs($mandat->getId()))) {
+                    if (empty($mandatArray['coordonnateurs'])) {
+                        $mandatArray['coordonnateurs'] = '';
+                    }
+                    foreach ($repository->findCoordonnateurs($mandat->getId()) as $coordonnateur) {
+
+                        $mandatArray['coordonnateurs'] .= $coordonnateur->getDisplay() . ' ';
+                    }}
+                else {
+                        $mandatArray['coordonnateurs'] = 'Inconnu';
+                    }
+
+                $mandatsArray[] = $mandatArray;
+                unset($mandatArray);
+            }
+        }
+
+        //On trie la liste des conseillers par la date de fin
+        foreach ($mandatsArray as $key => $row) {
+            $client[$key]  = $row['client'];
+        }
+
+        array_multisort($client, SORT_ASC, $mandatsArray);
+
+        // Create and configure the logger
+        $logger = $this->get('logger');
+
+        // ask the service for a Excel5
+        $phpExcelObject = $this->get('phpexcel')->createPHPExcelObject();
+
+        $phpExcelObject->getProperties()->setCreator("kentel")
+            ->setLastModifiedBy("Cedric Thibault")
+            ->setTitle("Liste des mandats actifs")
+            ->setSubject("Liste des mandats")
+            ->setDescription("Liste des mandats actifs triés par client")
+            ->setKeywords("conseillers kentel affectations mandats")
+            ->setCategory("Test result file");
+
+        $phpExcelObject->getActiveSheet()->setTitle('Mandats de nos conseillers');
+
+        // $em = $this->get('doctrine')->getManager();
+        // $user = $this->getUser();
+
+        $numligne = 1;
+        $phpExcelObject->setActiveSheetIndex(0)
+            ->setCellValue('A' . $numligne, 'Client')
+            ->setCellValue('B' . $numligne, 'Titre')
+            ->setCellValue('C' . $numligne, 'Identifiant')
+            ->setCellValue('D' . $numligne, 'Secteur')
+            ->setCellValue('E' . $numligne, 'Chef de projet')
+            ->setCellValue('F' . $numligne, 'Mandataire')
+            ->setCellValue('G' . $numligne, 'Coordonnateurs');
+
+        $phpExcelObject->getActiveSheet()->getStyle('A1')->getFill()->setFillType(PHPExcel_Style_Fill::FILL_SOLID);
+        // $phpExcelObject->getActiveSheet()->getStyle('A1')->getFill()->getStartColor()->setARGB('f7f7f7');
+        $phpExcelObject->getActiveSheet()->getStyle('A1')->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
+        $phpExcelObject->getActiveSheet()->getStyle('B1:B600')->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
+        $phpExcelObject->getActiveSheet()->getStyle('C1:C600')->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
+        $phpExcelObject->getActiveSheet()->getStyle('D1:D600')->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
+        $phpExcelObject->getActiveSheet()->getStyle('E1:E600')->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
+        $phpExcelObject->getActiveSheet()->getStyle('F1:F600')->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
+        $phpExcelObject->getActiveSheet()->getStyle('G1:G600')->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
+        $phpExcelObject->getActiveSheet()->getColumnDimension('A')->setWidth(10);
+        $phpExcelObject->getActiveSheet()->getColumnDimension('B')->setWidth(65);
+        $phpExcelObject->getActiveSheet()->getColumnDimension('C')->setWidth(5);
+        $phpExcelObject->getActiveSheet()->getColumnDimension('D')->setWidth(15);
+        $phpExcelObject->getActiveSheet()->getColumnDimension('E')->setWidth(20);
+        $phpExcelObject->getActiveSheet()->getColumnDimension('F')->setWidth(20);
+        $phpExcelObject->getActiveSheet()->getColumnDimension('G')->setWidth(60);
+
+        $phpExcelObject->getActiveSheet()->getStyle('A'.$numligne.':G'.$numligne)->getFont()->setBold(true);
+        $numligne++;
+
+        foreach($mandatsArray as $mandat)
+        {
+            $phpExcelObject->setActiveSheetIndex(0)
+                ->setCellValue('A' . $numligne, $mandat['client']);
+            $phpExcelObject->setActiveSheetIndex(0)
+                ->setCellValue('B' . $numligne, $mandat['titre']);
+            $phpExcelObject->setActiveSheetIndex(0)
+                ->setCellValue('C' . $numligne, $mandat['identifiant']);
+            $phpExcelObject->setActiveSheetIndex(0)
+                ->setCellValue('D' . $numligne, $mandat['secteur']);
+            $phpExcelObject->setActiveSheetIndex(0)
+                ->setCellValue('E' . $numligne, $mandat['CP']);
+            $phpExcelObject->setActiveSheetIndex(0)
+                ->setCellValue('F' . $numligne, $mandat['mandataire']);
+            $phpExcelObject->setActiveSheetIndex(0)
+                ->setCellValue('G' . $numligne, $mandat['coordonnateurs']);
+
+
+            $numligne++;
+
+        }
+
+        // Set active sheet index to the first sheet, so Excel opens this as the first sheet
+        $phpExcelObject->setActiveSheetIndex(0);
+
+        // create the writer
+        $writer = $this->get('phpexcel')->createWriter($phpExcelObject, 'Excel5');
+        // create the response
+        $response = $this->get('phpexcel')->createStreamedResponse($writer);
+        // adding headers
+        $dispositionHeader = $response->headers->makeDisposition(
+            ResponseHeaderBag::DISPOSITION_ATTACHMENT, 'Mandats.xls'
+        );
+        $response->headers->set('Content-Type', 'text/vnd.ms-excel; charset=utf-8');
+        $response->headers->set('Pragma', 'public');
+        $response->headers->set('Cache-Control', 'maxage=1');
+        $response->headers->set('Content-Disposition', $dispositionHeader);
+
+        return $response;
+    }
+
+    /**
    * @Security("has_role('ROLE_GESTION')")
    */
   public function addAction(Request $request)
