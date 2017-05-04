@@ -87,6 +87,11 @@
             {% for coordonnateur in mandat.coordonnateurs %}
                 <li>- {{ coordonnateur.prenom }} {{ coordonnateur.nom }} </li>
             {% endfor %}
+        {% if is_granted('ROLE_GESTION') %}
+            <a href="{{ path('nurun_mandat_coordonnateurs_index', {'id': mandat.id}) }}" class="modifier">
+                Modifier<i class="glyphicon glyphicon-pencil"></i>
+            </a>
+        {% endif %}
         {% endif %}
         <li>Mandataire :
             {% if mandat.mandataire is not null %}
