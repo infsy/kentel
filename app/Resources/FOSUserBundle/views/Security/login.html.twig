@@ -13,7 +13,7 @@
       <link rel="stylesheet" href="{{ asset('bundles/nurunrh/css/base.css') }}">
       <link rel="stylesheet" href="{{ asset('bundles/nurunrh/css/main.css') }}">
       <link rel="stylesheet" href="{{ asset('bundles/nurunrh/css/modules.css') }}">
-      <link rel="stylesheet" href="{{ asset('bundles/nurunrh/css/themes.css') }}">    
+      <link rel="stylesheet" href="{{ asset('bundles/nurunrh/css/themes.css') }}">
     {% endblock %}
   </head>
   <body class="login-splash">
@@ -22,7 +22,7 @@
         <div id="header" class="jumbotron">
           <h1>Gestion des conseillers</h1>
           <p>
-            Ce projet est interne au bureau Nurun Services Conseils 
+            Ce projet est interne au bureau Nurun Services Conseils
           </p>
 
         </div>
@@ -34,7 +34,7 @@
           <div class="login-head">
             <img src="{{ asset('images/Kentel-petit-H-RGB.svg') }}" alt="kentel">
           </div>
-          <span class="login-separator"></span>    
+          <span class="login-separator"></span>
           <div class="login-body">
             <h1 class="login-connect">Connexion</h1>
             <form action="{{ path("fos_user_security_check") }}" method="post">
@@ -54,6 +54,13 @@
               <input type="submit" id="_submit" name="_submit" class="btn btn-login nurun-blue" value="{{ 'Soumettre'|trans }}" />
               <div class="icone-chevron"></div>
             </form>
+            <a href="{{ path('fos_user_registration_register') }}">
+                Register
+            </a>
+             &nbsp;|
+            <a href="{{ path('fos_user_resetting_request') }}">
+                Password forgotten
+            </a>
           </div>
         </div>
       </div>

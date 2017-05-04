@@ -27,8 +27,9 @@
  */
 namespace Nurun\Bundle\UserBundle\Entity;
 
-use Doctrine\ORM\Mapping as ORM;
 use FOS\UserBundle\Model\User as BaseUser;
+use FR3D\LdapBundle\Model\LdapUserInterface as LdapUserInterface;
+use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity
@@ -36,7 +37,7 @@ use FOS\UserBundle\Model\User as BaseUser;
  * @ORM\Table(name="user")
  */
 
-class User extends BaseUser
+class User extends BaseUser implements LdapUserInterface
 {
 /**
      * @ORM\Id
@@ -45,7 +46,11 @@ class User extends BaseUser
      */
     protected $id;
     /**
-     * @ORM\Column(type="string", nullable=true)
+     * @ORM\Column(type="string")
+     */
+    protected $dn;
+    /**
+     * @ORM\Column(type="string")
      */
     protected $name;
     /**
@@ -57,7 +62,7 @@ class User extends BaseUser
      * @ORM\Column(type="string", nullable=true)
      */
     protected $departement;
-
+    
     /**
      * @ORM\Column(type="string", nullable=true)
      */
@@ -82,18 +87,18 @@ class User extends BaseUser
     private $userFonctions;
 
     /**
-     *
+     * 
      * @ORM\PrePersist
      * @ORM\PreUpdate
      * @ORM\PostLoad
      */
-
+    
       public function composeVp()
       {
         $departement = $this->getDepartement();
         if ($this->getEmail() != 'cedric.thibault@nurun.com')
         {
-            switch ($departement)
+            switch ($departement) 
             {
                 case "Solutions informatiques":
                     $this->setVp("VPSI");
@@ -115,12 +120,12 @@ class User extends BaseUser
                 break;
                 case "Opérations et finances":
                     $this->setVp("VPOF");
-                break;
+                break;                
             }
         }
       }
-
-
+  
+      
     public function __construct()
     {
        parent::__construct();
@@ -143,7 +148,7 @@ class User extends BaseUser
     public function setLanguage($language) {
         $this->language = $language;
     }
-
+    
 
     /**
      * Get name

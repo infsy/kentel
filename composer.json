@@ -33,7 +33,6 @@
 	"genemu/form-bundle": "2.2.*",
         "kitpages/data-grid-bundle": "~2.5",
         "friendsofsymfony/user-bundle": "*",
-        "fr3d/ldap-bundle": "2.0.*@dev",
         "symfony/console": "~2.5",
         "liuggio/excelbundle": "^2.0",
         "jpgraph/jpgraph": "dev-master",

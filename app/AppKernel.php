@@ -34,7 +34,6 @@ class AppKernel extends Kernel
             new Kitpages\DataGridBundle\KitpagesDataGridBundle(),
             new Genemu\Bundle\FormBundle\GenemuFormBundle(),
             new FOS\UserBundle\FOSUserBundle(),
-            new FR3D\LdapBundle\FR3DLdapBundle(),
             new Liuggio\ExcelBundle\LiuggioExcelBundle(),
             new Knp\DoctrineBehaviors\Bundle\DoctrineBehaviorsBundle(),
             new Nurun\Bundle\SystemBundle\NurunSystemBundle(),

@@ -26,7 +26,7 @@ framework:
     fragments:       ~
     http_method_override: true
     serializer:
-        enabled: true
+        enabled: true    
 
 # Twig Configurationtran
 twig:
@@ -63,16 +63,14 @@ doctrine:
 # Swiftmailer Configuration
 swiftmailer:
     transport: "%mail_transport%"
-    username: "%mail_user%"
-    password: "%mail_password%"
     auth_mode: "%mail_auth%"
     spool:
         type: memory
     host:      "%mail_host%"
-
+    
 apy_data_grid:
     no_result_message: Pas de résultats.
-
+    
 kitpages_data_grid:
     grid:
         default_twig: KitpagesDataGridBundle:Grid:bootstrap3-grid.html.twig
@@ -82,7 +80,7 @@ kitpages_data_grid:
         visible_page_count_in_paginator: 5
 genemu_form:
     date: ~
-services:
+services:    
     import.csvtoarray:
         class: Nurun\Bundle\RhBundle\Services\ConvertCsvToArray
 #    send.email:
@@ -93,13 +91,28 @@ fos_user:
     db_driver: orm
     firewall_name: main
     user_class: Nurun\Bundle\UserBundle\Entity\User
-    registration:
-        confirmation:
-            enabled: true
     from_email:
         address: "%mailer_user%"
         sender_name: "%mailer_user%"
 
+fr3d_ldap:
+    driver:
+       host:    "%ldap_host%"
+       port:    "%ldap_port%"
+       username: "%ldap_user%"
+       password: "%ldap_password%"
+       accountDomainName: "%ldap_domainName%"
+      # accountDomainNameShort: "%ldap_domainNameShort%"
+       useSsl:  "%ldap_useSsl%"
+    user:
+        baseDn: "%ldap_baseDn%"
+        filter: (&(ObjectClass=Person))
+        attributes:
+           - { ldap_attr: samaccountname,  user_method: setUsername } # champ login
+           - { ldap_attr: sn, user_method: setName }
+           - { ldap_attr: preferredlanguage, user_method: setLanguage }
+           - { ldap_attr: mail, user_method: setEmail } # setter dans BaseUser
+           - { ldap_attr: department, user_method: setDepartement } 
 services:
    get_set_method_normalizer:
       class: Symfony\Component\Serializer\Normalizer\GetSetMethodNormalizer
@@ -111,3 +124,4 @@ knp_doctrine_behaviors:
 
 parameters:
     knp.doctrine_behaviors.blameable_subscriber.user_entity: Nurun\Bundle\UserBundle\Entity\User
+
