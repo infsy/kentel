@@ -26,4 +26,5 @@ parameters:
     mail_auth: ~
     mail_host: ~
     mailer_user: ~
+    domain_constraint: ~
     google_api_key: ~

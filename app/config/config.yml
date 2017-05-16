@@ -32,6 +32,8 @@ framework:
 twig:
     debug:            "%kernel.debug%"
     strict_variables: "%kernel.debug%"
+    globals:
+      domainToUsed: '%domain_constraint%'
 
 # Assetic Configuration
 assetic:

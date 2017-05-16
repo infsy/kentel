@@ -29,6 +29,8 @@ namespace Nurun\Bundle\UserBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use FOS\UserBundle\Model\User as BaseUser;
+use Symfony\Component\Validator\Context\ExecutionContextInterface;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity
@@ -38,7 +40,8 @@ use FOS\UserBundle\Model\User as BaseUser;
 
 class User extends BaseUser
 {
-/**
+
+    /**
      * @ORM\Id
      * @ORM\Column(type="integer")
      * @ORM\GeneratedValue(strategy="AUTO")
@@ -52,7 +55,6 @@ class User extends BaseUser
      * @ORM\Column(type="string", nullable=true)
      */
     protected $language;
-
     /**
      * @ORM\Column(type="string", nullable=true)
      */
