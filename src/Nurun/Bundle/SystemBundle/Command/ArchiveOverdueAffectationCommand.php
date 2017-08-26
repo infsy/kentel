@@ -1,7 +1,7 @@
 <?php
 
 namespace Nurun\Bundle\SystemBundle\Command;
- 
+
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
@@ -12,7 +12,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 class ArchiveOverdueAffectationCommand extends ContainerAwareCommand
 {
- 
+
     protected function configure()
     {
         $this
@@ -20,7 +20,7 @@ class ArchiveOverdueAffectationCommand extends ContainerAwareCommand
             ->setDescription('Archive les affectations et les mandats terminés')
         ;
     }
- 
+
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $em = $this->getContainer()->get('doctrine')->getManager();
@@ -31,9 +31,9 @@ class ArchiveOverdueAffectationCommand extends ContainerAwareCommand
         $listAffectationActives = $em->getRepository('NurunRhBundle:ConseillerMandat')->findActives();
         foreach($listAffectationActives as $affectationActive) {
             $dateFin = $affectationActive->getDateFin();
-            if ($dateFin == null) {
-                continue;
-            }
+            // if ($dateFin == null) {
+            //     continue;
+            // }
             $dateInterval = $today->diff($dateFin);
             if (($dateInterval->d >= 7 || $dateInterval->m >= 1) && $dateInterval->invert == 1) {
                 $em->remove($affectationActive);

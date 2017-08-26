@@ -12,15 +12,15 @@
     {# On charge le CSS de bootstrap depuis le site directement #}
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/main.css') }}"> 
-     
+    <link rel="stylesheet" href="{{ asset('css/main.css') }}">
+
   {% endblock %}
-    
-    
-    
+
+
+
 </head>
 <body>
-  
+
   <div id="squaresContainer">
     <div class="header">
       <div class="logoSquare">
@@ -29,9 +29,9 @@
         </div>
       </div>
       <div class="wi3">
-     
+
 <div id="preferences_home">
-           <div id="navbar"> 
+           <div id="navbar">
           <ul class="nav navbar-nav">
                   <li><a class="menu-premier-level preferences btnNav menu-home" href="javascript:;"><span><img class="icon-preferences" src="{{ asset('images/prefs_deco.svg') }}" alt="logout">Préférences</span></a>
                     <ul class="menu-second-level gris">
@@ -43,6 +43,7 @@
                         <li><a href="{{ path('nurun_sourceAffectation_home') }}">Gestion des sources d'affectation</a></li>
                         <li><a href="{{ path('nurun_admin_fonctions') }}">Gestion des fonctions</a></li>
                         <li><a href="{{ path('nurun_admin_competences') }}">Gestion des compétences</a></li>
+                        <li><a href="{{ path('nurun_admin_certifications') }}">Gestion des certifications</a></li>
                           <li><a href="{{ path('nurun_admin_adresses') }}">Gestion des adresses</a></li>
                           <li><a href="{{ path('nurun_admin_statutAffectations') }}">Gestion des statuts d'affectation</a></li>
                         <li><a href="{{ path('nurun_admin_languages') }}">Gestion des langues</a></li>
@@ -53,25 +54,25 @@
                       {% endif %}
                     </ul>
                   </li>
-                </ul> 
+                </ul>
           </div>
 </div>
            <h1>Gestion des conseillers</h1>
-          
- <a href="{{ path('logout') }}" class="logout logout-home"><div class="contenu"><img class="icon-deconnexion" src="{{ asset('images/deconnexion.svg') }}" alt="logout" height="50" width="50">Déconnexion</div></a> 
-      </div> 
-      
+
+ <a href="{{ path('logout') }}" class="logout logout-home"><div class="contenu"><img class="icon-deconnexion" src="{{ asset('images/deconnexion.svg') }}" alt="logout" height="50" width="50">Déconnexion</div></a>
+      </div>
+
     </div>
 
     <div id="squares">
-  
+
 
       <div class="square wi3 he3" id="blocAffectations">
         <div class="content">
           <div class="blocInfos">
             <div class="blocInfos_content">
               <div class="titre">Affectations</div>
-            </div>    
+            </div>
           </div>
         </div>
         <div class="back">
@@ -87,7 +88,7 @@
                 <li><a href="{{ path('nurun_affectation_besoin_index') }}">Voir tous les besoins <i></i></a></li>
               {% endif %}
                 {% if is_granted('ROLE_ADMIN') %}
-              <li><a href="{{ path('nurun_affectation_home') }}">Voir toutes les affectations <i></i></a></li>          
+              <li><a href="{{ path('nurun_affectation_home') }}">Voir toutes les affectations <i></i></a></li>
                 {% endif %}
               {% if is_granted('ROLE_ADMIN') %}
                 <li><a href="{{ path('nurun_commun_choosevp', { 'target':'nurun_affectation_listvp' }) }}">Voir les affectations par secteur<i></i></a></li>
@@ -109,7 +110,7 @@
           <div class="blocInfos">
             <div class="blocInfos_content">
               <div class="titre">Clients</div>
-            </div>    
+            </div>
           </div>
         </div>
         <div class="back">
@@ -132,7 +133,7 @@
           <div class="blocInfos">
             <div class="blocInfos_content">
               <div class="titre">Rapports</div>
-            </div>    
+            </div>
           </div>
         </div>
         <div class="back">
@@ -167,7 +168,7 @@
           <div class="blocInfos">
             <div class="blocInfos_content">
               <div class="titre">Conseillers</div>
-            </div>    
+            </div>
           </div>
         </div>
         <div class="back">
@@ -202,7 +203,7 @@
           <div class="blocInfos">
             <div class="blocInfos_content">
               <div class="titre">Mandats</div>
-            </div>    
+            </div>
           </div>
         </div>
         <div class="back">
@@ -225,7 +226,7 @@
           <div class="blocInfos">
             <div class="blocInfos_content">
               <div class="titre">Diplômes</div>
-            </div>    
+            </div>
           </div>
         </div>
         <div class="back">
@@ -251,11 +252,11 @@
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/packery/1.4.1/packery.pkgd.min.js"></script>
-    
+
     <script src="{{ asset('js/main.js') }}"></script>
     <script>
       jQuery(document).ready(function(){
-        
+
         var setSquaresSize = function(){
           $('#squares .square').each(function(){
             var square = $(this);

@@ -1,7 +1,7 @@
 <?php
 
 namespace Nurun\Bundle\RhBundle\Command;
- 
+
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
@@ -12,7 +12,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 class NotifyBirthdaysCommand extends ContainerAwareCommand
 {
- 
+
     protected function configure()
     {
         // Name and description for app/console command
@@ -21,13 +21,13 @@ class NotifyBirthdaysCommand extends ContainerAwareCommand
         ->setDescription('Vérifie les anniversaires du jour et écrit un courriel à leur entourage')
                 ;
     }
- 
+
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         // Importing CSV on DB via Doctrine ORM and update DB
         $this->update($input, $output);
     }
-    
+
     protected function update(InputInterface $input, OutputInterface $output)
     {
         // Getting the actual day
@@ -41,10 +41,10 @@ class NotifyBirthdaysCommand extends ContainerAwareCommand
 
         // Turning off doctrine default logs queries for saving memory
         $em->getConnection()->getConfiguration()->setSQLLogger(null);
-        
+
         // Processing on each item of conseillers
         foreach($conseillers as $conseiller) {
-             if (!empty($conseiller->getDateFete()))
+             if ((!empty($conseiller->getDateFete())) and (empty($conseiller->getDeletedAt())))
             {
                 if ($conseiller->getDateFete()->format('d-m') == $today->format('d-m'))
                 {

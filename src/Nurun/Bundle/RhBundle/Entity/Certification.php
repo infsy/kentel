@@ -40,15 +40,15 @@ class Certification
     * @ORM\JoinColumn(nullable=true)
     */
     private $conseillers;
-    
+
     /**
      * @var string
      *
      * @ORM\Column(name="fournisseur", type="string", length=255, nullable=true)
      */
     private $fournisseur;
-    
-    
+
+
     /**
      * Constructor
      */
@@ -57,13 +57,13 @@ class Certification
     }
 
     public function __toString() {
-        return ($this->getDescription());
+        return ($this->getAcronyme() . " - " . $this->getDescription());
     }
 
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -86,7 +86,7 @@ class Certification
     /**
      * Get identifiant
      *
-     * @return string 
+     * @return string
      */
     public function getIdentifiant()
     {
@@ -109,7 +109,7 @@ class Certification
     /**
      * Get description
      *
-     * @return string 
+     * @return string
      */
     public function getDescription()
     {
@@ -143,7 +143,7 @@ class Certification
     /**
      * Get conseillers
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getConseillers()
     {

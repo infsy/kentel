@@ -49,7 +49,7 @@
     <i id="dateDepart" style="color: red; font-weight: bold;" {% if conseiller.isDeleted == false %}hidden{% endif %}>Quitté le {{ conseiller.deletedAt|date('d/m/Y') }}</i>
     {% if is_granted('ROLE_ADMIN') %}
                 <a href="{{ path('nurun_conseiller_edit', {'id': conseiller.id}) }}" >
-                    Modifier le conseiller <i class="glyphicon glyphicon-pencil"></i> 
+                    Modifier le conseiller <i class="glyphicon glyphicon-pencil"></i>
                 </a>
             {% endif %}
 
@@ -61,16 +61,16 @@
 
 
 <div class="well">
-    
-    
 
-<div class="row">  
-    
+
+
+<div class="row">
+
     <div class="col-md-6">
-    
+
 <div id="identite">
     <h4 style="font-weight: bold;"><i class="material-icons">fingerprint</i> Identité</h4>
-            
+
 
     <ul>
         <li>
@@ -90,14 +90,14 @@
                 {% else %}
                     Pas de gestionnaire encore défini.
                 {% endif %}
-                
 
-            {% if is_granted('ROLE_GESTION') %} 
+
+            {% if is_granted('ROLE_GESTION') %}
                  <a href="{{ path('nurun_rdp_edit', {'id': conseiller.id}) }}" class="">
                     <span class="ajouter">&lsqb;Ajouter&rsqb;</span>
                 </a>
-            {% endif %}    
-                
+            {% endif %}
+
             </li>
             <li>
                 Secteur : {{ conseiller.vicePresidence }}
@@ -122,20 +122,20 @@
             <li>
                 Statut : {{ conseiller.statut }}
             </li>
-           
+
             <li>
                 Date de naissance : {{ dateFete }}
-            </li>        
+            </li>
     </ul>
- 
-    </div>        
-</div> 
-    
+
+    </div>
+</div>
+
     <div class="col-md-6">
-        <h4 style="font-weight: bold;"><i class="material-icons">phone</i> Contact</h4>  
-        
+        <h4 style="font-weight: bold;"><i class="material-icons">phone</i> Contact</h4>
+
         <ul>
-        
+
          <li>
                 Courriel : <a href="mailto:{{ conseiller.courriel }}">{{ conseiller.courriel }}</a>
             </li>
@@ -154,19 +154,19 @@
                     Téléphones autres (cell, paget..) : {{ conseiller.telephoneAutres }}
                 </li>
             {% endif %}
-            
+
         </ul>
-    
-    </div>  
-    
+
+    </div>
+
 </div>
-    
+
     <hr>
-    
+
 <div id="mandats">
 
 <h4 style="font-weight: bold;"><i class="glyphicon glyphicon-user"></i> Mandats</h4>
-    
+
 <ul>
     <li>
     {% if conseiller.consigne is null %}
@@ -183,7 +183,7 @@
     {#{% endif %}#}
     {#</li>#}
 </ul>
-    
+
     <div class="panel-group" id="accordion">
         <div class="panel panel-default">
             <div class="panel-heading">
@@ -217,14 +217,14 @@
             </li>
             {% endfor %}
                 </div>
-            </div> 
+            </div>
         </div>
         <div class="panel panel-default">
             <div class="panel-heading">
                 <h4 class="panel-title">
                     <a data-toggle="collapse" data-parent="#accordion" href="#affect" class="collapse-titre collapsed">Affectations</a>
-                    
-                    
+
+
             {% if is_granted('ROLE_GESTION') %}
                       <a href="{{ path('nurun_affectation_add', {'id': conseiller.id}) }}">
                     <span class="ajouter">&lsqb;Ajouter&rsqb;</span>
@@ -232,7 +232,7 @@
             {% endif %}
                 </h4>
                 </div>
-            
+
             <div id="affect" class="panel-collapse collapse">
                 <div class="panel-body">
                      {% if affectations is empty %}
@@ -283,17 +283,17 @@
             </div>
     </div>
     <hr>
-</div>   
+</div>
 <div id="savoir-faire">
-    
+
 <h4 style="font-weight: bold;"><i class="material-icons">school</i> Savoir-faire</h4>
-    
+
     <div class="panel-group" id="accordion">
             <div class="panel panel-default">
             <div class="panel-heading">
                 <h4 class="panel-title">
                     <a data-toggle="collapse" data-parent="#accordion" href="#diplomes" class="collapse-titre collapsed">Diplômes</a>
-                     
+
             {% if is_granted('ROLE_RDP') %}
                     <a href="{{ path('nurun_conseillerdiplome_add', {'id': conseiller.id}) }}" >
                     <span class="ajouter">&lsqb;Ajouter&rsqb;</span>
@@ -326,7 +326,7 @@
                 <h4 class="panel-title">
                     <a data-toggle="collapse" data-parent="#accordion" href="#competences" class="collapse-titre collapsed">Compétences</a>
                   {% if is_granted('ROLE_RDP') %}
-                    
+
                     <a href="{{ path('nurun_conseiller_competence_index', {'id': conseiller.id}) }}">
                     <span class="ajouter">&lsqb;Ajouter&rsqb;</span>
                 </a>
@@ -355,7 +355,14 @@
         <div class="panel panel-default">
             <div class="panel-heading">
                 <h4 class="panel-title">
-                    <a data-toggle="collapse" data-parent="#accordion" href="#certifications" class="collapse-titre collapsed">Certifications</a></h4>
+                    <a data-toggle="collapse" data-parent="#accordion" href="#certifications" class="collapse-titre collapsed">Certifications</a>
+                    {% if is_granted('ROLE_RDP') %}
+
+                      <a href="{{ path('nurun_conseiller_certification_index', {'id': conseiller.id}) }}">
+                      <span class="ajouter">&lsqb;Ajouter&rsqb;</span>
+                  </a>
+                      {% endif %}
+                      </h4>
             </div>
             <div id="certifications" class="panel-collapse collapse">
                 <div class="panel-body">
@@ -369,7 +376,7 @@
                         {% endif %}
                         {{ certification.certification.description }}
                         {% if certification.date is not empty %}
-                            ({{ certification.date|date('Y') }})
+                            ({{ certification.date|date('M-Y') }})
                         {% endif %}
                         <br>
                     </p>
@@ -415,7 +422,7 @@
                     <a data-toggle="collapse" data-parent="#accordion" href="#ressourcesGestionnaire" class="collapse-titre collapsed">Ressources affectées à ce gestionnaire</a>
                 </h4>
             </div>
-            
+
             <div id="ressourcesGestionnaire" class="panel-collapse collapse">
                 <div class="panel-body">
                      {% for ressource in ressources %}
@@ -435,13 +442,13 @@
         </div>
      {% endif %}
     </div>
-    
-</div>
 
 </div>
 
+</div>
 
-    
+
+
 
 
 
@@ -460,9 +467,9 @@
                     Ajouter des congés
                 </a>
             {% endif %}
-            
+
             {% if is_granted('ROLE_GESTION') %}
-               
+
 
                 <a id="actionBtn{{ conseiller.id }}" href="#" role="button" data-toggle="modal" data-toggle="tooltip" class="btn btn-danger" data-target="#supprimer_conseiller{{ conseiller.id }}">
                     <span class="glyphicon glyphicon-trash"></span>
@@ -530,7 +537,7 @@
                         </div>
                     </div>
                 </div>
-            {% endif %}            
+            {% endif %}
         {% endif %}
     </p>
 
@@ -584,7 +591,7 @@
                     $.ajax({
                         url: url,
                         type: "POST",
-                        success: function() { 
+                        success: function() {
                         },
 
                         error: function(XMLHttpRequest, textStatus, errorThrown)
@@ -615,7 +622,7 @@
                     $.ajax({
                         url: url,
                         type: "POST",
-                        success: function() { 
+                        success: function() {
                         },
 
                         error: function(XMLHttpRequest, textStatus, errorThrown)
@@ -635,7 +642,7 @@
                     $('#restaurer_conseiller'+conseillerId).modal('hide');
                     $('#dateDepart').hide();
                 }
-            });     
+            });
         });
     </script>
 {% endblock %}

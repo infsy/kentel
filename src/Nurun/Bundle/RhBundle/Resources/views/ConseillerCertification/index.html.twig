@@ -1,0 +1,47 @@
+{# src/Nurun/RhBundle/Resources/views/ConseillerCertification/index.html.twig #}
+
+{% extends "NurunRhBundle::layout.html.twig" %}
+
+{% block title %}
+  Liste des certifications d'un conseiller - {{ parent() }}
+{% endblock %}
+
+{% block rh_body %}
+
+  <h2>Liste des certifications d'un conseiller</h2>
+    <a href="{{ path('nurun_conseiller_certification_add', {'id': id}) }}" class="btn btn-primary">
+        <i class="glyphicon glyphicon-plus"></i>
+        Ajouter une certification
+    </a>
+    <a href="{{ path('nurun_conseiller_view', {'id': id}) }}" type="button" class="btn btn-primary" style="float:right;">
+        Retour au conseiller
+    </a>
+  <table id="listConseillerCertifications" class="display nowrap" cellspacing="0" width="100%">
+    <thead>
+      <tr>
+        <th>Acronyme</th>
+        <th>Description</th>
+        <th>Fournissseur</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+
+      <!--début de la boucle-->
+  {% for conseillerCertification in conseillerCertifications %}
+    <tr>
+        <td>{{ conseillerCertification.certification.acronyme }}</td>
+        <td>{{ conseillerCertification.certification.description }}</td>
+        <td>{{ conseillerCertification.certification.fournisseur }}</td>
+        <td>
+          <a href="{{ path('nurun_conseiller_certification_edit', {'id': conseillerCertification.id}) }}" class="bt-table" title="Éditer" data-hover="tooltip"><span class="glyphicon glyphicon-edit"></span></a>
+            <a href="{{ path('nurun_conseiller_certification_delete', {'id': conseillerCertification.id}) }}" class="bt-table red-btn" title="Supprimer" data-hover="tooltip"><span class="glyphicon glyphicon-remove"></span></a>
+        </td>
+      </tr>
+      <!--fin de la boucle-->
+  {% endfor %}
+
+    </tbody>
+  </table>
+
+{% endblock %}

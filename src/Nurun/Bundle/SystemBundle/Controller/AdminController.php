@@ -16,6 +16,7 @@ use Nurun\Bundle\UserBundle\Entity\User;
 //use Nurun\Bundle\RhBundle\Form\ConseillerType;
 //use Nurun\Bundle\RhBundle\Entity\Document;
 use Nurun\Bundle\RhBundle\Entity\Competence;
+use Nurun\Bundle\RhBundle\Entity\Certification;
 use Nurun\Bundle\RhBundle\Entity\Language;
 use Nurun\Bundle\RhBundle\Entity\StatutAffectation;
 use Nurun\Bundle\RhBundle\Entity\TypeCompetence;
@@ -26,6 +27,7 @@ use Nurun\Bundle\RhBundle\Entity\Action;
 use Nurun\Bundle\RhBundle\Entity\UserFonction;
 //use Nurun\Bundle\RhBundle\Form\ConseillerMandatCongeType;
 use Nurun\Bundle\RhBundle\Form\CompetenceType;
+use Nurun\Bundle\RhBundle\Form\CertificationType;
 use Nurun\Bundle\RhBundle\Form\AdresseType;
 use Nurun\Bundle\RhBundle\Form\FonctionType;
 use Nurun\Bundle\RhBundle\Form\TypeCompetenceType;
@@ -236,7 +238,7 @@ class AdminController extends Controller
         foreach ($fonctionPermissionList as $fonctionPermission) {
             $em->remove($fonctionPermission);
         }
-        
+
         $em->flush();
         $em->clear();
 
@@ -355,6 +357,75 @@ class AdminController extends Controller
         return $this->redirectToRoute('nurun_admin_adresses');
     }
 
+
+        /**
+         * @Security("has_role('ROLE_ROOT')")
+         */
+        public function certificationsAction(Request $request)
+        {
+            $this->denyAccessUnlessGranted('ROLE_ROOT', null,'Unable to access this page!' );
+
+            $em = $this->getDoctrine()->getManager();
+            $certificationList = $em->getRepository('NurunRhBundle:Certification')->findAll();
+
+            $certification = new Certification();
+            $form = $this->createForm(new CertificationType(), $certification);
+            $form->handleRequest($request);
+
+            if ($form->isValid() && $form->isSubmitted()) {
+                $em->persist($certification);
+                $em->flush();
+
+                return $this->redirectToRoute('nurun_admin_certifications');
+            }
+
+            return $this->render('NurunSystemBundle:Admin:certifications.html.twig', array(
+                'certificationList'    => $certificationList,
+                'form'              => $form->createView()
+                )
+            );
+        }
+
+        /**
+         * @Security("has_role('ROLE_ROOT')")
+         * @ParamConverter("certification", options={"mapping": {"certificationId": "id"}})
+         */
+        public function editCertificationAction(Request $request, Certification $certification)
+        {
+            $this->denyAccessUnlessGranted('ROLE_ROOT', null,'Unable to access this page!' );
+            $em = $this->getDoctrine()->getManager();
+
+            $form = $this->createForm(new CertificationType(), $certification);
+            $form->handleRequest($request);
+
+            if ($form->isValid() && $form->isSubmitted()) {
+                $em->persist($certification);
+                $em->flush();
+
+                return $this->redirectToRoute('nurun_admin_certifications');
+            }
+
+            return $this->render('NurunSystemBundle:Admin:editCertification.html.twig', array(
+                'form'          => $form->createView(),
+                'certification'    => $certification
+                )
+            );
+        }
+
+            /**
+             * @Security("has_role('ROLE_ROOT')")
+             * @ParamConverter("certification", options={"mapping": {"certificationId": "id"}})
+             */
+            public function removeCertificationAction(Request $request, Certification $certification)
+            {
+                $this->denyAccessUnlessGranted('ROLE_ROOT', null,'Unable to access this page!' );
+                $em = $this->getDoctrine()->getManager();
+
+                $em->remove($certification);
+                $em->flush();
+
+                return $this->redirectToRoute('nurun_admin_certifications');
+            }
 
     /**
      * @Security("has_role('ROLE_ROOT')")
@@ -523,7 +594,7 @@ class AdminController extends Controller
         foreach ($userNotificationList as $userNotification) {
             $em->remove($userNotification);
         }
-        
+
         $em->flush();
         $em->clear();
 
@@ -791,7 +862,7 @@ class AdminController extends Controller
         $userFonction = $em->getRepository('NurunRhBundle:UserFonction')->getByUserAndFonction($user, $fonction);
         $em->remove($userFonction);
 
-        
+
         $em->flush();
         $em->clear();
 

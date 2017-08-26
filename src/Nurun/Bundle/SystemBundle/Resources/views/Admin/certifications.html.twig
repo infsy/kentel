@@ -1,0 +1,101 @@
+{# src/Nurun/SystemBundle/Resources/view/Admin/certifications.html.twig #}
+
+{% extends "NurunRhBundle::layout.html.twig" %}
+
+{% block title %}
+    {{ parent () }} - Gestion des certifications
+{% endblock %}
+
+{% block rh_body %}
+    <div class="row zone-titre">
+
+        <h2 class="titre-page">Gestion des certifications</h2>
+
+        {% if is_granted('ROLE_ROOT') %}
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ajouter_competence">
+                <i class="glyphicon glyphicon-plus"></i>
+                Ajouter une certification
+            </button>
+        {% endif %}
+    </div>
+
+    <table id="certificationList" class="display nowrap" cellspacing="0" width="100%">
+        <thead>
+            <tr>
+                <th>Acronyme</th>
+                <th>Description</th>
+                <th>Fournisseur</th>
+                <th></th>
+            </tr>
+        </thead>
+
+        {% if certificationList|length > 0 %}
+            <tbody>
+                {% for certification in certificationList %}
+                    <tr>
+                        <td>{{ certification.acronyme }}</td>
+                        <td>{{ certification.description }}</td>
+                        <td>
+                            {% if certification.fournisseur is not null %}
+                                {{ certification.fournisseur }}
+                            {% endif %}
+                        </td>
+                        <td>
+                            <a href="{{ path('nurun_admin_certification_edit', {'certificationId':  certification.id} ) }}"  data-toggle="tooltip"  class="bt-table"  title="modifier la certification"><span class="glyphicon glyphicon-edit"></span></a>
+                            <a href="#" data-hover="tooltip" role="button" data-toggle="modal" data-toggle="tooltip" class="bt-table" data-target="#supprimer_certification{{ certification.id }}" title="Supprimer la certification" style="color:red;"><span class="glyphicon glyphicon-remove"></span></a>
+                        </td>
+                    </tr>
+
+                    <div class="modal fade" id="supprimer_certification{{ certification.id }}" tabindex="-1" role="dialog" aria-labelledby="Supprimer la certification">
+                        <div class="modal-dialog modal-md" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                    <h4 class="modal-title" id="myModalLabel">Supprimer la certification ?</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="row" style="padding:10px 15px;">
+                                        <div class="col-xs-12">
+                                            <a type="button" class="btn btn-primary" href="{{ path('nurun_admin_certification_remove', {'certificationId':  certification.id} ) }}">
+                                                Oui
+                                            </a>
+                                            <button type="button" class="btn btn-primary" data-dismiss="modal" aria-label="Close" style="background-color:red;border-color:red;">
+                                                Non
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                {% endfor %}
+            </tbody>
+        {% endif %}
+    </table>
+
+    <div class="modal fade" id="ajouter_certification" tabindex="-1" role="dialog" aria-labelledby="Ajouter certification">
+        <div class="modal-dialog modal-md" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Ajouter une certification</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row" style="padding:10px 30px;">
+                        <div class="col-xs-12">
+                            {% include "NurunSystemBundle:Admin:certificationForm.html.twig" %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascriptsPage %}
+  {% include "::webjs/jquery.dataTables.html.twig" %}
+  <script src="{{ asset('js/data-tables/dataTables.responsive.min.js') }}"></script>
+  <script src="{{ asset('js/data-tables/dataTables.bootstrap.min.js') }}"></script>
+  <script src="{{ asset('js/table.js') }}"></script>
+{% endblock %}

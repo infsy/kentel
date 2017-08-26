@@ -1,0 +1,15 @@
+{# src/Nurun/RhBundle/Resources/views/ConseillerCertification/edit.html.twig #}
+
+{% extends "NurunRhBundle::layout.html.twig" %}
+
+{% block title %}
+  Modifier une certification - {{ parent() }}
+{% endblock %}
+
+{% block rh_body %}
+
+  <h2>Modifier une certification</h2>
+
+  {{ include("NurunRhBundle:ConseillerCertification:form.html.twig") }}
+
+{% endblock %}

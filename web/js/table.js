@@ -331,6 +331,22 @@ $(document).ready(function () {
         ]
     });
 
+
+        $('#listConseillerCertifications').DataTable({
+            responsive: true,
+            "language": {
+                "url": "//cdn.datatables.net/plug-ins/1.10.11/i18n/French.json"
+            },
+            stateSave: true,
+            "iDisplayLength": 25,
+            "columnDefs": [
+                {
+                    className: "all", "targets": [0]
+                },
+                {"orderable": false, "targets": -1}
+            ]
+        });
+
     $('#listConseillersExperience').DataTable({
         responsive: true,
         "language": {
@@ -456,6 +472,23 @@ $(document).ready(function () {
         ]
     });
 
+
+        //on initialise le tableau
+        $('#certificationList').DataTable({
+            responsive: true,
+            "language": {
+                "url": "//cdn.datatables.net/plug-ins/1.10.11/i18n/French.json"
+            },
+            "columnDefs": [
+                {
+                    className: "all table-center", "targets": [-1]//derniere et avant dernière colonnes toujours affichée et centrées
+                },
+                {
+                    className: "all", "targets": [0]
+                },
+                {"orderable": false, "targets": [-1]}
+            ]
+        });
 
     //on initialise le tableau
     $('#adresseList').DataTable({
